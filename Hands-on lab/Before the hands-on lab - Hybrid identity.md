@@ -92,7 +92,7 @@ Timeframe: 150 minutes
 
     -   Config Name: **TlgBaseConfig-01**
 
-    -   Domain Name: **contoso.local**
+    -   Domain Name: **corp.contoso.com**
 
     -   Server OS: **2016-Datacenter**
 
@@ -114,10 +114,18 @@ Timeframe: 150 minutes
 
     -   _artifacts Location Sas Token: **leave blank**
 
-    ![In this screenshot, the 'Custom deployment' blade of the Azure portal is depicted with each parameter value field highlighted and each value set to the values stated above.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/15juneupdate.png "The custom deployment blade with all the information listed above entered")
+    ![In this screenshot, the 'Custom deployment' blade of the Azure portal is depicted with each parameter value field highlighted and each value set to the values stated above.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/BHOL-feb2022-update.png "The custom deployment blade with all the information listed above entered")
 
 
-4. Wait for the deployment to complete. This might take about 60 minutes.
+4. Select Review + create.
+
+5. After validation has passed, Select Create. 
+
+    ![In this screenshot, the configuration for the deployment that you did on the previous tile is summarized and validated.  Once validation has passed, you select create to start the deployment.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/BHOL-feb2022-create-add.png "Custom deployment summarize and create tile")
+
+6. Wait for the deployment to complete. This might take about 60 minutes.
+
+    ![In this screenshot, the deployment is complete and you can go directly to the resource group using the go to resource group button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/BHOL-feb2022-deployment-complete.png "Custom deployment is complete")
 
 
 ### Task 4: Configure the lab environment Azure VMs
