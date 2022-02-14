@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-June 2021
+February 2022
 </div>
 
 
@@ -19,7 +19,7 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2021 Microsoft Corporation. All rights reserved.
+© 2022 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
@@ -92,7 +92,7 @@ Timeframe: 150 minutes
 
     -   Config Name: **TlgBaseConfig-01**
 
-    -   Domain Name: **contoso.local**
+    -   Domain Name: **corp.contoso.com**
 
     -   Server OS: **2016-Datacenter**
 
@@ -114,10 +114,18 @@ Timeframe: 150 minutes
 
     -   _artifacts Location Sas Token: **leave blank**
 
-    ![In this screenshot, the 'Custom deployment' blade of the Azure portal is depicted with each parameter value field highlighted and each value set to the values stated above.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/15juneupdate.png "The custom deployment blade with all the information listed above entered")
+    ![In this screenshot, the 'Custom deployment' blade of the Azure portal is depicted with each parameter value field highlighted and each value set to the values stated above.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/BHOL-feb2022-update.png "The custom deployment blade with all the information listed above entered")
 
 
-4. Wait for the deployment to complete. This might take about 60 minutes.
+4. Select Review + create.
+
+5. After validation has passed, Select Create. 
+
+    ![In this screenshot, the configuration for the deployment that you did on the previous tile is summarized and validated.  Once validation has passed, you select create to start the deployment.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/BHOL-feb2022-create-add.png "Custom deployment summarize and create tile")
+
+6. Wait for the deployment to complete. This might take about 60 minutes.
+
+    ![In this screenshot, the deployment is complete and you can go directly to the resource group using the go to resource group button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/BHOL-feb2022-deployment-complete.png "Custom deployment is complete")
 
 
 ### Task 4: Configure the lab environment Azure VMs
@@ -195,7 +203,13 @@ Timeframe: 150 minutes
 
     -   Password: **demo\@pass123**
 
-2.  Within the Remote Desktop session to **DC1**, start Internet Explorer and navigate to the below link.
+2.  Within the Remote Desktop session to **DC1**, open the **Windows PowerShell ISE** window and run this command to install the **Chrome** browser.
+
+    ```pwsh
+    $LocalTempDir = $env:TEMP; $ChromeInstaller = "ChromeInstaller.exe"; (new-object System.Net.WebClient).DownloadFile('http://dl.google.com/chrome/install/375.126/chrome_installer.exe', "$LocalTempDir\$ChromeInstaller"); & "$LocalTempDir\$ChromeInstaller" /silent /install; $Process2Monitor = "ChromeInstaller"; Do { $ProcessesFound = Get-Process | ?{$Process2Monitor -contains $_.Name} | Select-Object -ExpandProperty Name; If ($ProcessesFound) { "Still running: $($ProcessesFound -join ', ')" | Write-Host; Start-Sleep -Seconds 2 } else { rm "$LocalTempDir\$ChromeInstaller" -ErrorAction SilentlyContinue -Verbose } } Until (!$ProcessesFound)
+    ```
+
+3. Open the **Chrome** browswer and navigate to the below link and save the files to **DC1**.
 
     ```
     https://github.com/microsoft/MCW-Hybrid-identity/tree/main/Hands-on%20lab/studentfiles

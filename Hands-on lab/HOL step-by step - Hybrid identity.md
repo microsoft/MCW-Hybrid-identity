@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-June 2021
+February 2022
 </div>
 
 
@@ -19,7 +19,7 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2021 Microsoft Corporation. All rights reserved.
+© 2022 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
@@ -262,11 +262,11 @@ In this task, you will purchase a custom DNS domain name by leveraging the funct
 
 3. In the Azure portal's left navigation, select **+ Create a resource**.
 
-4. On the **New** blade, select **Web App**.
+4. On the **New** blade, select **Create** within **Web App**.
 
-    ![Screenshot that depicts the New blade with 'Web App' selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectWebApp.png "Select web app resource")
+    ![Screenshot that depicts the New blade with 'Web App' selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectWebApp.png "Select create web app resource")
 
-5. On the **Basics** tab of the **Web App** blade, specify the following settings and select **Next: Monitoring**:
+5. On the **Basics** tab of the **Web App** blade, specify the following settings and select **Next: Deployment** and then **Next: Monitoring**:
 
     - Subscription: the name of the Azure subscription into which you deployed resources in the Before Hands-On Lab exercises.
 
@@ -384,7 +384,7 @@ In this task, you will configure the DNS suffix of the Contoso Active Directory 
 
     ![In this screenshot, Server Manager is depicted with the Active Directory Users and Computers console selected on the Tools dropdown menu.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ADUCConsole.png "Start Active Directory Users and Computers console on Server Manager window")
 
-8. In the **Active Directory Users and Computers** console, expand **contoso.local** on the left and examine the organizational unit hierarchy of the domain and the group membership of the domain groups. 
+8. In the **Active Directory Users and Computers** console, expand **corp.contoso.com** on the left and examine the organizational unit hierarchy of the domain and the group membership of the domain groups. 
 
     ![In this screenshot, on the Active Directory Users and Computers console, constoso.local under Active Directory Users and Computers on the left is expanded. The Domain and group hierarchy an now be viewed.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/NodeHierarchy.png "Domain and group hierarchy")
 
@@ -408,7 +408,7 @@ In this task, you will install Azure AD Connect.
 
 1. Within the Remote Desktop session to **DC1**, in Server Manager, select **Local Server**, and ensure that **IE Enhanced Security Configuration** is disabled. If not, then select the **On** link next to **IE Enhanced Security Configuration**, set the **Administrators** settings to **Off**, and select **OK**.
 
-2. Within the Remote Desktop session to **DC1**, start the Edge browser and navigate to the Azure portal at <https://portal.azure.com>.
+2. Within the Remote Desktop session to **DC1**, start the **Chrome** browser and navigate to the Azure portal at <https://portal.azure.com>.
 
 3. When prompted to sign in, enter the credentials of the **john.doe** Azure AD user account, which you copied into Notepad earlier in this exercise.
 
@@ -446,7 +446,7 @@ In this task, you will install Azure AD Connect.
 
 16. On the **Connect to Azure AD** page, sign in by using the credentials of the **john.doe** account and select **Next**.
 
-17. On the **Connect your directories** page, ensure that the **contoso.local** entry appears in the **FOREST** drop-down list and select **Add Directory**. In the **AD forest account**, ensure that the **Create new AD account** option is selected, in the **ENTERPRISE ADMIN USERNAME** textbox, type **CONTOSO\\demouser**, in the **PASSWORD** textbox, type **demo\@pass123**, and select **OK**.
+17. On the **Connect your directories** page, ensure that the **corp.contoso.com** entry appears in the **FOREST** drop-down list and select **Add Directory**. In the **AD forest account**, ensure that the **Create new AD account** option is selected, in the **ENTERPRISE ADMIN USERNAME** textbox, type **CORP.CONTOSO.COM\\demouser**, in the **PASSWORD** textbox, type **demo\@pass123**, and select **OK**.
 
     ![In this screenshot, the Connect your directories page of the Microsoft Azure AD Connect wizard is depicted with contoso.local having been added.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_ConnectyourDirectories.png "Connect your Contoso directory")
 
