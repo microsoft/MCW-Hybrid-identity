@@ -152,11 +152,11 @@ Before conducting your first whiteboard design session:
 
 When participants are doing activities, you can **look ahead to refresh your memory**.
 
--   **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing.
+- **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing.
 
--   **Add examples, points, and stories** from your own experience. Think about stories you can share that help you make your points clearly and effectively.
+- **Add examples, points, and stories** from your own experience. Think about stories you can share that help you make your points clearly and effectively.
 
--   **Consider creating a "parking lot"** to record issues or questions raised that are outside the scope of the whiteboard design session or can be answered later. Decide how you will address these issues, so you can acknowledge them without being derailed by them.
+- **Consider creating a "parking lot"** to record issues or questions raised that are outside the scope of the whiteboard design session or can be answered later. Decide how you will address these issues, so you can acknowledge them without being derailed by them.
 
 ***Have fun**! Encourage participants to have fun and share!*
 
@@ -182,13 +182,13 @@ Analyze your customer's needs.
 
 Timeframe: 15 minutes
 
-Directions:  With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
+Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
 
-1.  Meet your table participants and trainer.
+1. Meet your team members and trainer.
 
-2.  Read all of the directions for steps 1-3 in the student guide.
+2. Read all directions for steps 1-3 in the student guide.
 
-3.  As a table team, review the following customer case study.
+3. As a team, review the following customer case study.
 
 ### Customer situation
 
@@ -256,7 +256,6 @@ The management team of Contoso, including its CIO, Andrew Cross, emphasized the 
 
 5.  A number of critical web applications running in our on-premises environment rely on Kerberos-based Windows Integrated Authentication. Microsoft states that Azure Active Directory does not support Kerberos. Doesn't this mean that remote users authenticating to Azure Active Directory and our business partners will not be able to properly authenticate and access these applications?
 
-
 ### Key design considerations
 
 1.  The choice of the authentication method supported in hybrid identity scenarios
@@ -277,7 +276,6 @@ The management team of Contoso, including its CIO, Andrew Cross, emphasized the 
 
 9.  The method of implementing redundancy in your solution
 
-
 ### Infographic for common scenarios
 
 ![The diagram illustrating Azure AD Hybrid Identity with Password Hash Sync. On the left hand side, there is a cloud shape representing Public Cloud SaaS services, including Azure and Office 365, The user and the user's computer icons are positioned directly underneath. The user signs in to Azure AD represented by a circle containing the Azure AD symbol, which is pointed to by a unidirectional arrow originating from the computer icon labeled Azure AD Connect positioned on the right-hand side of the slide. This icon is connected via a unidirectional arrow to the icon representing an Active Directory domain controller, directly below it.](images/Whiteboarddesignsessiontrainerguide-HybridIdentityimages/media/azure-ad-authn-image2.png "Azure AD hybrid identity password-hash synchronization")
@@ -296,15 +294,15 @@ Timeframe: 60 minutes
 
 **Business needs**
 
-Directions: With all participants at your table, answer the following questions and list the answers on a flip chart:
+Directions: With your team, answer the following questions and be prepared to present your solution to others:
 
-1.  Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
+1. Who will you present this solution to? Who is your target customer audience? Who are the decision makers?
 
-2.  What customer business needs do you need to address with your solution?
+2. What customer business needs do you need to address with your solution?
 
 **Design**
 
-Directions: With all participants at your table, respond to the following questions on a flip chart:
+Directions: With your team, respond to the following questions:
 
 *Architecting a hybrid identity solution*
 
@@ -340,13 +338,13 @@ Directions: With all participants at your table, respond to the following questi
 
 **Prepare**
 
-Directions: With all participants at your table:
+Directions: As a team:
 
-1.  Identify any customer needs that are not addressed with the proposed solution.
+1. Identify any customer needs that are not addressed with the proposed solution.
 
-2.  Identify the benefits of your solution.
+2. Identify the benefits of your solution.
 
-3.  Determine how you will respond to the customer's objections.
+3. Determine how you will respond to the customer's objections.
 
 Prepare a 15-minute chalk-talk style presentation to the customer.
 
@@ -362,25 +360,25 @@ Timeframe: 30 minutes
 
 Directions:
 
-1.  Pair with another table.
+1. Pair with another team.
 
-2.  One table is the Microsoft team and the other table is the customer.
+2. One group is the Microsoft team and the other is the customer.
 
-3.  The Microsoft team presents their proposed solution to the customer.
+3. The Microsoft team presents their proposed solution to the customer.
 
-4.  The customer makes one of the objections from the list of objections.
+4. The customer makes one of the objections from the list of objections.
 
-5.  The Microsoft team responds to the objection.
+5. The Microsoft team responds to the objection.
 
-6.  The customer team gives feedback to the Microsoft team.
+6. The customer team gives feedback to the Microsoft team.
 
-7.  Tables switch roles and repeat Steps 2-6.
+7. Switch roles and repeat Steps 2-6.
 
-##  Wrap-up 
+## Wrap-up
 
 Timeframe: 15 minutes
 
-Directions: Tables reconvene with the larger group to hear the facilitator/SME share the preferred solution for the case study.
+Directions: Reconvene with the larger group to hear the facilitator/SME share the preferred solution for the case study.
 
 ##  Additional references
 
@@ -396,48 +394,47 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | Azure Active Directory B2C documentation | <https://docs.microsoft.com/en-us/azure/active-directory-b2c/>  |
 | Microsoft Enterprise Mobility + Security options | <https://www.microsoft.com/en-us/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing>
 
-
 # Hybrid identity whiteboard design session trainer guide
 
 ## Step 1: Review the customer case study
 
--   Check in with your table participants to introduce yourself as the trainer.
+- Check in with your participants to introduce yourself as the trainer.
 
--   Ask, "What questions do you have about the customer case study?"
+- Ask, "What questions do you have about the customer case study?"
 
--   Briefly review the steps and timeframes of the whiteboard design session.
+- Briefly review the steps and timeframes of the whiteboard design session.
 
--   Ready, set, go! Let the table participants begin.
+- Ready, set, go! Let participants begin.
 
 ## Step 2: Design a proof of concept solution
 
--   Check in with your tables to ensure that they are transitioning from step to step on time.
+- Check in with your teams to ensure that they are transitioning from step to step on time.
 
--   Provide some feedback on their responses to the business needs and design.
+- Provide feedback on their responses to the business needs and design.
 
-    -   Try asking questions first that will lead the participants to discover the answers on their own.
+  - Try asking questions first that will lead the participants to discover the answers on their own.
 
--   Provide feedback for their responses to the customer's objections.
+- Provide feedback for their responses to the customer's objections.
 
-    -   Try asking questions first that will lead the participants to discover the answers on their own.
+  - Try asking questions first that will lead the participants to discover the answers on their own.
 
 ## Step 3: Present the solution
 
--   Determine which table will be paired with your table before Step 3 begins.
+- Determine which groups will be paired together before Step 3 begins.
 
--   For the first round, assign one table as the presenting team and the other table as the customer.
+- For the first round, assign one group as the presenting team and the other as the customer.
 
--   Have the presenting team present their solution to the customer team.
+- Have the presenting team present their solution to the customer team.
 
-    -   Have the customer team provide one objection for the presenting team to respond to.
+  - Have the customer team provide one objection for the presenting team to respond to.
 
-    -   The presentation, objections, and feedback should take no longer than 15 minutes.
+  - The presentation, objections, and feedback should take no longer than 15 minutes.
 
-    -   If needed, the trainer may also provide feedback.
+  - If needed, the trainer may also provide feedback.
 
 ## Wrap-up
 
--   Have the table participants reconvene with the larger session group to hear the facilitator/SME share the following preferred solution.
+- Have participants reconvene with the larger session group to hear the facilitator/SME share the following preferred solution.
 
 ##  Preferred target audience
 
