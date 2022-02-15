@@ -645,7 +645,7 @@ In this task, you will configure Azure AD Connect attribute level filtering that
 
 10. On the **Configuration complete** page, select **Exit**.
 
-11. Within the Remote Desktop session to **DC1**, in the the Edge browser window displaying the Azure portal, navigate to the **Users - All users** blade of the Contoso Azure AD tenant.
+11. Within the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Users - All users** blade of the Contoso Azure AD tenant.
 
 12. On the **Users - All users** blade, note that the list of user objects includes all user accounts with the UPN suffix matching the custom domain name of the Azure AD tenant. You may need to refresh the page or wait a few minutes to see the change.
 
@@ -792,7 +792,7 @@ In this task, you will configure Azure AD Connect device synchronization options
          PreReqResult : WillNotProvision
 
    ```
-11. Switch back to the Remote Desktop session to **DC1**, in the the Edge browser window displaying the Azure portal, navigate to the **Devices - All devices** blade of the Contoso Azure AD tenant and verify that there is an entry representing the APP1 server, with the **Join Type** set to **Hybrid Azure AD joined**.
+11. Switch back to the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Devices - All devices** blade of the Contoso Azure AD tenant and verify that there is an entry representing the APP1 server, with the **Join Type** set to **Hybrid Azure AD joined**.
 
    > **Note**: You might need to wait until the Azure AD registration status is correctly reported and its Azure AD object appears in the Azure portal.
 
@@ -856,7 +856,7 @@ In this task, you will create and configure Active Directory groups that will be
    Start-ADSyncSyncCycle -PolicyType Delta
    ```
 
-7. In the Remote Desktop session to **DC1**, in the the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant and select **Groups** on the left.
+7. In the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant and select **Groups** on the left.
 
 8. On the **Groups - All groups** blade, verify that there is an entry representing the **Engineering - Mandatory MFA** group containing the Azure AD user accounts matching Active Directory user accounts which are members of the Active Directory **Engineering - Mandatory MFA** group.
 
@@ -900,7 +900,7 @@ In this task, you assign a value to the **UsageLocation** attribute of each user
 
 In this task, you will configure user state-based Azure AD Multi-Factor Authentication for members of the **Engineering - Mandatory MFA** group.
 
-   > **Note**: In general, enabling Azure Multi-Factor Authentication using Conditional Access policies is the recommended approach, since it offers more flexibility. Setting Multi-Factor Authentication by modifying the user state requires users to perform two-step verification every time they sign in and overrides Conditional Access policies. On the other hand, this approach might be required if existing licensing arrangement does not include Conditional Access.
+   > **Note**: In general, enabling Azure Multi-Factor Authentication using Conditional Access policies is the recommended approach, since it offers more flexibility. Setting Multi-Factor Authentication by modifying the user state requires users to perform two-step verification every time they sign in and overrides Conditional Access policies. On the other hand, this approach might be required if the existing licensing arrangement does not include Conditional Access.
 
 1. Within the Remote Desktop session to **DC1**, on the Script pane of the Windows PowerShell ISE window, run the following to install Azure AD MSOnline PowerShell module for Graph (select **Yes to All** when prompted whether to proceed with the installation):
 
@@ -928,7 +928,7 @@ In this task, you will configure user state-based Azure AD Multi-Factor Authenti
     }
     ```
 
-4. To verify the outcome, within the Remote Desktop session to **DC1**, in the the Edge browser window displaying the Azure portal, navigate to the **Users - All users** blade of the Contoso Azure AD tenant and select **Multi-Factor Authentication** (you might need to select **...** first). This will open a new tab in the the Edge browser window displaying the **multi-factor authentication** portal.
+4. To verify the outcome, within the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Users - All users** blade of the Contoso Azure AD tenant and select **Multi-Factor Authentication** (you might need to select **...** first). This will open a new tab in the Edge browser window displaying the **multi-factor authentication** portal.
 
     ![In this screenshot, the 'Users - All users' blade of the Azure portal is depicted with the '...' icon selected and the 'Multi-Factor Authentication' option selected in the dropdown menu.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectMFA.png "Select Multi-Factor Authentication")
 
@@ -961,7 +961,7 @@ In this task, you will enable password writeback and Self-Service Password Reset
 
 10. On the **Configuration complete** page, select **Exit**.
 
-11. Within the Remote Desktop session to **DC1**, in the the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
+11. Within the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
 
 12. On the **Contoso - Overview** blade, select **Password reset** on the left under **Manage**. 
 
@@ -1004,7 +1004,7 @@ In this task, you will implement Azure AD password Protection for Windows Server
 
     ![In this screenshot, the Group Policy Management Editor is depicted with the 'Account lockout threshold properties' dialog open with the required settings selected and the 'Suggested Value Changes' dialog open with the OK button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADPasswordProtectionPolicy_ADLockout.png "Group policy management")
 
-5. Within the Remote Desktop session to **DC1**, in the the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
+5. Within the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
 
 6. On the **Contoso - Overview** blade, select **Security** under **Manage** on the left.
 
@@ -1121,7 +1121,7 @@ In this task, you will enable Azure AD Identity Protection
 
 In this task, you will enable automatic enrollment of hybrid Azure AD devices into Intune. 
 
-1. Within the Remote Desktop session to **DC1**, in the the Edge browser window displaying the Azure portal, navigate to the following URL in a tab. 
+1. Within the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the following URL in a tab. 
 
     ```
     https://endpoint.microsoft.com
@@ -1138,7 +1138,7 @@ In this task, you will enable automatic enrollment of hybrid Azure AD devices in
 
 ### Task 8: Enable Enterprise-State-Roaming
 
-1. Within the Remote Desktop session to **DC1**, in the the Edge browser tab displaying the Azure portal, navigate to the blade of the Contoso Azure AD tenant.
+1. Within the Remote Desktop session to **DC1**, in the Edge browser tab displaying the Azure portal, navigate to the blade of the Contoso Azure AD tenant.
 
 2. On the **Contoso - Overview** blade, select **Devices** under **Manage** on the left.
 
@@ -1152,7 +1152,7 @@ In this task, you will enable automatic enrollment of hybrid Azure AD devices in
 
 In this task, you will implement Azure AD Conditional Access Policies.
 
-1. Within the Remote Desktop session to **DC1**, in the the Edge browser tab displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
+1. Within the Remote Desktop session to **DC1**, in the Edge browser tab displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
 
 2. On the **Contoso - Overview** blade, select **Properties** under **Manage** on the left. Select **Manage Security defaults**. On the **Enable security defaults** blade that appears on the right, select **No** under **Enable security defaults** then check the other box and enter some random characters. Then select **Save**. Return to the **Contoso - Overview** blade.
 
@@ -1176,7 +1176,7 @@ In this task, you will implement Azure AD Conditional Access Policies.
 
     ![In this screenshot, the 'New named location' blade of the Azure portal is depicted with the required settings listed above selected and the Create button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_Namedlocations.png "Named Location settings")
 
-7. On the **Security - Named locations** blade, select **Configure MFA trusted IPs**. This will open a new tab in the the Edge browser window displaying the **service settings** tab of the **multi-factor authentication** portal.
+7. On the **Security - Named locations** blade, select **Configure MFA trusted IPs**. This will open a new tab in the Edge browser window displaying the **service settings** tab of the **multi-factor authentication** portal.
 
     ![In this screenshot, the MFA portal is depicted with the 'service settings' tab selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_MFA_servicesettings.png "MFA Service Settings")
 
@@ -1275,7 +1275,7 @@ In this task, you will implement Azure AD Conditional Access Policies.
 
 In this task, you will implement Azure AD Privileged Identity Management.
 
-1. Within the Remote Desktop session to **DC1**, in the the Edge browser window displaying the Azure portal, navigate to the **All services** blade.
+1. Within the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **All services** blade.
 
 2. In the search text box, type **Privileged Identity Management** and, in the list of results, select **Azure AD Privileged Identity Management**.
 
@@ -1347,7 +1347,7 @@ In this exercise, you will configure access to on-premises Integrated Windows Au
 
 In this task, you will install and configure Azure AD Application Proxy.
 
-1. Within the Remote Desktop session to **DC1**, in the the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
+1. Within the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
 
 2. On the **Contoso - Overview** blade of the Contoso Azure AD tenant, select **Application proxy** under **Manage** on the left.
 
@@ -1361,7 +1361,7 @@ In this task, you will install and configure Azure AD Application Proxy.
 
 6. Install Microsoft Azure Active Directory Application Proxy Connector with default settings. When prompted to sign in, enter the credentials of the **john.doe** Azure AD user account, which you created in the first exercise of this lab.
 
-7. Once the installation completes, refresh the the Edge browser page displaying the **Contoso - Application proxy** blade and verify that it includes the **DC1.contoso.local** entry in the **Default** connector group.
+7. Once the installation completes, refresh the Edge browser page displaying the **Contoso - Application proxy** blade and verify that it includes the **DC1.contoso.local** entry in the **Default** connector group.
 
     ![In this screenshot, the 'Contoso - Application proxy' blade of the Azure portal is depicted with the 'DC1.contoso.local' entry listed under the Default connector group.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/VerifyConnector.png "Verify that the connector is present")
 
@@ -1425,7 +1425,7 @@ In this task, you will configure an Azure AD Application Proxy application.
     setspn -L APP1
     ```
 
-10. Review the output, switch back to the the Edge browser window displaying the Azure portal, and, on the **APP1 Default Web Site - Configure Integrated Windows Authentication (IWA)** blade, specify the following settings and select **Save**.
+10. Review the output, switch back to the Edge browser window displaying the Azure portal, and, on the **APP1 Default Web Site - Configure Integrated Windows Authentication (IWA)** blade, specify the following settings and select **Save**.
 
     - Internal Application SPN: **HTTP/APP1.contoso.local**
 
@@ -1602,7 +1602,7 @@ In this task, you will configure Azure AD user accounts in the newly created Azu
 
 In this task, you will create and configure Azure AD guest accounts in the Contoso Azure AD tenant representing users in the Fabrikam Azure AD tenant.
 
-1. Switch to the Remote Desktop session to **DC1**, in the the Edge browser window displaying the Azure portal at <https://portal.azure.com> into which you are signed in with the **john.doe** credentials, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
+1. Switch to the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal at <https://portal.azure.com> into which you are signed in with the **john.doe** credentials, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
 
 2. On the **Contoso - Overview** blade, select **Users** under **Manage** on the left.
 
@@ -1672,7 +1672,7 @@ In this task, you will create and configure Azure AD guest accounts in the Conto
 
 In this task, you will configure an Azure AD Application Proxy application for B2B access.
 
-1. Within the Remote Desktop session to **DC1**, in the the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
+1. Within the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
 
 2. On the **Contoso - Overview** blade of the Contoso Azure AD tenant, select **Enterprise applications** under **Manage** on the left.
 
@@ -2018,7 +2018,7 @@ In this task, you will install and configure Azure AD Connect in standby mode.  
 
 In this task, you will install and configure the Azure AD Connect pass through agent.
 
-1. Within the Remote Desktop session to **BDC-1**, in the the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
+1. Within the Remote Desktop session to **BDC-1**, in the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
    
 2. To download the latest version of the Authentication Agent (version 1.5.193.0 or later), sign in to the Azure Active Directory admin center with your tenant's global administrator credentials.
    
