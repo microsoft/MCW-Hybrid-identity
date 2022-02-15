@@ -1443,7 +1443,7 @@ In this task, you will configure an Azure AD Application Proxy application.
 
 14. In the **Active Directory Users and Computers** console, locate the computer account hosting the Azure AD Application Proxy connector (**DC1** in our case) under **Domain Controllers** within **contoso.local** and display its **Properties** window.
 
-    ![In this screenshot, the 'Active Directory Users and Computers' console is depicted with the Domain Controllers node selected on the left and the DC1 computer account right-selected with the Properties menu option selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DisplayComputerProperties.png "Display computer properties")
+    ![In this screenshot, the 'Active Directory Users and Computers' console is depicted with the Domain Controllers node selected on the left and the DC1 computer account right-clicked with the Properties menu option selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DisplayComputerProperties.png "Display computer properties")
 
 15. In the **DC1 Properties** window, switch to the **Delegation** tab and select the option **Trust this computer for delegation to specified services only**.
 
@@ -1748,7 +1748,7 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
 26. In the **Active Directory Users and Computers** console, expand **contoso.local** on the left, create an organizational unit named **Demo B2B Accounts** directly in the root of the domain with two child organizational units named **Enabled** and **Disabled**.
 
-    ![In this screenshot, the 'Active Directory Users and Computers' console is depicted with the 'contoso.local' node right-selected with New then Organizational Unit selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateOU.png "Create an organizational unit")
+    ![In this screenshot, the 'Active Directory Users and Computers' console is depicted with the 'contoso.local' node right-clicked with New then Organizational Unit selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateOU.png "Create an organizational unit")
 
     > **Note**: These OUs must NOT be synchronized back to the Azure AD tenant using Azure AD Connect. Make sure not to include the guest user objects in the synchronization scope.
 
@@ -1894,7 +1894,7 @@ In this task, you will promote the newly created VM to a domain controller and c
 
 9. Select **Close** when installation completes.
 
-10. Right-select the network connection icon on the taskbar to open the **Network and sharing center**.
+10. Right-click the network connection icon on the taskbar to open the **Network and sharing center**.
     
 11. Select **Ethernet 2** next to **Connections**.
     
@@ -2043,7 +2043,7 @@ In this task, you will configure Azure AD Application Proxy for the BDC-1 VM.
 
 3.  In the **Active Directory Users and Computers** console, locate the computer account hosting the Azure AD Application Proxy connector (**DC1** in our case) under **Domain Controllers** within **contoso.local** and display its **Properties** window.
 
-    ![In this screenshot, the 'Active Directory Users and Computers' console is depicted with the Domain Controllers node selected on the left and the DC1 computer account right-selected with the Properties menu option selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DisplayComputerProperties.png "Display computer properties")
+    ![In this screenshot, the 'Active Directory Users and Computers' console is depicted with the Domain Controllers node selected on the left and the DC1 computer account right-clicked with the Properties menu option selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DisplayComputerProperties.png "Display computer properties")
 
 4.  In the **DC1 Properties** window, switch to the **Delegation** tab and select the option **Trust this computer for delegation to specified services only**.
 
