@@ -55,11 +55,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 Timeframe: 150 minutes
 
-
 ### Task 1: Review the relevant Microsoft documentation 
 
-1. Review online documentation regarding Azure Active Directory at <https://docs.microsoft.com/en-us/azure/active-directory/> focusing in particular on its integration with Active Directory and its B2B capabilities.
-
+1. Review online documentation regarding Azure Active Directory at <https://docs.microsoft.com/en-us/azure/active-directory/> focusing on its integration with Active Directory and its B2B capabilities.
 
 ### Task 2: Validate the role in the Azure subscription
 
@@ -146,7 +144,7 @@ Timeframe: 150 minutes
     Invoke-Command -ComputerName $vmNames {Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value 00000000}
     ```
 
-    **Note:** To run multiple PowerShell scripts in the same file, you can highlight a specific script and select **Run Selection** next to the green play button. 
+    **Note**: To run multiple PowerShell scripts in the same file, you can highlight a specific script and select **Run Selection** next to the green play button. 
 
     ![In this screenshot, the PowerShell ISE application is depicted with the script listed above pasted into it.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/PSScript.png "PowerShell ISE with the script pasted into it")
 
@@ -158,7 +156,7 @@ Timeframe: 150 minutes
     Invoke-Command -ComputerName $vmNames {Install-WindowsFeature RSAT -IncludeAllSubFeature} 
     ```
 
-4.  Within the **Windows PowerShell ISE** window  add the following script to the script pane, and run it to enable TLS 1.2 on both **DC1* and **APP1** Azure VMs:
+4.  Within the **Windows PowerShell ISE** window  add the following script to the script pane, and run it to enable TLS 1.2 on both **DC1** and **APP1** Azure VMs:
 
     ```pwsh
 
@@ -209,7 +207,7 @@ Timeframe: 150 minutes
     $LocalTempDir = $env:TEMP; $ChromeInstaller = "ChromeInstaller.exe"; (new-object System.Net.WebClient).DownloadFile('http://dl.google.com/chrome/install/375.126/chrome_installer.exe', "$LocalTempDir\$ChromeInstaller"); & "$LocalTempDir\$ChromeInstaller" /silent /install; $Process2Monitor = "ChromeInstaller"; Do { $ProcessesFound = Get-Process | ?{$Process2Monitor -contains $_.Name} | Select-Object -ExpandProperty Name; If ($ProcessesFound) { "Still running: $($ProcessesFound -join ', ')" | Write-Host; Start-Sleep -Seconds 2 } else { rm "$LocalTempDir\$ChromeInstaller" -ErrorAction SilentlyContinue -Verbose } } Until (!$ProcessesFound)
     ```
 
-3. Open the **Chrome** browswer and navigate to the below link and save the files to **DC1**.
+3. Open the **Chrome** browser and navigate to the below link and save the files to **DC1**.
 
     ```
     https://github.com/microsoft/MCW-Hybrid-identity/tree/main/Hands-on%20lab/studentfiles
