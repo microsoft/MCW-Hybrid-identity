@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-February 2022
+May 2022
 </div>
 
 
@@ -126,9 +126,13 @@ In this task, you will create an Azure Active Directory tenant with the followin
 
     ![A screenshot that depicts the New blade. In the New blade, Azure Active Directory is searched for in the Search the Marketplace text box and selected from the search results.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SearchAD.png "Search for and select Azure Active Directory")
 
-5. On the **Azure Active Directory** blade, select **Create**.
+5. Select **Create**.
 
-6. On the **Create directory** blade, specify the following settings and select **Create**:
+6. On the **Basics** tab, leave Azure Active Directory selected and select **Next: Configuration >**
+
+    ![A screenshot that shows Azure Active Directory select with the Next: Configuration > button called out.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aad-basics.png "Select Azure Active Directory and click Next")
+
+7. On the **Configuration** tab, specify the following settings and select **Review + create**. Then select **Create**.
 
     -   Organization name: **Contoso**
 
@@ -136,31 +140,19 @@ In this task, you will create an Azure Active Directory tenant with the followin
 
     -   Country or region: **United States**
 
-7. Once it's created, navigate to your subscription blade. Select **Change directory**.
+8. Once it's created, follow the link to navigate to your new tenant. navigate to your subscription blade. Select **Change directory**.
 
-    ![A screenshot that depicts the Subscription page. On the Subscription page, the 'Change directory' button is selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ChangeDirectory.png "Select the Change Directory button")
+    ![A screenshot that depicts the link to click to navigate to the new Azure Active Directory tenant.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ChangeDirectory.png "Select the link to navigate to your new tenant")
 
-8. In the **Change the directory** blade on the right, select **Contoso** in the dropdown and select **Change**. 
+9.  On the **Contoso - Overview** blade, select **Licenses** under **Manage** on the left navigation.
 
-    ![A screenshot that depicts the Change the Directory blade. On the Change the Directory blade, Contoso is selected in the dropdown and the 'Change' button is selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ChangeContoso.png "Select Contoso and the Change button")
+10. On the **Contoso - Licenses**, blade, select **All Products** and select **+ Try/Buy**.
 
-9. In the portal's left navigation, select **Azure Active Directory**. 
-
-10. In the **Azure Active Directory** blade, select **Switch tenant** then select the **Contoso** box and select **Switch**. 
-
-    >**Note**: It may take a few minutes for everything to display properly.
-
-    ![A screenshot that depicts the 'Switch tenant' blade. On the 'Switch tenant' blade, the Contoso directory is selected and the Switch button is selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/line148Update.png "Switch to the Contoso directory")
-
-11. On the **Contoso - Overview** blade, select **Licenses** under **Manage** on the left navigation.
-
-12. On the **Contoso - Licenses**, blade, select **All Products** and select **+ Try/Buy**.
-
-13. On the **Activate** blade, in the **ENTERPRISE MOBILITY + SECURITY E5** section, select **Free trial** and then select **Activate**.
+11. On the **Activate** blade, in the **ENTERPRISE MOBILITY + SECURITY E5** section, select **Free trial** and then select **Activate**.
 
     ![A screenshot that depicts the Licenses - All products blade with the Active blade open. On the Active blade, under 'Enterprise Mobility + Security E5 free trial', then Activate button is selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ActivateTrial.png "Activate Enterprise Mobility + Security E5 free trial")
 
-   > **Note**: Activation typically takes about 5 minutes.
+   > **Note**: Activation typically takes about 5 minutes. Refresh the page to see the license added.
 
 ### Task 2: Create and configure Azure AD users
 
@@ -262,11 +254,11 @@ In this task, you will purchase a custom DNS domain name by leveraging the funct
 
 3. In the Azure portal's left navigation, select **+ Create a resource**.
 
-4. On the **New** blade, select **Create** within **Web App**.
+4. Search for **web app** and select **Create** within **Web App**.
 
     ![Screenshot that depicts the New blade with 'Web App' selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectWebApp1.png "Select create web app resource")
 
-5. On the **Basics** tab of the **Web App** blade, specify the following settings and select **Next: Deployment** and then **Next: Monitoring**:
+5. On the **Basics** tab of the **Web App** blade, specify the following settings and select **Next: Deployment**:
 
     - Subscription: The name of the Azure subscription into which you deployed resources in the Before Hands-On Lab exercises.
 
@@ -287,28 +279,28 @@ In this task, you will purchase a custom DNS domain name by leveraging the funct
     - SKU and size: **Shared D1** (If necessary, select **Change size**, select Dev/Test, select **D1** and select **Apply**)
 
     ![Screenshot that depicts the Basics tab of the Web App blade with the above listed settings selected and the Next: Monitoring button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/16febupdate2.png "Web app basics information")
+
+6. Select **Next: Networking** and then **Next: Monitoring**
   
-6. On the **Monitoring** tab of the **Web App** blade, specify the following setting and select **Review + create** then **Create**:
+7. On the **Monitoring** tab of the **Web App** blade, specify the following setting and select **Review + create** then **Create**:
 
     - Enable Application Insights: **No**
 
-7. In the Azure portal, search for and select **App Service Domains** on the top search bar.
+8. In the Azure portal, search for and select **App Service Domains** on the top search bar.
 
     ![Screenshot that depicts the Azure portal with App Service Domains searched for and selected at the top of the search bar.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ASD.png "Select App Service Domains service")
 
-8. On the **App Service Domains** blade, select **Create App Service Domain**.
+9.  On the **App Service Domains** blade, select **Create App Service Domain**.
 
-    ![Screenshot that depicts the App Service Domains blade with the Create App Service Domain button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectBuyDomain.png "Create App Service Domain page")
+10. On the **Basics** tab, select your subscription, the **contosohilab-RG** Resource Group, search for unique domain, and select the one you want to use. Then select **Next: Contact Information**.
 
-9. On the **Create App Service Domains** blade, select the **contosohilab-RG** resource group. Then in the **Search for domains...** text box, type the domain name you want to purchase and select the box next to one of the available domain names listed below the text box. Make sure you make note of the domain you choose. 
+    ![Screenshot showing all of the settings above to select a custom domain to purchase.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/asd-selectdomain.png "Select a custom domain to purchase")
 
-    ![Screenshot that depicts the Create App Service Domains blade with the required settings selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DomainList.png "Select domain from list of available domains")
+11. Enter in the required contact information and select **Next: Advanced**
 
-10. Select **Next: Contact information**, type required information.
+12. Ensure that **Enable privacy protection** is Enabled. Select **Review + create** then **Create**.
 
-11. Select **Next: Advanced**, ensure that **Enable privacy protection** is set to **Disable**.
-
-12. Select **Review + Create** then **Create**. 
+    ![Screenshot showing domain privacy enabled.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/asd-domainprivacy.png "Domain privacy enabled")
 
 ### Task 4: Assign a custom domain name to the Contoso Azure AD tenant
 
@@ -318,7 +310,7 @@ In this task, you will assign a newly purchased custom DNS domain name to the Co
    
    ![In this screenshot, the Directory + Subscription blade is depicted with the Contoso directory selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ContosoSwitch.png "Contoso directory switch")
 
-2. In the Azure portal's left navigation, select **Azure Active Directory** to navigate to the **Contoso - Overview** blade.
+2. In the Azure portal, navigate to **Azure Active Directory** to navigate to the **Contoso - Overview** blade.
 
 3. On the **Contoso - Overview** blade, select **Custom domain names** under **Manage** on the left.
 
@@ -388,7 +380,7 @@ In this task, you will configure the DNS suffix of the Contoso Active Directory 
 
     ![In this screenshot, on the Active Directory Users and Computers console, constoso.local under Active Directory Users and Computers on the left is expanded. The Domain and group hierarchy an now be viewed.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/NodeHierarchy1.png "Domain and group hierarchy")
 
-9.  Within the Remote Desktop session to **DC1**, start Windows PowerShell ISE and, on the Script pane, run the following to replace the UPN suffix of all users who are members of the **Engineering** group with the one matching the custom verified domain name of the Contoso Azure AD tenant (replace the placeholder `<custom_domain_name>` with the actual name of the custom verified domain name you assigned to the Contoso Azure AD tenant). 
+9.  Within the Remote Desktop session to **DC1**, start Windows Visual Studio Code and, update and run the following script to replace the UPN suffix of all users who are members of the **Engineering** group with the one matching the custom verified domain name of the Contoso Azure AD tenant (replace the placeholder `<custom_domain_name>` with the actual name of the custom verified domain name you assigned to the Contoso Azure AD tenant). 
 
     ```pwsh
     $domainName = '<custom_domain_name>'
@@ -406,85 +398,77 @@ In this task, you will configure the DNS suffix of the Contoso Active Directory 
 
 In this task, you will install Azure AD Connect.
 
-1. Within the Remote Desktop session to **DC1**, in Server Manager, select **Local Server**, and ensure that **IE Enhanced Security Configuration** is disabled. If not, then select the **On** link next to **IE Enhanced Security Configuration**, set the **Administrators** settings to **Off**, and select **OK**.
+1. Within the Remote Desktop session to **DC1**, start the Edge browser and navigate to the Azure portal at <https://portal.azure.com>.
 
-2. Within the Remote Desktop session to **DC1**, open the **Windows PowerShell ISE** window and run this command to install the Chrome browser.
+2. When prompted to sign in, enter the credentials of the **john.doe** Azure AD user account, which you copied into Notepad earlier in this exercise.
 
-    ```pwsh
-    $LocalTempDir = $env:TEMP; $ChromeInstaller = "ChromeInstaller.exe"; (new-object System.Net.WebClient).DownloadFile('http://dl.google.com/chrome/install/375.126/chrome_installer.exe', "$LocalTempDir\$ChromeInstaller"); & "$LocalTempDir\$ChromeInstaller" /silent /install; $Process2Monitor = "ChromeInstaller"; Do { $ProcessesFound = Get-Process | ?{$Process2Monitor -contains $_.Name} | Select-Object -ExpandProperty Name; If ($ProcessesFound) { "Still running: $($ProcessesFound -join ', ')" | Write-Host; Start-Sleep -Seconds 2 } else { rm "$LocalTempDir\$ChromeInstaller" -ErrorAction SilentlyContinue -Verbose } } Until (!$ProcessesFound)
-    ```
-
-2. Within the Remote Desktop session to **DC1**, start the Chrome browser and navigate to the Azure portal at <https://portal.azure.com>.
-
-3. When prompted to sign in, enter the credentials of the **john.doe** Azure AD user account, which you copied into Notepad earlier in this exercise.
-
-4. When prompted, change the password for the **john.doe** user account. 
+3. When prompted, change the password for the **john.doe** user account. 
   
     > **Note**: If you receive the message **We've seen that password too many times before. Choose something harder to guess**, you'll need to modify the password until it is unique enough to be accepted.
 
-5. If prompted whether to **Stay signed in?"** select **No**. You will be redirected to the Azure portal interface. 
+4. If prompted whether to **Stay signed in?"** select **No**. You will be redirected to the Azure portal interface. 
 
-6. If presented with the **Welcome to Microsoft Azure** dialog box, select **Maybe later**. 
+5. If presented with the **Welcome to Microsoft Azure** dialog box, select **Maybe later**. 
 
-7. In the Azure portal, select **Azure Active Directory** on the portal's left navigation to navigate to the **Contoso - Overview** blade.
+6. In the Azure portal, navigate to **Azure Active Directory** in the Azure portal. Then navigate to the **Contoso - Overview** blade.
 
-8. On the **Contoso - Overview** blade, select **Azure AD Connect** under **Manage** on the left.
+7. On the **Contoso - Overview** blade, select **Azure AD Connect** under **Manage** on the left.
 
-9.  On the **Azure AD Connect** blade, select the **Download Azure AD Connect** link.
+8.  On the **Azure AD Connect** blade, select the **Download Azure AD Connect** link.
 
     ![In this screenshot, the Azure AD Connect blade is depicted with the Download Azure AD Connect link selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DownloadADC.png "Download Azure AD Connect")
 
-10. On the **Microsoft Azure Active Directory Connect** web page of the Microsoft Downloads site, select **Download**.
+9.  On the **Microsoft Azure Active Directory Connect** web page of the Microsoft Downloads site, select **Download**.
 
-11. When prompted whether to run or save **AzureADConnect.msi**, select **Run**. This will download the file and automatically start the **Microsoft Azure Active Directory Connect** wizard. 
+10. Select **Open file** once the **AzureADConnect.msi** and finished downloading. Select **Run** to start the **Microsoft Azure Active Directory Connect** installation wizard. 
 
-12. On the **Welcome to Azure AD Connect** page, check the **I agree to the license terms and privacy notice** box and select **Continue**.
+11. On the **Welcome to Azure AD Connect** page, check the **I agree to the license terms and privacy notice** box and select **Continue**.
 
     ![In this screenshot, the Welcome to Azure AD Connect page is depicted with the 'I agree to the license terms and privacy notice' box checked and the Continue button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ADCWelcomeWizard.png "Agree to terms and select Next")
 
-13. On the **Express Settings** page, select the **Customize** button.
+12. On the **Express Settings** page, select the **Customize** button.
 
-14. On the **Install required components** page, leave all optional configuration options deselected and select **Install**.
+13. On the **Install required components** page, leave all optional configuration options deselected and select **Install**.
 
-15. On the **User sign-in** page, select the **Pass-through authentication** option and the **Enable single sign-on** checkboxes, and select **Next**.
+14. On the **User sign-in** page, select the **Pass-through authentication** option and the **Enable single sign-on** checkboxes, and select **Next**.
 
     ![In this screenshot, the User sign-in page of the Microsoft Azure AD Connect wizard is depicted with the Pass-through authentication option and the Enable single sign-on checkboxes selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_UserSign-in.png "Select sign-in options and select Next")
 
-16. On the **Connect to Azure AD** page, sign in by using the credentials of the **john.doe** account and select **Next**.
+15. On the **Connect to Azure AD** page, sign in by using the credentials of the **john.doe** account and select **Next**.
 
-17. On the **Connect your directories** page, ensure that the **corp.contoso.com** entry appears in the **FOREST** drop-down list and select **Add Directory**. In the **AD forest account**, ensure that the **Create new AD account** option is selected, in the **ENTERPRISE ADMIN USERNAME** textbox, type **CORP.CONTOSO.COM\\demouser**, in the **PASSWORD** textbox, type **demo\@pass123**, and select **OK**.
+16. On the **Connect your directories** page, ensure that the **corp.contoso.com** entry appears in the **FOREST** drop-down list and select **Add Directory**. In the **AD forest account**, ensure that the **Create new AD account** option is selected, in the **ENTERPRISE ADMIN USERNAME** textbox, type **CORP.CONTOSO.COM\\demouser**, in the **PASSWORD** textbox, type **demo\@pass123**, and select **OK**.
 
     ![In this screenshot, the Connect your directories page of the Microsoft Azure AD Connect wizard is depicted with corp.contoso.com having been added.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_ConnectyourDirectories1.png "Connect your Contoso directory")
 
-18. Back on the **Connect your directories** page, select **Next**.
+17. Back on the **Connect your directories** page, select **Next**.
 
-19. On the **Azure AD sign-in configuration** page, ensure that your custom domain name is listed as the verified **Active Directory UPN Suffix**, and that the **userPrincipalName** entry appears in the **USER PRINCIPAL NAME** drop-down list. Note the warning stating **Users will not be able to sign into Azure AD with on-premises credentials if the UPN suffix does not match a verified domain name**. Check the **Continue without matching all UPN suffixes to verified domain** box and select **Next**. 
+18. On the **Azure AD sign-in configuration** page, ensure that your custom domain name is listed as the verified **Active Directory UPN Suffix**, and that the **userPrincipalName** entry appears in the **USER PRINCIPAL NAME** drop-down list. Note the warning stating **Users will not be able to sign into Azure AD with on-premises credentials if the UPN suffix does not match a verified domain name**. Check the **Continue without matching all UPN suffixes to verified domain** box and select **Next**. 
 
     >**Note**: This is expected, since some users are still configured with the **contoso.local** UPN suffix, which is not routable and cannot be configured as a verified custom domain name of an Azure AD tenant.
 
     ![In this screenshot, the Azure AD sign-in configuration page of the Microsoft Azure AD Connect wizard is depicted with the custom domain name listed as verified, and the userPrincipalName is listed as the attribute to use as the AzureAD username. The Next button is then selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_AzureADsign-inconfiguration.png "Configure sign-in and select Next")
 
-20. On the **Domain and OU filtering** page, ensure that only the **DemoAccounts** OU and all its children OUs are selected and select **Next**. 
+19. On the **Domain and OU filtering** page, ensure that only the **DemoAccounts** OU and all its children OUs are selected and select **Next**. 
 
     ![In this screenshot, on the Domain and OU filtering page of the Microsoft Azure AD Connect wizard, the Demo Accounts OU and all its child OUs are selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_DomainandOUFiltering.png "Select Demo Accounts and Child OUs then select Next")
 
-21. On the **Uniquely identifying your users** page, accept the default settings and select **Next**. 
+20. On the **Uniquely identifying your users** page, accept the default settings and select **Next**. 
 
     ![In this screenshot, on the Uniquely identifying your users page of the Microsoft Azure AD Connect wizard, the default settings are displayed. The Next button is then selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_UniquelyIdentifyingyourusers.png "Uniquely Identifying your Users")
 
-22. On the **Filter users and devices** page, accept the default settings and select **Next**. 
+21. On the **Filter users and devices** page, accept the default settings and select **Next**. 
 
     ![In this screenshot, on the Filter users and devices page of Microsoft Azure AD Connect wizard, the default settings are displayed. The Next button is then selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_FilterUsersandDevices.png "Filter Users and Devices")
 
-23. On the **Optional features** page, accept the default settings and select **Next**.
+22. On the **Optional features** page, accept the default settings and select **Next**.
 
     ![In this screenshot, on the Optional features page of the Microsoft Azure AD Connect wizard, the default settings are displayed. The Next button is then selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_OptionalFeatures.png "Optional Features")
 
-24. On the **Enable single sign-on** page, select **Enter credentials**, in the **Forest credentials** dialog box, sign in with the **CORP\\demouser** username and **demo\@pass123** password, and select **Next**.
+23. On the **Enable single sign-on** page, select **Enter credentials**, in the **Forest credentials** dialog box, sign in with the **CORP\\demouser** username and **demo\@pass123** password, and select **Next**.
 
     ![In this screenshot, on the Enable single sign-on page of the Microsoft Azure AD Connect wizard, the prompt for forest credentials is displayed with the credentials listed above entered.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_EnableSingleSign-on.png "Enable Single Sign-on")
 
-25. On the **Ready to configure** page, ensure that the **Start the synchronization process when configuration completes** checkbox is **NOT** selected and select **Install**.
+24. On the **Ready to configure** page, ensure that the **Start the synchronization process when configuration completes** checkbox is **NOT** selected and select **Install**.
 
     ![In this screenshot, on the Enable single sign-on page of the Microsoft Azure AD Connect wizard, the Start the synchronization process when configuration completes is not selected and the Install button is selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_ReadytoConfigure.png "Ready to Configure")
 
@@ -728,11 +712,9 @@ In this task, you will configure Azure AD Connect device synchronization options
 
     ![In this screenshot, the Task Scheduler console window is depicted with the Workplace Join node selected on the left and the 'Start device join' task and the Enable button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/StartDeviceJoin.png "Start device join task in Task Scheduler")
 
-6. Switch to the Remote Desktop session to **DC1** and, from the console pane of the Windows PowerShell ISE window, start Azure AD Connect delta synchronization by running the following:
+6. Switch to the Remote Desktop session to **DC1** and, open a Windows PowerShell console, start Azure AD Connect delta synchronization by running the following:
 
    ```pwsh
-   Import-Module -Name 'C:\Program Files\Microsoft Azure AD Sync\Bin\ADSync\ADSync.psd1'
-   
    Start-ADSyncSyncCycle -PolicyType Delta
    ```
 
