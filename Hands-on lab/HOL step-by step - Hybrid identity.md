@@ -46,14 +46,13 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Exercise 2: Manage Authentication, Authorization, and Access Control in Hybrid Scenarios](#exercise-2-manage-authentication-authorization-and-access-control-in-hybrid-scenarios)
     - [Task 1: Create Active Directory groups](#task-1-create-active-directory-groups)
     - [Task 2: Assign EMS E5 licenses to Azure AD users](#task-2-assign-ems-e5-licenses-to-azure-ad-users)
-    - [Task 3: Enable Azure AD Multi-Factor Authentication](#task-3-enable-azure-ad-multi-factor-authentication)
-    - [Task 4: Enable password writeback and Self-Service Password Reset](#task-4-enable-password-writeback-and-self-service-password-reset)
-    - [Task 5: Implement Azure AD Password Protection for Windows Server Active Directory](#task-5-implement-azure-ad-password-protection-for-windows-server-active-directory)
-    - [Task 6: Enable Azure Active Directory Identity Protection](#task-6-enable-azure-active-directory-identity-protection)
-    - [Task 7: Enable Automatic Intune Enrollment](#task-7-enable-automatic-intune-enrollment)
-    - [Task 8: Enable Enterprise-State-Roaming](#task-8-enable-enterprise-state-roaming)
-    - [Task 9: Implement Azure AD Conditional Access Policies](#task-9-implement-azure-ad-conditional-access-policies)
-    - [Task 10: Implement Azure AD Privileged Identity Management](#task-10-implement-azure-ad-privileged-identity-management)
+    - [Task 3: Enable password writeback and Self-Service Password Reset](#task-3-enable-password-writeback-and-self-service-password-reset)
+    - [Task 4: Implement Azure AD Password Protection for Windows Server Active Directory](#task-4-implement-azure-ad-password-protection-for-windows-server-active-directory)
+    - [Task 5: Enable Azure Active Directory Identity Protection](#task-5-enable-azure-active-directory-identity-protection)
+    - [Task 6: Enable Automatic Intune Enrollment](#task-6-enable-automatic-intune-enrollment)
+    - [Task 7: Enable Enterprise-State-Roaming](#task-7-enable-enterprise-state-roaming)
+    - [Task 8: Implement Azure AD Conditional Access Policies](#task-8-implement-azure-ad-conditional-access-policies)
+    - [Task 9: Implement Azure AD Privileged Identity Management](#task-9-implement-azure-ad-privileged-identity-management)
   - [Exercise 3: Configure application access in hybrid scenarios](#exercise-3-configure-application-access-in-hybrid-scenarios)
     - [Task 1: Install and configure Azure AD Application Proxy](#task-1-install-and-configure-azure-ad-application-proxy)
     - [Task 2: Configure an Azure AD Application Proxy application](#task-2-configure-an-azure-ad-application-proxy-application)
@@ -825,7 +824,7 @@ In this task, you will create and configure Active Directory groups that will be
 
 4. Open the **Properties** window of the **Engineering - Mandatory MFA** group, in the **Description** text box, type **Engineering users with user state-based MFA enforcement (without Conditional Access)** then select **Apply** then **OK**.
 
-5. Within the Remote Desktop session to **DC1**, on the Script pane of the Windows PowerShell ISE window, run the following to add designated users to the newly created group (replace the placeholder `<custom_domain_name>` with the actual name of the custom verified domain name you assigned to the Contoso Azure AD tenant).
+5. Within the Remote Desktop session to **DC1**, open Visual Studio Code and run the following to add designated users to the newly created group (replace the placeholder `<custom_domain_name>` with the actual name of the custom verified domain name you assigned to the Contoso Azure AD tenant).
 
     ```pwsh
     $domainName = '<custom_domain_name>'
@@ -836,12 +835,10 @@ In this task, you will create and configure Active Directory groups that will be
     }
     ```
 
-6. On the console pane of the Windows PowerShell ISE window, start Azure AD Connect delta synchronization by running the following:
+6. Open a Windows PowerShell console, start Azure AD Connect delta synchronization by running the following:
 
    ```pwsh
-   Import-Module -Name 'C:\Program Files\Microsoft Azure AD Sync\Bin\ADSync\ADSync.psd1'
-   
-   Start-ADSyncSyncCycle -PolicyType Delta
+    Start-ADSyncSyncCycle -PolicyType Delta
    ```
 
 7. In the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant and select **Groups** on the left.
@@ -853,79 +850,36 @@ In this task, you will create and configure Active Directory groups that will be
 
 In this task, you assign a value to the **UsageLocation** attribute of each user account and assign an Azure AD Premium license to each user. This is necessary in order to implement Azure AD-based Multi-Factor Authentication for these users.
 
-1. Within the Remote Desktop session to **DC1**, on the Script pane of the Windows PowerShell ISE window, run the following to install Azure AD Graph PowerShell module for Graph (select **Yes to All** when prompted whether to proceed with the installation):
+1. Within the Remote Desktop session to **DC1**, open a Windows PowerShell console, run the following to install Azure AD Graph PowerShell module for Graph (select **Yes to All** when prompted whether to proceed with the installation):
 
     ```pwsh
-    Install-Module AzureAD
+    Install-Module -Name Microsoft.Graph
     ```
 
-2. On the Script pane of the Windows PowerShell ISE window, run the following to sign into the Contoso Azure AD tenant. When prompted, sign in with the **john.doe** Azure AD user account, which you created in the previous exercise.
+2. Find the permissions you'll need to 
+
+3. Open a Windows PowerShell console, run the following to sign into the Contoso Azure AD tenant. When prompted, sign in with the **john.doe** Azure AD user account, which you created in the previous exercise. Accept any Permissions requests that pop up when logging in.
 
     ```pwsh
-    Connect-AzureAD
+    Connect-MgGraph -Scope "Directory.ReadWrite.All"
     ```
 
-3. On the Script pane of the Windows PowerShell ISE window, run the following to set the **Location** attribute to **United States** for all Azure AD user accounts with the UPN suffix matching the custom verified domain name of the Contoso Azure AD tenant. 
+4. On the Script pane of the Windows PowerShell ISE window, run the following to set the **Location** attribute to **United States** for all Azure AD user accounts with the UPN suffix matching the custom verified domain name of the Contoso Azure AD tenant. 
 
     ```pwsh
-    $domainName = (Get-AzureADDomain | Where-Object IsDefault -eq 'True').Name
-    Get-AzureADUser | Where-Object {$_.UserPrincipalName -like "*@$domainName"} | Set-AzureADUser -UsageLocation 'US'
+    $domainName = (Get-MgDomain | Where-Object IsDefault -eq 'True').Id
+    Get-MgUser | Where-Object {$_.UserPrincipalName -like "*@$domainName"} | ForEach-Object {Update-MgUser -UserId $_.UserPrincipalName -UsageLocation 'US'}
     ```
-4. On the Script pane of the Windows PowerShell ISE window, run the following to assign the EM+S E5 trial licenses to all Azure AD user accounts with the UPN suffix matching the custom verified domain name of the Contoso Azure AD tenant. 
+5. On the Script pane of the Windows PowerShell ISE window, run the following to assign the EM+S E5 trial licenses to all Azure AD user accounts with the UPN suffix matching the custom verified domain name of the Contoso Azure AD tenant. 
 
     ```pwsh
-    $license = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicense
-    $license.SkuId = (Get-AzureADSubscribedSku | Where-Object {$_.SkuPartNumber -eq 'EMSPREMIUM'}).SkuId
-    $licensesToAssign = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicenses
-    $licensesToAssign.AddLicenses = $license
-    $users = Get-AzureADUser | Where-Object {$_.UserPrincipalName -like "*@$domainName"}
+    $skuID = (Get-MgSubscribedSku | Where-Object {$_.SkuPartNumber -eq 'EMSPREMIUM'}).SkuId
+    $users =  Get-MgUser | Where-Object {$_.UserPrincipalName -like "*@$domainName"}
     foreach($user in $users) { 
-        Set-AzureADUserLicense -ObjectId $user.ObjectId -AssignedLicenses $licensesToAssign
+        Set-MgUserLicense -UserId $user.UserPrincipalName -AddLicenses @{SkuId = $skuID} -RemoveLicenses @()
     }
     ```
-
-### Task 3: Enable Azure AD Multi-Factor Authentication
-
-In this task, you will configure user state-based Azure AD Multi-Factor Authentication for members of the **Engineering - Mandatory MFA** group.
-
-   > **Note**: In general, enabling Azure Multi-Factor Authentication using Conditional Access policies is the recommended approach, since it offers more flexibility. Setting Multi-Factor Authentication by modifying the user state requires users to perform two-step verification every time they sign in and overrides Conditional Access policies. On the other hand, this approach might be required if the existing licensing arrangement does not include Conditional Access.
-
-1. Within the Remote Desktop session to **DC1**, on the Script pane of the Windows PowerShell ISE window, run the following to install Azure AD MSOnline PowerShell module for Graph (select **Yes to All** when prompted whether to proceed with the installation):
-
-    ```pwsh
-    Install-Module MSOnline
-    ```
-
-2. On the Script pane of the Windows PowerShell ISE window, run the following to sign into the Contoso Azure AD tenant. When prompted, sign in with the **john.doe** Azure AD user account, which you created in the previous exercise.
-
-    ```pwsh
-    Connect-MsolService
-    ```
-
-3. On the Script pane of the Windows PowerShell ISE window, run the following to enable Azure AD Multi-Factor Authentication for all Azure AD user accounts with the UPN suffix matching the custom verified domain name of the Contoso Azure AD tenant. 
-
-    ```pwsh
-    $objectIdGUID = (Get-MsolGroup | Where-Object {$_.DisplayName -eq 'Engineering - Mandatory MFA'}).objectId.Guid
-    $users = Get-MsolGroupMember -GroupObjectId $objectIdGUID
-    $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
-    $st.RelyingParty = "*"
-    $st.State = "Enabled"
-    $sta = @($st)
-    foreach($user in $users) { 
-        Set-MsolUser -ObjectId $user.ObjectId -StrongAuthenticationRequirements $sta
-    }
-    ```
-
-4. To verify the outcome, within the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Users - All users** blade of the Contoso Azure AD tenant and select **Multi-Factor Authentication** (you might need to select **...** first). This will open a new tab in the Edge browser window displaying the **multi-factor authentication** portal.
-
-    ![In this screenshot, the 'Users - All users' blade of the Azure portal is depicted with the '...' icon selected and the 'Multi-Factor Authentication' option selected in the dropdown menu.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectMFA.png "Select Multi-Factor Authentication")
-
-5. In the **multi-factor authentication** portal, on the **users** tab, ensure that all users have the **MULTI-FACTOR AUTH STATUS** set to **Enabled**. If all or some do not have multi-factor authentication enabled, select all users that have it disabled, then select **Enable** on the right. Select **enable multi-factor auth** when prompted. Wait for the operation to complete. 
-
-    ![In this screenshot, the 'multi-factor authentication' portal's users tab is depicted with all users without multi-factor authentication enabled selected and the Enable button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/EnableMFA.png "Enabling MFA")
-
-
-### Task 4: Enable password writeback and Self-Service Password Reset
+### Task 3: Enable password writeback and Self-Service Password Reset
 
 In this task, you will enable password writeback and Self-Service Password Reset (SSPR) for Contoso users that had their accounts synchronized to the Contoso Azure AD tenant.
 
@@ -976,7 +930,7 @@ In this task, you will enable password writeback and Self-Service Password Reset
 19. On the **Password reset** blade, select **On-premises integration** on the left and verify that the **Write back passwords to your on-premises directory** setting is set to **Yes**. Note that you have the option to **Allow users to unlock accounts without resetting their passwords**.
 
 
-### Task 5: Implement Azure AD Password Protection for Windows Server Active Directory
+### Task 4: Implement Azure AD Password Protection for Windows Server Active Directory
 
 In this task, you will implement Azure AD password Protection for Windows Server Active Directory.
 
@@ -994,13 +948,13 @@ In this task, you will implement Azure AD password Protection for Windows Server
 
 5. Within the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
 
-6. On the **Contoso - Overview** blade, select **Security** under **Manage** on the left.
+6. On the **Contoso - Overview** page, select **Security** under **Manage** on the left.
 
-7. On the **Security - Getting started** blade, select **Authentication methods** under **Manage** on the left.
+7. On the **Security - Getting started** page, select **Authentication methods** under **Manage** on the left.
 
-8. On the **Authentication methods - Policies** blade, select **Password protection** under **Manage** on the left.
+8. On the **Authentication methods - Policies** page, select **Password protection** under **Manage** on the left.
 
-9.  On the **Authentication methods - Password protection** blade, specify the following settings and select **Save**:
+9.  On the **Authentication methods - Password protection** page, specify the following settings and select **Save**:
 
     - Lockout threshold: **5**
 
@@ -1016,48 +970,58 @@ In this task, you will implement Azure AD password Protection for Windows Server
 
     ![In this screenshot, the 'Authentication methods - Password protection' blade in the Azure portal is depicted with the required settings and the Save button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SetPasswordProtection.png "Set password protection")
 
-10. Switch to the Remote Desktop session to **APP1** virtual machine, where you are signed in as the user **AGAyers** with the **demo@pass123** password. 
+10. Switch to the Remote Desktop session to **APP1** virtual machine, where you are signed in as the user **AGAyers** with the **demo@pass123** password.
 
-11. Within the Remote Desktop session to **APP1**, start the Edge browser, navigate to the **Azure AD Password Protection for Windows Server Active Directory** page at the below listed URL. Select **Download** under **Azure AD Password Protection for Windows Server Active Directory**. Download and install **AzureADPasswordProtectionProxySetup.exe** with the default options.
+11. Launch **Internet Explorer** Select the cog wheel, and then **Internet Options**
+
+    ![Screenshot showing selecting the cog wheel and then internet options in Internet Explorer.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/app1-installedge-internetoptions.png "Selecting Internet Option")
+
+12. Select the **Security** tab, leave **Internet** selected, then select **Custom level...**
+
+    ![Depict selecting the security tab, and setting the custom level for the internet security settings](images/Hands-onlabstep-bystep-HybridIdentityImages/media/app1-installedge-customsecurity.png "Selecting custom level for internet security options")
+
+13. Scroll almost half-way down and enable File download. Select OK, confirm changing the settings, select OK.
+
+    ![Show the File download setting being enabled in the security settings in the internet zone](images/Hands-onlabstep-bystep-HybridIdentityImages/media/app1-installedge-allowdownloads.png "Allow file downloads")
+
+14. Now that file downloads are allowed on **APP1**, us Internet Explorer to download and install Edge for **Windows 64-bit** from the following URL.
+
+    ```https://www.microsoft.com/en-us/edge/business/download```
+
+15. Start the Edge browser once it's installed, navigate to the **Azure AD Password Protection for Windows Server Active Directory** page at the below listed URL. Select **Download** under **Azure AD Password Protection for Windows Server Active Directory**. Download and install **AzureADPasswordProtectionProxySetup.exe** with the default options.
 
     ```
     https://www.microsoft.com/download/details.aspx?id=57071
     ```
 
-    **Note**: You may have to enable file download on the Edge browser. To do this, select the **Tools** icon that's shaped like a gear in the top right of the window and select **Internet Options**. From there select the **Security** tab then select **Custom level**. In the pop-up, scroll to the downloads section. Select **Enable** under **File download** and then select **OK**. Select **Yes** at the confirmation prompt then select **OK** again. 
-
-12.  Within the Remote Desktop session to **APP1**, start Windows PowerShell ISE as Administrator and, on the scripting pane, run the following to register the proxy (replace the `<domain_name>` placeholder with the name of the default domain name associated with the Contoso Azure AD tenant). When prompted, sign into the Contoso Azure AD tenant using the credentials of the **john.doe** user account.
-13.  
+16.  Within the Remote Desktop session to **APP1**, start a Windows PowerShell console as Administrator, run the following to register the proxy (replace the `<domain_name>` placeholder with the name of the default domain name associated with the Contoso Azure AD tenant). When prompted, sign into the Contoso Azure AD tenant using the credentials of the **john.doe** user account.
+  
     ```pwsh
     Import-Module AzureADPasswordProtection
     Register-AzureADPasswordProtectionProxy -AccountUpn 'john.doe@<domain_name>.onmicrosoft.com'
     ```
 
-14. On the Windows PowerShell ISE console, run the following to register the Active Directory forest (replace the `<domain_name>` placeholder with the name of the default domain name associated with the Contoso Azure AD tenant):
+18. In the same Windows PowerShell console session, run the following to register the Active Directory forest (replace the `<domain_name>` placeholder with the name of the default domain name associated with the Contoso Azure AD tenant). If you get a login prompt, use **john.doe** account again:
 
     ```pwsh
     Register-AzureADPasswordProtectionForest -AccountUpn 'john.doe@<domain_name>.onmicrosoft.com'
     ```
 
-15. Switch to the Remote Desktop session to **DC1** virtual machine, where you are signed in as the user **CORP\demouser** with the **demo@pass123** password. 
+19. Switch to the Remote Desktop session to **DC1** virtual machine, where you are signed in as the user **CORP\demouser** with the **demo@pass123** password. 
 
-16. Within the Remote Desktop session to **DC1**, start the Edge browser, navigate to the **Azure AD Password Protection for Windows Server Active Directory** page at the below listed URL. Select **Download** under **Azure AD Password Protection for Windows Server Active Directory**. Download and install **AzureADPasswordProtectionProxySetup.exe** with the default options.
+20. Within the Remote Desktop session to **DC1**, start the Edge browser, navigate to the **Azure AD Password Protection for Windows Server Active Directory** page at the below listed URL. Select **Download** under **Azure AD Password Protection for Windows Server Active Directory**. Download and install **AzureADPasswordProtectionProxySetup.exe** with the default options.
 
     ```
     https://www.microsoft.com/download/details.aspx?id=57071
     ```
 
-    **Note**: You may have to perform the instructions to enable file download on the Edge browser listed earlier. 
+21. Restart DC1 once the setup completes.
 
-17. Restart DC1 once the setup completes.
-
-### Task 6: Enable Azure Active Directory Identity Protection
+### Task 5: Enable Azure Active Directory Identity Protection
 
 In this task, you will enable Azure AD Identity Protection
 
-1. On the lab computer, in the Azure portal, navigate to the blade of the **DC1** virtual machine. You will need to be in the **Default Directory**. 
-
-2. On the **DC1** virtual machine blade, connect to **DC1** via Remote Desktop. When prompted to sign in, use the **demouser** name with the **demo\@pass123** password. 
+1. After **DC1** reboots, connect to **DC1** via Remote Desktop. When prompted to sign in, use the **demouser** name with the **demo\@pass123** password. 
 
 3. Within the Remote Desktop session to **DC1**, start the Edge browser and navigate to the Azure portal at the URL below:
 
@@ -1105,7 +1069,7 @@ In this task, you will enable Azure AD Identity Protection
 
     ![In this screenshot, the 'Azure AD Identity Protection - User risk policy' blade of the Azure portal is depicted with the required settings and the Save button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/IdentityProtection_UserRiskPolicy.png "Set the user risk policy")
 
-### Task 7: Enable Automatic Intune Enrollment
+### Task 6: Enable Automatic Intune Enrollment
 
 In this task, you will enable automatic enrollment of hybrid Azure AD devices into Intune. 
 
@@ -1124,79 +1088,89 @@ In this task, you will enable automatic enrollment of hybrid Azure AD devices in
 
     ![In this screenshot, the Configure blade of the Azure portal is depicted with the 'MDM user scope" setting set to all and the Save button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SetMDMUserScope.png "Set MDM user scope on Configure blade")
 
-### Task 8: Enable Enterprise-State-Roaming
+### Task 7: Enable Enterprise-State-Roaming
 
 1. Within the Remote Desktop session to **DC1**, in the Edge browser tab displaying the Azure portal, navigate to the blade of the Contoso Azure AD tenant.
 
-2. On the **Contoso - Overview** blade, select **Devices** under **Manage** on the left.
+2. On the **Contoso - Overview** page, select **Devices** under **Manage** on the left.
 
-3. On the **Devices - All devices** blade, select **Enterprise State Roaming** on the left.
+3. On the **Devices - All devices** page, select **Enterprise State Roaming** on the left.
 
 4. On the **Devices - Enterprise State Roaming** blade, for **Users may sync settings and app data across devices**, select **Selected**. Choose **No member selected** below. Select **+ Add** then select the **Engineering** group from the list of Azure AD tenant users and groups that appears on the right. Choose **Select**, then **Ok**, then **Save**. 
 
     ![In this screenshot, the 'Members allowed to sync settings and app data' blade is depicted with the '+ Add' button selected and the 'Add members' blade open with the Engineering group searched for and selected along with the Select button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectEngineering.png "Select Engineering group")
 
-### Task 9: Implement Azure AD Conditional Access Policies
+### Task 8: Implement Azure AD Conditional Access Policies
 
 In this task, you will implement Azure AD Conditional Access Policies.
 
-1. Within the Remote Desktop session to **DC1**, in the Edge browser tab displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
+1. Within the Remote Desktop sessizon to **DC1**, in the Edge browser tab displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
 
-2. On the **Contoso - Overview** blade, select **Properties** under **Manage** on the left. Select **Manage Security defaults**. On the **Enable security defaults** blade that appears on the right, select **No** under **Enable security defaults** then check the other box and enter some random characters. Then select **Save**. Return to the **Contoso - Overview** blade.
+2. On the **Contoso - Overview** blade, select **Properties** under **Manage** on the left. Select **Manage Security defaults**. On the **Enable security defaults** blade that appears on the right, select **No** under **Enable security defaults** then check **My organization is using Conditional Access**. Then select **Save**. Return to the **Contoso - Overview** blade.
 
     ![In this screenshot, the 'Contoso - Overview' blade is depicted with the Properties and 'Manage security defaults' buttons selected and with the 'Enable security defaults' blade open on the right with the required configuration listed above selected along with the Save button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DisableSD.png "Disabling the security defaults")
 
-3. On the **Contoso - Overview** blade, select **Security** under **Manage** on the left.
+3. On the **Contoso - Overview** page, select **Security** under **Manage** on the left.
 
-4. On the **Security - Getting started** blade, select **Named locations** under **Manage** on the left.
+4. On the **Security - Getting started** page, select **Named locations** under **Manage** on the left.
 
-5. On the **Security - Named locations** blade, select **+ New location**.
+5. On the **Security - Named locations** page, select **+ IP ranges location**.
 
-6. On the **New named location** blade, specify the following settings and select **Create**:
+6. On the **New location (IP ranges)** blade, specify the name **Contoso Headquarters**.
 
-    - Name: **Contoso Headquarters**
+7. Select the **Mark as trusted location** checkbox, then select **+**.
 
-    - Define the location using: **IP ranges**
+    ![Showing entering the name, selecting the checkbox for trusted location and then the + to add a new IP range.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ca-newlocation.png "Adding a new trusted IP location")
 
-    - Mark as trusted location: **Enabled**
+8. Add the public IP address of the APP1 Azure VM (this can be found on its page in the portal) in the CIDR notation (i.e., x.x.x.x/32). Then select **Create**
 
-    - IP ranges: **The public IP address of the APP1 Azure VM (this can be found on its page in the portal) in the CIDR notation (i.e., x.x.x.x/32).**
+    ![In this screenshot, adding the public IP address of the App1 server is show.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ca-addipaddress.png "Adding a new IP address")
 
-    ![In this screenshot, the 'New named location' blade of the Azure portal is depicted with the required settings listed above selected and the Create button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_Namedlocations.png "Named Location settings")
+9. Select **Conditional Access** under **Protect** on the left.
 
-7. On the **Security - Named locations** blade, select **Configure MFA trusted IPs**. This will open a new tab in the Edge browser window displaying the **service settings** tab of the **multi-factor authentication** portal.
+10. On the **Conditional Access - Policies** page, select **+ New policy** and **Create new policy from templates**. The first policy created will enforce MFA for the **Engineering - Mandatory MFA** group.
 
-    ![In this screenshot, the MFA portal is depicted with the 'service settings' tab selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_MFA_servicesettings.png "MFA Service Settings")
+11. Leave **Identities** selected and select **Next**
 
-8. On the **service settings** tab, in the **trusted IP** text box, type the same public IP address of the APP1 Azure VM (this can be found on its page in the portal) in the CIDR notation (i.e., x.x.x.x/32). and select **Save** at the bottom.
+    ![Leaving Identities selected, the Next button to select is highlighted.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ca-template-identities.png "Identities selected in customize your build")
 
-9.  Navigate back to the **Security - Getting started** blade on the Azure portal and select **Conditional Access** under **Protect** on the left.
+12. Select **Require multi-factor authentication for all users**, Name your policy **Require multi-factor authentication for Enginerering  Mandatory MFA**, set the **Policy state** to **On**, select **Next** and then **Create Policy**
 
-10. On the **Conditional Access - Policies** blade, select **+ New policy**.
+    ![This screenshot highlights selecting require multi-factor authentication for all users, the policy name and setting the policy state to On.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ca-template-selectmfa.png "Require multi-factor authentication for all users")
 
-11. On the **New** blade, in the **Name** text box, type **Contoso Engineering On-Premises Conditional Access Policy**.
+13. Once the policy is created select it to make an update.
 
-12. On the **New** blade, in the **Assignments** section, select **0 users and groups selected**.
+14. Select **All users included and specific users excluded** under **Users or workload identities**. Change from **All users** to **Select users and groups**, **Users and groups**, and select the group **Engineering - Mandatory MFA**
 
-13. On the **Include** tab, choose the **Select users and groups** option, select the **Users and groups** checkbox. On the **Select** blade, type **Engineering**, in the list of results, select **Engineering**, and choose **Select**.
+    ![Screenshot showing the change from All users to select users and group with engineering - mandatory mfa selected](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ca-template-changeassignment.png "Engineering - Mandatory MFA group selected")
+
+15. Select the **Exclude** tab and notice that when we create a conditional access policy from a template, the user creating the policy (in this case john.doe) is automatically added to the exclude list to ensure the user isn't locked out of their own Azure AD tenant. Select **Save**
+
+16. Select **+ New policy** then **Create new policy**. Now a second policy will be created for the rest of the engineering users.
+
+16. On the **New** blade, in the **Name** text box, type **Contoso Engineering On-Premises Conditional Access Policy**.
+
+17. On the **New** blade, in the **Assignments** section, select **0 users or workload identities selected**.
+
+18. On the **Include** tab, choose the **Select users and groups** option, select the **Users and groups** checkbox. On the **Select** blade, type **Engineering**, in the list of results, select **Engineering**, and choose **Select**.
 
     ![In this screenshot, the New blade is depicted with the Include tab selected along with the 'Select users and groups' and 'Users and groups' options and the Select blade is open with the Engineering group searched for and selected along with the Select button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_UsersandGroupsInclude.png "Include Configuration Settings")
 
-14. On the **Exclude** tab, select the **Users and groups** checkbox. On the **Select excluded users** blade, type **Engineering**. In the list of results, select **Engineering - Mandatory MFA**, and choose **Select**.
+19. On the **Exclude** tab, select the **Users and groups** checkbox. On the **Select excluded users** blade, type **Engineering**. In the list of results, select **Engineering - Mandatory MFA**, and choose **Select**.
 
     ![In this screenshot, the New blade is depicted with the Exclude tab selected along with the 'Users and groups' option and the Select blade is open with the 'Engineering - Mandatory MFA' group searched for and selected along with the Select button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_UsersandGroupsExclude.png "Exclude configuration settings and selections")
 
-15. On the **New** blade, in the **Assignments** section, select **No cloud apps or actions selected**.
+20. On the **New** blade, in the **Assignments** section, select **No cloud apps, actions, or authentication contexts selected**.
 
-16. On the **Include** tab that appears, choose the **Select apps** option. On the **Select** blade, select the **Microsoft Azure Management** checkbox, choose **Select**.
+21. On the **Include** tab that appears, choose the **Select apps** option. On the **Select** blade, select the **Microsoft Azure Management** checkbox, choose **Select**.
 
     ![In this screenshot, the Include tab is depicted with the 'Select apps' option selected and the Select blade is open with the 'Microsoft Azure Management' a[[]] searched for and selected along with the Select button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_CloudppsandActionsInclude.png "Select the Microsoft Azure Management app")
 
    > **Note**: Review the warning stating **Don't lock yourself out! This policy impacts the Azure portal. Before you continue, ensure that you or someone else will be able to get back into the portal**. Disregard this warning if you are configuring persistent browser session policy that works correctly only if "All cloud apps" are selected.
 
-17. On the **New** blade, in the **Assignments** section, select **0 conditions selected**.
+17. On the **New** blade, in the **Conditions** section, select **0 conditions selected**.
 
-18. Select **Not configured** under **Sign-in risk**. In the **Sign-in risk** blade, set **Configure** to **Yes**, check the **No risk** box, and choose **Select**.
+18. Select **Not configured** under **Sign-in risk**. In the **Sign-in risk** blade, set **Configure** to **Yes**, check the **No risk** box, and choose **Done**.
 
     ![In this screenshot, 'Not configured' under 'Sign-in risk' is selected and the 'Sign-in risk' blade is open with the Configure and 'No risk' options selected along with the Select button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_SigninRisk.png "Configure sign-in risk settings")
 
@@ -1212,29 +1186,25 @@ In this task, you will implement Azure AD Conditional Access Policies.
 
     ![In this screenshot, 'Not configured' under 'Client apps' is selected and the 'Client apps' blade is open on the right with Configure set to Yes and the options listed above selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_Clientapps.png "Conditional access client apps selections")
 
-22. Select **Not configured** under **Device state (Preview)**. On the **Device state (Preview)** blade, set **Configure** to **Yes**, on the **Include** tab, select the **All device state** option and select **Done**.
+22. Back on the **New** blade, in the **Access controls** section, select **0 controls selected** under **Grant**.
 
-    ![In this screenshot, 'Not configured' under 'Device state (Preview)' is selected and the 'Device state (Preview)' blade is open on the right with Configure set to Yes and the Include tab is selected with the All 'device state' option.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_Devicestate.png "Conditional access device state settings")
-
-23. Back on the **New** blade, in the **Access controls** section, select **0 controls selected** under **Grant**.
-
-24. On the **Grant** blade, ensure that the **Grant access** option is selected. Check the **Require Hybrid Azure AD joined device** box, accept the default choice of **Require all the selected controls** under **For multiple controls** and choose **Select**.
+23. On the **Grant** blade, ensure that the **Grant access** option is selected. Check the **Require Hybrid Azure AD joined device** box, accept the default choice of **Require all the selected controls** under **For multiple controls** and choose **Select**.
 
     > **Note**: Review the warning **Don't lock yourself out! Make sure that your device is Hybrid Azure AD Joined**.
 
     ![In this screenshot, the New blade of the Azure portal is depicted with the '0 controls selected' button selected and the Grant blade open with the required options listed above selected along with the Select button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_AccesscontrolsGrant.png "Access controls Grant settings")
 
-25. Back on the **New** blade, in the **Access controls** section, select **0 controls selected** under **Session**. 
+24. Back on the **New** blade, in the **Access controls** section, select **0 controls selected** under **Session**. 
 
-26. Review the **Session** blade settings but do not modify them. Close it when you are finished.
+25. Review the **Session** blade settings but do not modify them. Close it when you are finished.
 
-27. On the **New** blade, set **Enable policy** to **On** and select **Create**.
+26. On the **New** blade, set **Enable policy** to **On** and select **Create**.
 
     ![In this screenshot, the New blade of the Azure portal is depicted with 'Enable policy' set to On and the Create button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_Final.png "Conditional access enable policy and create")
 
-28. Back on the **Conditional Access - Policies** blade, select **What If**.
+27. Back on the **Conditional Access - Policies** blade, select **What If**.
 
-29. On the **What If** blade, specify the following settings and select **What If**:
+28. On the **What If** blade, specify the following settings and select **What If**:
 
     - User: **Teresa F. Bell**
 
@@ -1248,18 +1218,16 @@ In this task, you will implement Azure AD Conditional Access Policies.
 
     - Client apps: **Browser**
 
-    - Device state (Preview): **Device Hybrid AD Joined**
-
     - Sign-in risk: **No risk**
 
-30. Review the evaluation results and note the policy and the grant controls that will apply.
+29. Review the evaluation results and note the policy and the grant controls that will apply.
 
     ![In this screenshot, within the Azure portal the What If settings and the evaluation results of the newly created conditional access policy are depicted.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_WhatIf_parameters.png "What if settings and results")
 
-31. Re-run the evaluation but first change the **Sign-in risk** to **Low** and review the evaluation results.
+30. Re-run the evaluation but first change the **Sign-in risk** to **Low** and review the evaluation results.
 
 
-### Task 10: Implement Azure AD Privileged Identity Management
+### Task 9: Implement Azure AD Privileged Identity Management
 
 In this task, you will implement Azure AD Privileged Identity Management.
 
@@ -1267,11 +1235,11 @@ In this task, you will implement Azure AD Privileged Identity Management.
 
 2. In the search text box, type **Privileged Identity Management** and, in the list of results, select **Azure AD Privileged Identity Management**.
 
-3. On the **Privileged Identity Management** blade, select **Azure AD roles** under **Manage** on the left. 
+3. On the **Privileged Identity Management** page, select **Azure AD roles** under **Manage** on the left.
 
-4. On the **Contoso - Quick start** blade, select **Assign eligibility**.
+4. On the **Contoso - Quick start** page, select **Assign eligibility**.
 
-5. On the **Contoso - Roles** blade, select **+ Add assignments**.
+5. On the **Contoso - Roles** page, select **+ Add assignments**.
 
 6. On the **Add assignments** blade, specify the following settings to designate **Ann G. Ayers** as an eligible member of the **Authentication Administrator** role then select **Next** then **Assign**. 
 
@@ -1285,9 +1253,11 @@ In this task, you will implement Azure AD Privileged Identity Management.
 
 7. On the **Contoso - Roles** blade, select **Assignments** under **Manage** on the left and note that **Ann G. Ayers** is listed as eligible for the **Authentication Administrator** role.
 
-8. Switch to the Remote Desktop session to **APP1**, start the Edge browser, and browse to the Azure portal at [**http://portal.azure.com**](http://portal.azure.com). From here sign-in as Ann G. Ayers. The username can be found on the **Users - All users** page in the Azure portal window on the lab computer. The password will be **demo@pass123**. 
+8. Switch to the Remote Desktop session to **APP1**, start the Edge browser, and browse to the Azure portal at [**http://portal.azure.com**](http://portal.azure.com). From here sign-in as Ann G. Ayers. The username can be found on the **Users - All users** page in the Azure portal window on the lab computer. The password will be **demo@pass123**.
 
-9. When prompted to provide additional information, select **Next**, on the **Keep your account secure** page, select **I want to set up a different method**. At the **Choose a different method** dialog, select **Phone** on the dropdown then select **Confirm**. 
+    > Note: If you prompted that you have 14 days to add additional information, you can still choose skip. Even if you choose skip here, on the next screen you'll be required to enter additional MFA information.
+
+9.  When prompted to provide additional information, select **Next**, on the **Keep your account secure** page, select **I want to set up a different method**. At the **Choose a different method** dialog, select **Phone** on the dropdown then select **Confirm**. 
 
     - On the **Phone** page, enter your phone number and select **Next**.
 
@@ -1301,19 +1271,15 @@ In this task, you will implement Azure AD Privileged Identity Management.
 
 11. Back on the **Keep your account secured** page, select **Done**. You will now be able to use Azure portal. 
 
-12. In the Azure portal, navigate to the **Privileged Identity Management - Quick start** blade. 
+12. In the Azure portal, navigate to the **Privileged Identity Management - Quick start** page. 
 
-13. On the **Privileged Identity Management - Quick start** blade, select **My roles** under **Tasks** on the left.
+13. On the **Privileged Identity Management - Quick start** page, select **My roles** under **Tasks** on the left.
 
-14. On the **My roles - Azure AD roles** blade, on the **Eligible assignments** tab, select **Activate** next to the **Authentication Administrator** role entry. 
+14. On the **My roles - Azure AD roles** page, on the **Eligible assignments** tab, select **Activate** next to the **Authentication Administrator** role entry. 
 
-15. On the **Activate - Authentication Administrator** blade, enter some random next in the **Reason** box then select **Activate**.
+15. On the **Activate - Authentication Administrator** blade, enter some random next in the **Reason** box then select **Activate**. Wait for the role to activate and the page to refresh.
 
-16. On the **Activation status**, monitor changes to your activation request. Once the activation is completed, select the **Sign out** link and then sign in back to the Azure portal to start using your newly activated role.
-
-17. In the Azure portal, navigate back to the **My roles - Azure AD roles** blade.
-
-18. On the **My roles - Azure AD roles** blade, on the **Active assignments** tab, note that the role assignment has been activated. 
+16. Switch to the **Active assignments** tab, note that the role assignment has been activated.
 
     ![In this screenshot, the 'My roles - Azure AD roles' blade of the Azure portal is depicted with the 'Active assignments' tab selected and the Activated state of the role assignment highlighted.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ActiveAssignment.png "The role assignment is active")
 
