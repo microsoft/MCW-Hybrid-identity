@@ -1317,9 +1317,9 @@ In this task, you will install and configure Azure AD Application Proxy.
 
 7. Once the installation completes, refresh the Edge browser page displaying the **Contoso - Application proxy** blade and verify that it includes the **DC1.corp.contoso.com** entry in the **Default** connector group.
 
-    ![In this screenshot, the 'Contoso - Application proxy' blade of the Azure portal is depicted with the 'DC1.corp.contoso.com' entry listed under the Default connector group.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/VerifyConnector.png "Verify that the connector is present")
-
 8. On the **Contoso - Application proxy** blade, select **Enable application proxy** and, when prompted for confirmation, select **Yes**.
+
+    ![In this screenshot, the 'Contoso - Application proxy' blade of the Azure portal is depicted with the 'DC1.corp.contoso.com' entry listed under the Default connector group.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/VerifyConnector.png "Verify that the connector is present")
 
 ### Task 2: Configure an Azure AD Application Proxy application
 
@@ -1371,7 +1371,7 @@ In this task, you will configure an Azure AD Application Proxy application.
 
 7. On the **APP1 Default Web Site - Users and groups** blade, select **Single sign-on** under **Manage** on the left.
 
-8. On the **APP1 Default Web Site - Single sign-on** blade, select **Windows Integrated Authentication** if you're not brought there automatically.
+8. On the **APP1 Default Web Site - Single sign-on** blade, select **Windows Integrated Authentication**.
 
 9. Within the Remote Desktop session to **DC1**, start a **Command Prompt**. On the **Command Prompt**, run the following to identify Service Principal Names associated with the APP1 computer account.
 
@@ -1401,7 +1401,7 @@ In this task, you will configure an Azure AD Application Proxy application.
 
 15. In the **DC1 Properties** window, switch to the **Delegation** tab and select the option **Trust this computer for delegation to specified services only**.
 
-16. Select the option **Use any authentication protocol**, select **Add**, in the **Add Services** window, select **Users or Computers**, in the **Select Users or Computers** dialog box, in the **Enter the object names to select** text box, type **APP1** and select **OK**. 
+16. Select the option **Use any authentication protocol**, select **Add**, in the **Add Services** window, select **Users or Computers**, in the **Select Users or Computers** dialog box, in the **Enter the object names to select** text box, type **APP1**, select **Check Names** to verify the name resolves, and select **OK**. 
 
     ![In this screenshot, the 'DC1 Properties' window is depicted with the Delegation tab selected with the 'Trust this computer for delegation to specified services only' and 'Use any authentication protocol' options and the 'Add' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DelegationConfiguration.png "Delegation configuration")
 
@@ -1419,7 +1419,7 @@ In this task, you will configure an Azure AD Application Proxy application.
     https://myapps.microsoft.com
     ```
 
-2. When prompted to enter a code, type the code which was texted to the mobile phone number that you entered in the previous exercise.
+2. If prompted for MFA to enter a code, use either the phone number or email that you entered in the previous exercise to complete the MFA prompt.
 
 3. On the **Apps** page of the **Application Access Panel**, select the **APP1 Default Web Site** icon. This will automatically open a new browser tab displaying the Default Web Site page on APP1.
 
@@ -1442,9 +1442,11 @@ In this task, you will create another Azure Active Directory tenant representing
 
 4. On the **New** blade, in the **Search the Marketplace** text box, type **Azure Active Directory** and, in the list of results, select **Azure Active Directory**.
 
-5. On the **Azure Active Directory** blade, select **Create**.
+5. On the **Azure Active Directory** blade, select **Create** and **Azure Active Directory**.
 
-6. On the **Create tenant** blade, specify the following settings and select **Create**:
+6. On the **Basics** tab, leave **Azure Active Dirtory** selected, and then select **Next: Configuration**.
+c
+7. On the **Configuration** tab, enter the following settings. The select **Review + create** and then **Create**.
 
     -   Organization name: **Fabrikam**
 
@@ -1454,13 +1456,15 @@ In this task, you will create another Azure Active Directory tenant representing
 
     ![In this screenshot, the 'Create tenant' blade of the Azure portal is depicted with the required settings listed above and the Create button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateDirectoryConfiguration.png "Create tenant configuration form")
 
-7. In the Azure portal, navigate to the blade of the newly created Azure Active Directory tenant. It may take a few minutes for the **Fabrikam** directory to show up under **Directory + Subscription**. 
+7. After the tenant has created, select **Fabrikam** to navigate to the newly created tenant.
 
-8. On the **Fabrikam - Overview** blade, select **Licenses** on the left.
+    ![Screenshot showing the link to the Fabrikam tenant.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/fabrikam-newtenant.png "Link to the Fabrikam tenant")
 
-9.  On the **Licenses - Overview**, blade, select **All Products** under **Manage** on the left. Then select **+ Try/Buy**.
+8. On the **Fabrikam - Overview** page, select **Licenses** on the left.
 
-10. On the **Activate** blade, in the **ENTERPRISE MOBILITY + SECURITY E5** section, select **Free trial** and then select **Activate**.
+9.  On the **Licenses - Overview**, page, select **All Products** under **Manage** on the left. Then select **+ Try/Buy**.
+
+10. On the **Activate** page, in the **ENTERPRISE MOBILITY + SECURITY E5** section, select **Free trial** and then select **Activate**.
 
     ![In this screenshot, the Activate blade of the Azure portal is selected with the 'ENTERPRISE MOBILITY + SECURITY E5' section open with 'Free trial' selected along with the Activate button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ActivateFreeTrial.png "Active free trial")
 
@@ -1491,13 +1495,13 @@ In this task, you will configure Azure AD user accounts in the newly created Azu
     
 - Department: **Leave blank**
 
-1. From the lab computer, in the Azure portal, navigate back to the **Fabrikam - Overview** blade.
+1. From the lab computer, in the Azure portal, navigate back to the **Fabrikam - Overview** page.
 
-2. On the **Fabrikam - Overview** blade, select **Users**.
+2. On the **Fabrikam - Overview** page, select **Users** under **Manage**.
 
-3. On the **Users - All users** blade, select the entry representing your user account.
+3. On the **Users - All users** page, select the entry representing your user account.
 
-4. On the **Profile** blade of your user account, in the **Settings** section, select **Edit**.
+4. On the **Profile** page of your user account, in the **Settings** section, select **Edit**.
 
     ![In this screenshot, the user Profile blade in the Azure portal is depicted with the Edit button selected in the Settings section.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/EditProfileSettings.png "Editing Settings")
 
@@ -1505,15 +1509,15 @@ In this task, you will configure Azure AD user accounts in the newly created Azu
 
     ![In this screenshot, the user Profile blade in the Azure portal is depicted with United States selected in the 'Usage location' dropdown of the Settings section and the Save button is selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/UsageLocationDropdown.png "Usage location dropdown selection")
 
-6. On the **Profile** blade of your user account, select **Licenses** under **Manage** on the left.
+6. On the **Profile** page of your user account, select **Licenses** under **Manage** on the left.
 
-7. On the **Licenses** blade, select **+ Assignments**.
+7. On the **Licenses** page, select **+ Assignments**.
 
-8. On the **Update license assignments** blade, check the **Enterprise Mobility + Security E5** box, ensure that all the corresponding license options are enabled, and select **Save**.
+8. On the **Update license assignments** page, check the **Enterprise Mobility + Security E5** box, ensure that all the corresponding license options are enabled, and select **Save**.
 
-9. On the **Users - All users** blade, select **+ New user**.
+9. On the **Users - All users** page, select **+ New user**.
 
-10. On the **New user** blade, ensure that the **Create user** option is selected, specify the following settings, and select **Create**:
+10. On the **New user** page, ensure that the **Create user** option is selected, specify the following settings, and select **Create**:
 
     > **Note**: Copy the **User name** and **Password** values into Notepad. You will need them later in this lab.
 
@@ -1544,13 +1548,13 @@ In this task, you will configure Azure AD user accounts in the newly created Azu
 
     ![In this screenshot, the 'New user' blade of the Azure portal is depicted with the 'Create user' option selected along with the required settings listed above and the Create button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateNewUser.png "New user blade with selected configuration")
 
-11. On the **Users - All users** blade, select the entry representing the newly created user account.
+11. On the **Users - All users** page, select the entry representing the newly created user account.
 
-12. On the **jane.doe - Profile** blade, select **Licenses** under **Manage** on the left.
+12. On the **jane.doe - Profile** page, select **Licenses** under **Manage** on the left.
 
-13. On the **jane.doe - Licenses** blade, select **+ Assignments**.
+13. On the **jane.doe - Licenses** page, select **+ Assignments**.
 
-14. On the **Update license assignments** blade, check the **Enterprise Mobility + Security E5** box, ensure that all the corresponding license options are enabled, and select **Save**.
+14. On the **Update license assignments** page, check the **Enterprise Mobility + Security E5** box, ensure that all the corresponding license options are enabled, and select **Save**.
 
 ### Task 6: Create and configure Azure AD guest user and group accounts
 
@@ -1558,11 +1562,11 @@ In this task, you will create and configure Azure AD guest accounts in the Conto
 
 1. Switch to the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal at <https://portal.azure.com> into which you are signed in with the **john.doe** credentials, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
 
-2. On the **Contoso - Overview** blade, select **Users** under **Manage** on the left.
+2. On the **Contoso - Overview** page, select **Users** under **Manage** on the left.
 
-3. On the **Users - All users** blade, select **+ New guest user**.
+3. On the **Users - All users** page, select **+ New guest user**.
 
-4. On the **New user** blade, ensure that the **Invite user** option is selected, specify the following settings, and select **Invite**:
+4. On the **New user** page, ensure that the **Invite user** option is selected, specify the following settings, and select **Invite**:
 
     -  Name: **fabrikam-jane.doe**
 
@@ -1590,15 +1594,17 @@ In this task, you will create and configure Azure AD guest accounts in the Conto
 
 5. In the Azure portal navigate back to the **Contoso - Overview** blade of the Contoso Azure AD tenant and select **Groups** under **Manage** on the left.
 
-6. On the **Groups - All groups** blade, select **+ New group**. 
+6. On the **Groups - All groups** page, select **New group**. 
 
-7. On the **New group** blade, specify the following settings, and select **Create**:
+7. On the **New group** page, specify the following settings, and select **Create**:
 
     -  Group type: **Security**
 
     -  Group name: **Fabrikam B2B users**
 
     -  Group description: **Fabrikam B2B users**
+
+    - Azure AD roles can be assigned to the group: **No**
 
     -  Membership type: **Assigned**
 
@@ -1610,7 +1616,7 @@ In this task, you will create and configure Azure AD guest accounts in the Conto
 
 8. On the **Groups - All groups** blade, select the newly created group and, on the **Fabrikam B2B users** group, copy its **Object id** value and paste it into Notepad. You will need it later in this exercise.
 
-9. Switch to the lab computer, start a web browser using in private/incognito mode and browse to the Azure portal.
+9. Switch to the lab computer, start a web browser using in private/incognito mode and browse to https://portal.azure.com/<yourcontosotenant>.onmicrosoft.com. Where <yourcontosotenant> is the name you chose for your contoso tenant.
 
 10. When prompted, sign in by using the credentials of the **jane.doe** Fabrikam Azure AD user account.
 
@@ -1626,29 +1632,29 @@ In this task, you will create and configure Azure AD guest accounts in the Conto
 
 In this task, you will configure an Azure AD Application Proxy application for B2B access.
 
-1. Within the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
+1. Within the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** page of the Contoso Azure AD tenant.
 
-2. On the **Contoso - Overview** blade of the Contoso Azure AD tenant, select **Enterprise applications** under **Manage** on the left.
+2. On the **Contoso - Overview** page of the Contoso Azure AD tenant, select **Enterprise applications** under **Manage** on the left.
 
-3. On the **Enterprise applications - All applications** blade, select **APP1 Default Web Site**.
+3. On the **Enterprise applications - All applications** page, select **APP1 Default Web Site**.
 
-4. On the **APP1 Default Web Site - Overview** blade, select **Users and groups** under **Manage** on the left.
+4. On the **APP1 Default Web Site - Overview** page, select **Users and groups** under **Manage** on the left.
 
-5. On the **APP1 Default Web Site - Users and groups** blade, select **+ Add user/group**.
+5. On the **APP1 Default Web Site - Users and groups** page, select **+ Add user/group**.
 
-6. On the **Add Assignment** blade, specify the following settings and select **Assign**:
+6. On the **Add Assignment** page, specify the following settings and select **Assign**:
 
-    - Users and groups: **fabrikam-jane.doe**
+    - Users and groups: **jane.doe**
 
     - Select Role: **User**
 
 7. Within the Remote Desktop session to **DC1**, in the Azure portal, navigate back to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
 
-8. On the **Contoso - Overview** blade, select **App registrations** under **Manage** on the left.
+8. On the **Contoso - Overview** page, select **App registrations** under **Manage** on the left.
 
-9.  On the **Contoso - App registrations** blade, select **+ New registration**.
+9.  On the **Contoso - App registrations** page, select **+ New registration**.
 
-10. On the **Register an application** blade, specify the following information and select **Register**:
+10. On the **Register an application** page, specify the following information and select **Register**:
 
     - Name: **Sync B2B users**
 
@@ -1658,11 +1664,11 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
     ![In this screenshot, the 'Register an application' blade of the Azure portal is depicted with the required settings listed above selected along with the Register button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/RegisterApplication.png "Register an application")
 
-11. You will be automatically redirected to the **Sync B2B users** blade.
+11. You will be automatically redirected to the **Sync B2B users** page.
 
-12. On the **Sync B2B users** blade, select **API permissions** under **Manage** on the left. 
+12. On the **Sync B2B users** page, select **API permissions** under **Manage** on the left. 
 
-13. On the **Sync B2B users - API permissions** blade, in the **Configured permissions** section, select **+ Add a permission**.
+13. On the **Sync B2B users - API permissions** page, in the **Configured permissions** section, select **+ Add a permission**.
 
 14. On the **Request API permission** blade that appears on the right, switch to the **APIs my organization uses** tab, in the search text box, type **Windows Azure Active Directory**, in the list of results, select **Windows Azure Active Directory**, and then select **Application permissions**.
 
@@ -1672,7 +1678,7 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
     ![In this screenshot, the 'Request API permissions' blade of the Azure portal is depicted with the Directory.Read.All permission under the Directory subsection checked and the 'Add permissions' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SyncB2BUsers_RequestAPIpermissions.png "API permission request settings")
 
-16. Back on the **Sync B2B users - API permissions** blade, in the **Configured permissions** section, select **Grant admin consent for Contoso**. Select **Yes** when prompted.
+16. Back on the **Sync B2B users - API permissions** page, in the **Configured permissions** section, select **Grant admin consent for Contoso**. Select **Yes** when prompted.
 
 17. If prompted, sign in with the credentials of the **john.doe** Contoso Azure AD user account and, on the **Permissions requested Accept for your organization** page, select **Accept**.
 
@@ -1680,15 +1686,15 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
     ![In this screenshot, the 'Sync B2B users - API permissions' blade of the Azure portal is depicted with the configured permissions listed with a status of 'Granted for Contoso'.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/GrantedForContoso.png "Permissions granted for Contoso")
 
-19. On the **Sync B2B users - API permission** blade, select **Certificates & secrets** under **Manage** on the left.
+19. On the **Sync B2B users - API permission** page, select **Certificates & secrets** under **Manage** on the left.
 
-20. On the **Sync B2B users - Certificates & secrets** blade, select **+ New client secret**.
+20. On the **Sync B2B users - Certificates & secrets** page, select **+ New client secret**.
 
-21. On the **Add a client secret** blade, specify the following information and select **Add**.
+21. On the **Add a client secret** page, specify the following information and select **Add**.
 
     - Description: **Sync B2B users secret 1**
 
-    - Expires: **In 1 year**
+    - Expires: **12 months**
 
 22. Copy the resulting secret value. You will need it later in this task.
 
@@ -1706,7 +1712,7 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
     > **Note**: These OUs must NOT be synchronized back to the Azure AD tenant using Azure AD Connect. Make sure not to include the guest user objects in the synchronization scope.
 
-27. Within the Remote Desktop session to **DC1**, switch to the Windows PowerShell ISE window and, from the console pane, run the following to add a suffix matching the default DNS name of the Contoso Azure AD tenant (replace the `<domain_name>` placeholder with the name of the default domain name associated with the Contoso Azure AD tenant):
+27. Within the Remote Desktop session to **DC1**, open a Windows PowerShell console and run the following to add a suffix matching the default DNS name of the Contoso Azure AD tenant (replace the `<domain_name>` placeholder with the name of the default domain name associated with the Contoso Azure AD tenant):
 
     ```pwsh
     Get-ADForest | Set-ADForest -UPNSuffixes @{Add="<domain_name>.onmicrosoft.com"}
@@ -1718,9 +1724,13 @@ In this task, you will configure an Azure AD Application Proxy application for B
     https://www.microsoft.com/en-us/download/details.aspx?id=51495
     ```
 
-29. On the **Connectors for Microsoft Identity Manager 2016 SP1 and Forefront Identity Manager 2010 R2 SP1** page, download **Script and Readme to pull Azure AD B2B users on-prem_v1.0.3.zip** and extract its content.
+29. On the **Connectors for Microsoft Identity Manager 2016 SP1 and Forefront Identity Manager 2010 R2 SP1** page, download **Script and Readme to pull Azure AD B2B users on-prem_v1.0.3.zip** and extract its content. You'll have to scroll down to find it.
 
-30. Within the Remote Desktop session to **DC1**, in the Windows PowerShell ISE window, open the newly extracted PowerShell script **AppProxy-GuestAccountCreation-v1.0.3.ps1** and modify its content by updating it to match the following:
+30. Once the files are extracted, right click on the PowerShell script, open the file properties, and **Unblock** the script.
+
+30. Within the Remote Desktop session to **DC1**, in Visual Studio Code, open the newly extracted PowerShell script **AppProxy-GuestAccountCreation-v1.0.3.ps1** and modify its content by updating it to match the following:
+
+    > Note: If for some reason you can't open the file, you can use the **Open folder** option in Visual Studio Code to open the folder containing the script.
 
     ```pwsh
     $B2BGroupSid = "TODO" #Fabrikam B2B users Azure AD group's ObjectID that you identified earlier in this exercise.
@@ -1735,11 +1745,17 @@ In this task, you will configure an Azure AD Application Proxy application for B
     ```
     > **Note**: For more information regarding the script and its implementation, refer to the **Readme - Script to pull Azure AD B2B users on-prem_v1.0.3.pdf** file, included in the **1.1.953.0\Script and Readme to pull Azure AD B2B users on-prem_v1.0.3.zip** file you downloaded earlier in this task.
 
-31. Execute the script and ensure that it did not return any error messages. 
+31. Install the AzureAD PowerShell Module using the script below. Confirm any prompts while installing it.
+
+    ```
+    Install-Module AzureAD
+    ```
+
+1.  Execute the script and ensure that it did not return any error messages. 
 
     > **Note**: You can schedule script execution in regular intervals by using Windows Scheduled Tasks. For details, refer to the **Readme - Script to pull Azure AD B2B users on-prem_v1.0.3.pdf** file.
 
-32. Switch back to the Azure Active Directory Users and Computers console and verify that a user account of **jane.doe** is listed in the **Demo B2B Accounts\\Enabled** organizational unit. You may have to refresh the console. 
+2.  Switch back to the Azure Active Directory Users and Computers console and verify that a user account of **jane.doe** is listed in the **Demo B2B Accounts\\Enabled** organizational unit. You may have to refresh the console. 
 
     > **Note**: In a production environment, you could provide access to Integrated Windows Authentication apps by leveraging Microsoft Identity Manager. You can also provide access to on-premises apps that support SAML-based authentication directly from the Azure portal. For more information, refer to Grant B2B users in Azure AD access to your on-premises applications at <https://docs.microsoft.com/en-us/azure/active-directory/b2b/hybrid-cloud-to-on-premises>.
 
@@ -1756,7 +1772,9 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
 2. When prompted, sign in by using the **jane.doe** Fabrikam Azure AD user account. 
 
-3. Once signed in, select the **Jane Fabrikam** icon in the upper right corner of the Application Access Panel page and, in the drop-down menu, select **Contoso**.
+3. Once signed in, select the **Jane Fabrikam** icon in the upper right corner of the Application Access Panel page and, in the drop-down menu, select **Switch organization**.
+
+4. Select the **Contoso** Organization.
 
 4. On the **Apps** page of the **Application Access Panel**, select the **APP1 Default Web Site** icon. This will automatically open a new browser tab displaying the Default Web Site page on APP1.
 
