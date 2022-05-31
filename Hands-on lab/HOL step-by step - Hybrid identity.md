@@ -66,8 +66,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 1: Create a VM for the secondary domain controller](#task-1-create-a-vm-for-the-secondary-domain-controller)
     - [Task 2: Promote the VM to a domain controller](#task-2-promote-the-vm-to-a-domain-controller)
     - [Task 3: Install Azure AD Connect in standby mode](#task-3-install-azure-ad-connect-in-standby-mode)
-    - [Task 4: Install pass through agent](#task-4-install-pass-through-agent)
-    - [Task 5: Configure Azure AD Application Proxy for BDC-1 VM](#task-5-configure-azure-ad-application-proxy-for-bdc-1-vm)
+    - [Task 4: Configure Azure AD Application Proxy for BDC-1 VM](#task-4-configure-azure-ad-application-proxy-for-bdc-1-vm)
   - [Exercise 5: Configure Password-less Authentication methods](#exercise-5-configure-password-less-authentication-methods)
     - [Task 1: Configure Authentication methods](#task-1-configure-authentication-methods)
   - [After the hands-on lab](#after-the-hands-on-lab)
@@ -1808,7 +1807,7 @@ In this task, you will create a VM that will become the backup domain controller
   
     - Image: **Windows Server 2016 Datacenter - Gen 1** 
   
-    - Size: **Standard_D2s_v3**
+    - Size: **Standard D2ads v5**
    
     - Username: **demouser** 
   
@@ -1820,19 +1819,21 @@ In this task, you will create a VM that will become the backup domain controller
 
     ![This screenshot is showing the basic configuration details for the virtual machine.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/createvmdetails.png "Virtual machine basic configuration")
 
-3. Select **Create and attach a new disk**.
+3. Set the OS Disk type to **Standard SSD**
+   
+4. Select **Create and attach a new disk**.
 
-4. On the **Create a new disk** tile, select **Change size** and change the disk size to 32 GB.
+5. On the **Create a new disk** tile, select **Change size** and change the disk size to 32 GB. Check the box to **Delete disk with VM**.
 
-5. Select **OK** to continue.
+6. Select **OK** to continue.
 
     ![This screenshot is showing where to change the disk size before creating a new managed disk for the virtual machine.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/adddisk.png "Change disk size")
 
-6. Select **Next: Networking** and verify the Virtual network is **TlgBaseConfig-01-VNET** and Subnet is **subnet-01**.  This will make sure that the new Virtual machine is on the same network as the primary domain controller, **DC-1**. Keep the default values for the remaining fields.  Select **Review + create**.
+7. Select **Next: Networking** and verify the Virtual network is **TlgBaseConfig-01-VNET** and Subnet is **subnet-01**.  This will make sure that the new Virtual machine is on the same network as the primary domain controller, **DC-1**. Check **Delete public IP and NIC when VM is deleted**. Uncheck **Accelerated networking**. Keep the default values for the remaining fields.  Select **Review + create**.
    
     ![In this screenshot, the networking tile is being configured and we are choosing the existing virtual network and subnet.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/vmnetwork.png "Virtual machine networking")
 
-7. Select **Create** to create the Virtual machine.
+8. Select **Create** to create the Virtual machine.
 
 ### Task 2: Promote the VM to a domain controller
 
@@ -1844,7 +1845,7 @@ In this task, you will promote the newly created VM to a domain controller and c
     
     ![This screenshot is showing how to connect to the virtual machine using RDP.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/connectrdp.png  "Connect with RDP")
 
-3. Connect to the Virtual machine with the username and password used in the previous task.
+3. Connect to the Virtual machine with the username and password used in the previous task. If you get a prompt to click allow network discovery, select **No**.
    
 4. From the **Server Manager** dashboard, select **Add roles and features**.
 
@@ -1874,11 +1875,11 @@ In this task, you will promote the newly created VM to a domain controller and c
     
 13. On the **Ethernet Properties** tile, select **Internet Protocol Version 4 (TCP/IPv4)**, and select **Properties**.
     
-14. On the **Internet Protocol Version 4 (TCP/IPv4)** tile, select the radio button for **Use the following DNS server addresses** and enter the IP address of **DC-1**. Select **OK** to save the changes. 
+14. On the **Internet Protocol Version 4 (TCP/IPv4)** tile, select the radio button for **Use the following DNS server addresses** and enter the IP address of **DC-1**. Select **OK** to save the changes. Then select Close, you may get disconnted from the remote desktop session at this point in time.
         
     ![This screenshot shows the steps to follow to add a DNS server to the device network configuration.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/dc1dns.png "Add DNS to Network properties")
 
-15. Restart the **BDC-1** Virtual machine.
+15. Restart the **BDC-1** Virtual machine. If you were kicked from the RDP sessions, you can use the Azure Portal to reboot the virtual machine.
 
 16. When **BDC-1** restarts, RDP back into it.  There will be a flag with a notification on the top right of the **Server Manager Dashboard**.  Select this flag for the **Post-deployment Configuration**, and select **Promote this server to a domain controller**.
 
@@ -1935,75 +1936,49 @@ In this task, you will install and configure Azure AD Connect in standby mode.  
 
 1. Since **Azure AD Connect** has already been downloaded and installed from the portal, on **BDC-1** you need to navigate to the **Microsoft Download Center** to download **Azure AD Connect** for **BDC-1**.
 
+    > Note: You may want to turn of Internet Explorer Enhance Security Configration and install Edge first. The URL to download and install Edge for Business is: https://www.microsoft.com/en-us/edge/business/download
+
     ```
     https://www.microsoft.com/en-us/download/confirmation.aspx?id=47594
     ```
 
-2. Scroll down to find **Microsoft Azure Active Directory Connect** and select **Download**.
+2. The download should start automatically. If not use the link to download manually.
 
-    ![In this screenshot, we are navigating to the Microsoft Download Center to download Azure AD Connect.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/azureadconnectdownload.png "Download Azure AD Connect")
-
-3. Download the **AzureADConnect.msi** file by selecting **Click here** under **Download link**.
-
-    ![In this screenshot, we are selecting the link to download the Azure AD Connect msi file.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/azureadconnectdownloadlink.png "Azure AD Connect msi file")
-
-4. When prompted, select the drop-down arrow and choose **Save as** to save the **AzureADConnect.msi** file to the **Downloads** folder.
-
-    ![In this screenshot, we are selecting the save location for the Azure AD Connect msi file.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/azureadconnectsaveas.png "Save file to Download folder")
-
-5. After the download is complete, go to the **Downloads** folder in **File Explorer** and run the **AzureADConnect** installation.
+3. After the download is complete, go to the **Downloads** folder in **File Explorer** and run the **AzureADConnect** installation or choose to **Open file** right from Edge.
 
     ![After the download is complete, you will navigate to the downloads folder to select the file to install, as shown in this screenshot.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/azureadconnectfile.png "Run Azure AD Connect installation")
 
-6. After installation, the **Microsoft Azure Active Directory Connect** configuration wizard will start automatically.  Accept the license terms to continue.
+4. After installation, the **Microsoft Azure Active Directory Connect** configuration wizard will start automatically.  Accept the license terms to continue.
 
     ![This screenshot shows that you are required to agree to the license terms before installing Azure AD Connect.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/azureadconnectterms.png "Agree to license terms")
 
-7. To configure the **BDC-1** backup domain controller as a staging server, select **Customize**.
+5. To configure the **BDC-1** backup domain controller as a staging server, select **Customize**.
 
     ![This screenshot shows that you will not be using Express settings but will need to customize the settings.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/customizesettings.png "Customize settings")
 
-8. Select **Install**.
+6. Select **Install**.
 
     ![Install the required components and do not select any of the optional components before selecting install, as shown in this screenshot.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/installazureadconnect.png "Install Azure AD Connect")
 
-9.  Follow the same steps as Exercise 1, Task 6, Steps 15-24.  On the final **Configure** step, un-check the **Start the synchronization process when configuration completes** checkbox, and select the **Enable staging mode** checkbox. Select **Install** to complete the installation of the configuration.
+7.  Follow the same steps as Exercise 1, Task 6, Steps 15-24.  On the final **Configure** step, un-check the **Start the synchronization process when configuration completes** checkbox, and select the **Enable staging mode** checkbox. Select **Install** to complete the installation of the configuration.
 
     ![Once Azure AD Connect has been installed and all credentials have been provided, unselect the checkbox for starting synchronization and check the box for enable staging mode as shown in this screenshot.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/readytoconfigure.png "Configure in staging mode")
 
-10. Navigate to the **Windows Start menu** and open **Synchronization Service Manager**.
+8.  Navigate to the **Windows Start menu** and open **Synchronization Service Manager**.
 
     ![This screenshot shows the Synchronization service application within the Windows Start menu.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/syncservice.png "Open Synchronization service")
     
-11. Select **Connectors**, and select the first Connector with the type **Active Directory Domain Services**. Select **Run**, select **Full import**, and **OK**. Do these steps for all Connectors of this type.
+9.  Select **Connectors**, and select the first Connector with the type **Active Directory Domain Services**. Select **Run**, select **Full import**, and **OK**. Do these steps for all Connectors of this type.
 
     ![After the Synchronization service manager opens, select Connectors on the menu as shown in this screenshot.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/syncconnectors.png "Select Connectors")
 
-12. Select the Connector with type **Azure Active Directory (Microsoft)**. Select **Run**, select **Full import**, and **OK**.
+10. Select the Connector with type **Azure Active Directory (Microsoft)**. Select **Run**, select **Full import**, and **OK**.
     
-13. Make sure the tab Connectors is still selected. For each Connector with type **Active Directory Domain Services**, select **Run**, select **Delta Synchronization**, and **OK**.
+11. Make sure the tab Connectors is still selected. For each Connector with type **Active Directory Domain Services**, select **Run**, select **Delta Synchronization**, and **OK**.
     
-14. Select the Connector with type **Azure Active Directory (Microsoft)**. Select **Run**, select **Delta Synchronization**, and **OK**.
+12. Select the Connector with type **Azure Active Directory (Microsoft)**. Select **Run**, select **Delta Synchronization**, and **OK**.   
 
-
-### Task 4: Install pass through agent 
-
-In this task, you will install and configure the Azure AD Connect pass through agent.
-
-1. Within the Remote Desktop session to **BDC-1**, in the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
-   
-2. To download the latest version of the Authentication Agent (version 1.5.193.0 or later), sign in to the Azure Active Directory admin center with your tenant's global administrator credentials.
-   
-3. Select Azure Active Directory in the left pane.
-   
-4. Select Azure AD Connect, select Pass-through authentication, and then select Download Agent.
-   
-5. Select the Accept terms & download button.
-   
-6. Run the downloaded Authentication Agent executable and providing your tenant's global administrator credentials when prompted.
-   
-
-### Task 5: Configure Azure AD Application Proxy for BDC-1 VM
+### Task 4: Configure Azure AD Application Proxy for BDC-1 VM
 
 In this task, you will configure Azure AD Application Proxy for the BDC-1 VM.
 
@@ -2013,19 +1988,19 @@ In this task, you will configure Azure AD Application Proxy for the BDC-1 VM.
 
     ![In this screenshot, the 'Active Directory Users and Computers' console is depicted with the View menu open and the Advanced Features button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/EnableAdvancedFeatures.png "Enable Advanced Features in the console")
 
-3.  In the **Active Directory Users and Computers** console, locate the computer account hosting the Azure AD Application Proxy connector (**DC1** in our case) under **Domain Controllers** within **corp.contoso.com** and display its **Properties** window.
+3.  In the **Active Directory Users and Computers** console, locate the new BDC-1 computer account under **Domain Controllers** within **corp.contoso.com** and display its **Properties** window.
 
-    ![In this screenshot, the 'Active Directory Users and Computers' console is depicted with the Domain Controllers node selected on the left and the DC1 computer account right-clicked with the Properties menu option selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DisplayComputerProperties.png "Display computer properties")
+    ![In this screenshot, the 'Active Directory Users and Computers' console is depicted with the Domain Controllers node selected on the left and the BDC-1 computer account right-clicked with the Properties menu option selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DisplayComputerProperties2.png "Display computer properties")
 
-4.  In the **DC1 Properties** window, switch to the **Delegation** tab and select the option **Trust this computer for delegation to specified services only**.
+4.  In the **BDC-1 Properties** window, switch to the **Delegation** tab and select the option **Trust this computer for delegation to specified services only**.
 
 5.  Select the option **Use any authentication protocol**, select **Add**, in the **Add Services** window, select **Users or Computers**, in the **Select Users or Computers** dialog box, in the **Enter the object names to select** text box, type **APP1** and select **OK**. 
 
-    ![In this screenshot, the 'DC1 Properties' window is depicted with the Delegation tab selected with the 'Trust this computer for delegation to specified services only' and 'Use any authentication protocol' options and the 'Add' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DelegationConfiguration.png "Delegation configuration")
+    ![In this screenshot, the 'DC1 Properties' window is depicted with the Delegation tab selected with the 'Trust this computer for delegation to specified services only' and 'Use any authentication protocol' options and the 'Add' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DelegationConfiguration2.png "Delegation configuration")
 
 6.  Back in the **Add Services** window, select the **http** entry and select **OK**. 
 
-    ![In this screenshot, 'Add Services' window is depicted with the 'http' entry selected along with the OK button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADApplicationProxy_Delegation_http.png "Delegation http")
+    ![In this screenshot, 'Add Services' window is depicted with the 'http' entry selected along with the OK button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADApplicationProxy_Delegation_http2.png "Delegation http")
 
 7.  Back in the **DC1 Properties** window, select **OK**.
 
