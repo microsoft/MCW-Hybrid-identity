@@ -4,7 +4,7 @@ Contoso is a medium size financial services company with its headquarters in New
  
 Contoso is facing challenges related to increased mobility of its workforce and providing access to its services to other financial partners. Contoso is looking to improve security while providing users with self-service capabilities around device, account, and password management. To drive better integration with partners, Contoso needs to provide access to some existing internal applications while maintaining a high level of security for applications hosted in the cloud and on premises while minimizing the effort required to manage customer identities.
 
-February 2022
+May 2022
 
 ## Target audience
 - Infrastructure Architect

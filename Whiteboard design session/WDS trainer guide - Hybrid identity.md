@@ -9,7 +9,7 @@ Whiteboard design session trainer guide
 </div>
 
 <div class="MCWHeader3">
-February 2022
+May 2022
 </div>
 
 
@@ -204,7 +204,7 @@ Contoso has recently upgraded its Active Directory environment to Windows Server
 
 **Customer objectives**
 
-Contoso is exploring the option of transitioning its operations into a more internet-open model which would facilitate support for mobile workforce and integration with business partners, while, at the same time, support current security and manageability controls. Given its current environment, which is heavily dependent on Active Directory and undergoes migration to Windows 10 devices, Contoso intends to evaluate Azure Active Directory and Microsoft Intune as potential identity and management components of the target design.
+Contoso is exploring the option of transitioning its operations into a more internet-open model which would facilitate support for mobile workforce and integration with business partners, while, at the same time, support current security and manageability controls. Given its current environment, which is heavily dependent on Active Directory and undergoes migration to Windows 10 devices, Contoso intends to evaluate Azure Active Directory and Microsoft Endpoint Management as potential identity and management components of the target design.
 
 The identity component of the target design should facilitate step-up authentication and per-application permissions based not only on the properties of users' accounts but also on the state of these users' devices. To maximize security, Contoso wants to minimize or even eliminate persistent assignments of privileged roles for identity management, but, at the same time, such arrangement must account for break-glass scenarios, allowing for a non-gated emergency use of privileged accounts. For obvious reasons, such accounts need to be closely monitored and audited.
  
@@ -390,11 +390,14 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 | What is hybrid identity with Azure Active Directory? | <https://docs.microsoft.com/en-us/azure/active-directory/hybrid/whatis-hybrid-identity>  |
 | Choose the right authentication method for your Azure Active Directory hybrid identity solution | <https://docs.microsoft.com/en-us/azure/security/fundamentals/choose-ad-authn>  |
 | Azure AD Connect sync: Understand and customize synchronization |  <https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sync-whatis> |
+| What is Azure AD Connect cloud sync? | <https://docs.microsoft.com/en-us/azure/active-directory/cloud-sync/what-is-cloud-sync> |
 | Buy a custom domain name for Azure App Service | <https://docs.microsoft.com/en-us/azure/app-service/manage-custom-dns-buy-domain>  |
 | What is Conditional Access? | <https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/overview>  |
 | Azure Active Directory B2B documentation | <https://docs.microsoft.com/en-us/azure/active-directory/b2b/>  |
 | Azure Active Directory B2C documentation | <https://docs.microsoft.com/en-us/azure/active-directory-b2c/>  |
-| Microsoft Enterprise Mobility + Security options | <https://www.microsoft.com/en-us/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing>
+| Microsoft Enterprise Mobility + Security options | <https://www.microsoft.com/en-us/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing> |
+| Windows authentication - Kerberos constrained delegation with Azure Active Directory | <https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/auth-kcd> |
+| Plan a passwordless authentication deployment in Azure Active Directory | <https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-authentication-passwordless-deployment> |
 
 
 # Hybrid identity whiteboard design session trainer guide
@@ -566,6 +569,11 @@ Have the table attendees reconvene with the larger session group to hear a subje
 
       - In order to minimize the use of passwords, Contoso will implement Windows Hello for Business. Windows Hello for Business replaces passwords with strong two-factor authentication on Windows 10 devices. This authentication consists of a new type of user credential that is tied to a device and uses a biometric or PIN. Windows Hello for Business lets users authenticate to an Active Directory or Azure Active Directory account. In hybrid deployments, Windows Hello for Business can leverage Hybrid Azure AD joined computers, so Contoso will start by configuring Hybrid Azure AD join for its on-premises computers. Considering that Contoso is not planning on using federated authentication, this implies the choice of Windows Hello for Business hybrid key trust deployment model. For more information regarding this topic, refer to *Configure Device Registration for Hybrid key trust Windows Hello for Business* at <https://docs.microsoft.com/en-us/windows/security/identity-protection/hello-for-business/hello-hybrid-key-trust-devreg>.
 
+      - To even further minimize the need for passwords, Contoso will implement passwordless authentication using a combination of the Microsoft Authenticator app and FIDO2 security keys. These additional two methods provide additional benefit. Passwordless authentication via the Microsoft Authenticator App doesn't provide an option for Windows 10, but this can increase security when signing into any web-based services using Azure Active Directory as their identity provider. However, this does require uses to have a mobile phone with the Microsoft Authenticator App installed. The FIDO2 security key provides a physical, stand-alone hardware key that could be provided to users to enable them passwordless login to both their Windows 10 devices, as well as to any web-based services using Azure Active Directory as it's identity providers.
+
+      - By leveraging Windows Hello, the Authenticator App, and FIDO2 security keys for passwordless authentication, Contoso is able to eliminate almost all needs for password based logins for their employees.
+
+
 *Implementing a hybrid identity solution*
 
 1.  What are the steps to implement a hybrid identity solution that will allow you to meet all the customer requirements?
@@ -585,6 +593,10 @@ Have the table attendees reconvene with the larger session group to hear a subje
            - If you do not have on-premises AD Recycle Bin feature enabled, you may be required to create an AD user object to replace the deleted object. If Azure AD Connect Synchronization Service is configured to use system-generated AD attribute (such as ObjectGuid) for the Source Anchor attribute, the newly created AD user object will not have the same Source Anchor value as the deleted AD user object. When the newly created AD user object is synchronized to Azure AD, Azure AD creates a new Azure AD user object instead of restoring the soft-deleted Azure AD user object.
 
     Azure AD Connect configuration
+
+      - Azure AD Connect sync method
+
+          - There are two options for synchronizing users between Active Directory and Azure Active Directory. Azure AD Connect and Azure AD Connect cloud sync are both available. However, the come with different levels of functionality. While Azure AD Connect cloud sync does allow you to deploy a lighter-weight sync option as well as have an active-active deployment of your sync agent, it also has its limitations. In the case of Contoso, it doesn't support Pass-Through Authentication which is a key requirement for them, eliminating the cloud sync option. But, students should make sure they are familiar with cloud sync and when it is a valid option.
 
       - Authentication method
 
@@ -634,7 +646,7 @@ Have the table attendees reconvene with the larger session group to hear a subje
 
            - Configuring scenarios in which MFA is required
 
-      - Customers must determine how users will register their authentication methods. This can be accomplished by using Conditional Access, since this approach offers more flexibility. Conditional Access policies enforce registration, requiring unregistered users to complete registration at first sign-in. While it is possible to enable Multi-Factor Authentication by modifying the user state, this effectively forces users to perform two-step verification every time they sign in and overrides Conditional Access policies. However, there are scenarios in which this approach might be preferred or required. It is, for example, necessary, if the customer's current licensing arrangements do not include Conditional Access.
+      - Customers must determine how users will register their authentication methods. This can be accomplished by using Conditional Access, since this approach offers more flexibility and is the recommended approach from Microsoft. Conditional Access policies enforce registration, requiring unregistered users to complete registration at first sign-in. While it is possible to enable Multi-Factor Authentication by modifying the user state, this effectively forces users to perform two-step verification every time they sign in and overrides Conditional Access policies. It is also now considered legacy MFA by Microsoft with Security Defaults being the new approach. However, security defaults can also come with it's own challenges as it isn't possible to scope it to just certain users and does more than just MFA.  When looking at the legacy MFA when you just change a users state, it hasn't been officially depricated yet, and there are scenarios in which this approach might be preferred or required over Conditional Access and Security Defaults. It is, for example, necessary, if the customer's current licensing arrangements do not include Conditional Access and Security Defaults are too broad of a scope.
 
       - Additionally, with Azure AD Premium P2 licensing, customers have the option of leveraging Azure AD Identity Protection to further enhance MFA capabilities by implementing an automatic MFA registration policy, as well as incorporating automated risk detection into MFA-based Conditional Access policies. Creating an MFA registration policy will prompt users to register the next time they sign in interactively. Conditional Access policies can be configured to force password changes when there is a threat of compromised identity or require MFA when a sign-in is deemed risky in response to detection of such events as: 
 
@@ -747,7 +759,8 @@ deploy additional domain controllers of the on-premises Active Directory domain 
         - Azure AD Connect synchronization engine
 
             - In order to facilitate provisions that require eliminating single points of failure, in regard to the Azure AD Connect synchronization engine, customers have the option of deploying an additional server hosting the sync engine operating in the staging mode (this is one of the options available directly from the installation wizard interface).
-In this mode, the sync engine imports and synchronizes data the same way as the active instance, but it does not export anything to Azure AD or AD. Since a server in the staging mode continues to receive changes from Active Directory and Azure AD, it can quickly take over the responsibilities of a failed active server. Password sync and password writeback features of Azure AD Connect are disabled while in staging mode. 
+
+              In this mode, the sync engine imports and synchronizes data the same way as the active instance, but it does not export anything to Azure AD or AD. Since a server in the staging mode continues to receive changes from Active Directory and Azure AD, it can quickly take over the responsibilities of a failed active server. Password sync and password writeback features of Azure AD Connect are disabled while in staging mode. 
 
         - Azure AD Connect pass-through authentication agent
 
@@ -762,7 +775,8 @@ In this mode, the sync engine imports and synchronizes data the same way as the 
         - Azure AD Application Proxy connector
 
             - Customers should deploy two or more connectors and organize them into connector groups, with each group handling traffic to specific applications. Connector groups not only provide high availability but also facilitate improving latency when accessing applications hosted in different regions, since it is possible to create location-based connector groups to serve only local applications.
-It is important to provision sufficient number of connectors to handle the expected volume of application traffic. It is recommended that each connector group has at least two connectors to provide high availability and scale. Having three connectors accounts for maintenance windows necessary to service servers hosting the connectors. For details regarding sizing of the servers hosting connectors, refer to *Understand Azure AD Application Proxy connectors* at <https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/application-proxy-connectors>.
+  
+              It is important to provision sufficient number of connectors to handle the expected volume of application traffic. It is recommended that each connector group has at least two connectors to provide high availability and scale. Having three connectors accounts for maintenance windows necessary to service servers hosting the connectors. For details regarding sizing of the servers hosting connectors, refer to *Understand Azure AD Application Proxy connectors* at <https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/application-proxy-connectors>.
 
               **Note**:  Azure AD Password Protection Proxy and Application Proxy install different versions of the Microsoft Azure AD Connect Agent Updater service. These different versions are incompatible when installed side by side, so it is not recommended to install Azure AD Password Protection Proxy and Application Proxy side by side on the same machine.
 
