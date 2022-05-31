@@ -2024,7 +2024,7 @@ In this exercise, you installed and configured a backup domain controller, set i
 
 4. The details will populate below, select **Yes** for **Enable**, select **Select users** for **Target**.  
 
-5. Select **Add users and groups** and select **Ann G. Ayers** under users.  Select **Save** to add the user.  
+5. Select **Add users and groups** and select **Ann G. Ayers** under users.  Select **Select** to add the user.  
 
 6. Select **Save** under **Details** to save the configuration.
 
