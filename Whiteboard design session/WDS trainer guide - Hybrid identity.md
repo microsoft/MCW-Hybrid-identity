@@ -12,7 +12,6 @@ Whiteboard design session trainer guide
 May 2022
 </div>
 
-
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
 Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
@@ -192,10 +191,10 @@ Directions:  With all participants in the session, the facilitator/SME presents 
 
 ### Customer situation
 
-Contoso is a medium size financial services company with its headquarters in New York and a branch office in San Francisco. It is currently operating entirely on-premises, with majority of its infrastructure running on the Windows platform. 
+Contoso is a medium size financial services company with its headquarters in New York and a branch office in San Francisco. It is currently operating entirely on-premises, with majority of its infrastructure running on the Windows platform.
 
 Contoso is facing challenges related to increased mobility of its workforce. In particular, in order to drive down its office space costs, Contoso management is considering implementing a flexible work arrangement policy which would allow its employees to work on designated days from home, using either corporate- and employee-owned devices. However, the Contoso's Information Security team expressed concerns about insufficient controls that would prevent access from unauthorized or non-compliant systems. In addition, there are concerns regarding using traditional VPN technologies or DirectAccess, which tend to provide excessive access to on-premises infrastructure.
- 
+
 **Existing Contoso Active Directory environment**
 
 Contoso has a single domain Active Directory forest which was implemented over a decade ago. The domain was assigned a non-routable DNS name contoso.local. While the Directory Services team considered renaming the domain, this has never been implemented due to potential negative implications of such change. Contoso does own a publicly routable DNS domain name contoso.com.
@@ -209,11 +208,11 @@ Contoso is exploring the option of transitioning its operations into a more inte
 The identity component of the target design should facilitate step-up authentication and per-application permissions based not only on the properties of users' accounts but also on the state of these users' devices. To maximize security, Contoso wants to minimize or even eliminate persistent assignments of privileged roles for identity management, but, at the same time, such arrangement must account for break-glass scenarios, allowing for a non-gated emergency use of privileged accounts. For obvious reasons, such accounts need to be closely monitored and audited.
  
 Another Information Security concern is accidental exposure of users' passwords. Contoso would like to minimize their use in lieu of more secure authentication methods. In situations where passwords are required, users should also be able to both change and reset them without having to rely on HelpDesk services. At the same time, any on-premises Active Directory user account restrictions, such as allowed sign-in hours must be honored. Similarly, the existing Active Directory password policies must apply, although the head of Information Security would like to enhance them by preventing use of common terms within password values.
- 
+
 Besides enhancing self-service user capabilities, Contoso wants to optimize end-user experience, especially in environments where users might be using several different devices. The user-defined settings, such as accessibility or app customization should be consistent across all devices.
- 
+
 In addition, Contoso needs to expand its customer base through partnership with other financial institutions and providing direct access to its services to external clients. As part of this effort, Contoso established a business relationship with Fabrikam, which manages an extensive portfolio of mortgage related products. Contoso intends to provide Fabrikam with access to its internal Windows Integrated Authentication-based web applications that could be integrated with the existing Fabrikam's products. The access methodology needs to account for the fact that in recent years, Fabrikam has modernized its technology and moved its operations almost entirely to Microsoft Azure.
- 
+
 To facilitate the expansion of their customer base, Contoso started developing a number of applications intended to be available both via web and from mobile devices. Historically, such applications were hosted in on-premises data centers and relied on an internally developed identity management product. Going forward, Contoso wants to minimize the effort managing customer identities.
 
 The management team of Contoso, including its CIO, Andrew Cross, emphasized the need for resiliency and Service Level Agreements associated with each of the identity-related components that are part of the target design. At the same time, they are also interested in minimizing additional infrastructure requirements to implement the design.
@@ -264,7 +263,7 @@ The management team of Contoso, including its CIO, Andrew Cross, emphasized the 
 
 3. The choice of Azure AD edition required to satisfy Contoso's requirements
 
-4. The Service Level Agreements associated with the choice of the Azure AD edition 
+4. The Service Level Agreements associated with the choice of the Azure AD edition
 
 5. Requirements necessary to minimize dependency on passwords in lieu of more secure authentication methods
 
@@ -465,7 +464,7 @@ Have the table attendees reconvene with the larger session group to hear a subje
 
 1. Remote users must be able to sign into their devices by using their Active Directory credentials.
 
-2. Existing Active Directory user sign-in hours and password policies must be preserved (although allowed password values could be further restricted). 
+2. Existing Active Directory user sign-in hours and password policies must be preserved (although allowed password values could be further restricted).
 
 3. User sign-in experience should be simplified by minimizing the number of sign-in prompts and limiting the use passwords in lieu of more secure authentication methods.
 
@@ -497,7 +496,7 @@ Have the table attendees reconvene with the larger session group to hear a subje
 
       - Contoso has not implemented any cloud-based services, including an Azure AD tenant and an Azure subscription.
 
-    Implementing the hybrid identity model will allow Contoso to take advantage of such technologies and capabilities as: 
+    Implementing the hybrid identity model will allow Contoso to take advantage of such technologies and capabilities as:
 
       - Passthrough authentication with Seamless Single Sign-On
 
@@ -535,7 +534,7 @@ Have the table attendees reconvene with the larger session group to hear a subje
 
       - Contoso will provision a new Azure Active Directory tenant with a custom, publicly routable domain name and use Azure AD Connect in order to integrate it with an on-premises Active Directory environment.
 
-      - Contoso will purchase Azure AD Premium P2 licenses for its users, in order to provide the ability to implement: 
+      - Contoso will purchase Azure AD Premium P2 licenses for its users, in order to provide the ability to implement:
 
            - Azure AD Privileged Identity Management. This will allow designated users to temporarily elevate their privileges to manage other user accounts with auditing automatically enabled for all elevation events.
 
@@ -549,7 +548,7 @@ Have the table attendees reconvene with the larger session group to hear a subje
 
            - Password Protection for Windows Server Active Directory (available starting with Azure AD Premium P1). This will allow imposing restrictions on allowed password values.
 
-           - Self-service password reset/change/unlock with on-premises writeback (available starting with Azure AD Premium P1). 
+           - Self-service password reset/change/unlock with on-premises writeback (available starting with Azure AD Premium P1).
 
      ![High level architecture consisting of the on-premises environment represented by a rectangle on the left hand side, two cloud outlines representing the Azure AD tenant of Contoso and Fabrikam on the right hand side, and the Microsoft Intune icon in the middle. The on-premises environment contains an icons representing Active Directory domain controllers, providing such functionality as Azure AD Connect-based synchronization with attribute level filtering and password writeback, Azure AD Application Proxy with its on-premises connector, Service Connection Point for Hybrid Azure AD join, and Passowrd Protection DC Agent. There is also a web server icon, representing the hybrid Azure AD joined server hosting the APP1 application, used also as the Password Application Proxy. The Contoso Azure AD tenant provides such functionality as Azure AD application proxy, My Apps portal, Automatic Intune enrollment, Enterprise State Roaming, Conditional Access, Azure AD Identity Protection, Azure AD Privileged Identity Management, Azure AD MFA, and Self-Service Password Reset.](images/Whiteboarddesignsessiontrainerguide-HybridIdentityimages/media/preferred-solution-high-level.png "Diagram of hybrid infrastructure")
 
@@ -596,15 +595,15 @@ Have the table attendees reconvene with the larger session group to hear a subje
 
       - Authentication method
 
-           - For pass-through authentication, you need to install at least one or more (three are recommended) lightweight Authentication Agents on your on-premises computers running Windows Servers 2012 R2 or newer with TLS 1.2 enabled. The computers hosting the agents must have direct access to Active Directory domain controllers and outbound access to internet. The first agent is installed automatically on the computer hosting Azure AD Connect once you choose to use pass-through authentication. To install additional agents, you can download their setup files from the **Pass-through authentication** blade (accessible via **Azure AD Connect** blade in the **Azure Active Directory** section of the Azure portal). Installation can be performed interactively (you will be prompted to sign in with an account that has been assigned the Azure AD Global Administrator role) or via an unattended deployment script. 
+           - For pass-through authentication, you need to install at least one or more (three are recommended) lightweight Authentication Agents on your on-premises computers running Windows Servers 2012 R2 or newer with TLS 1.2 enabled. The computers hosting the agents must have direct access to Active Directory domain controllers and outbound access to internet. The first agent is installed automatically on the computer hosting Azure AD Connect once you choose to use pass-through authentication. To install additional agents, you can download their setup files from the **Pass-through authentication** blade (accessible via **Azure AD Connect** blade in the **Azure Active Directory** section of the Azure portal). Installation can be performed interactively (you will be prompted to sign in with an account that has been assigned the Azure AD Global Administrator role) or via an unattended deployment script.
 
       - Filtering
 
            - Azure AD Connect offers a number of different filtering options that determine the scope of synchronized Active Directory objects. While organizational unit-based filtering is the most straightforward to configure option, the scope can be based on a value of individual Active Directory attributes, which offers object-level granularity.
 
-           - Configuring attribute-based filtering relies on declarative provisioning, which is configurable by using Synchronization Rules Editor, included in the installation of Azure AD Connect. It can be applied when importing objects from Active Directory into to the metaverse (inbound) or when exporting objects from the metaverse to Azure AD (outbound). The recommended approach involves inbound filtering because this is easiest to maintain. Outbound filtering might be required in some scenarios, such as, for example, joining objects from more than one Active Directory forest before applying the filtering logic. 
+           - Configuring attribute-based filtering relies on declarative provisioning, which is configurable by using Synchronization Rules Editor, included in the installation of Azure AD Connect. It can be applied when importing objects from Active Directory into to the metaverse (inbound) or when exporting objects from the metaverse to Azure AD (outbound). The recommended approach involves inbound filtering because this is easiest to maintain. Outbound filtering might be required in some scenarios, such as, for example, joining objects from more than one Active Directory forest before applying the filtering logic.
 
-           - In inbound filtering, the scope determines which objects to synchronize or not synchronize. The scope has a group and a clause to determine when a sync rule is in scope. A group contains one or many clauses. There is a logical *AND* between multiple clauses, and a logical *OR* between multiple groups. Objects which are supposed to be synchronized to Azure AD must have the metaverse attribute **cloudFiltered** not set to a value to be synchronized. If this attribute's value is set to **TRUE**, then the object is not synchronized. It is important to note that, in general, this attribute should not be set to **FALSE**. To make sure that multiple rules can affect its value, the attribute is supposed to have the value of either **TRUE** or **NULL** (not set). There are, however, scenarios where the choice of **FALSE** is appropriate, such as, so called *positive* filtering, where you do specify which objects to include (rather than exclude) based on the value of their designated attribute. 
+           - In inbound filtering, the scope determines which objects to synchronize or not synchronize. The scope has a group and a clause to determine when a sync rule is in scope. A group contains one or many clauses. There is a logical *AND* between multiple clauses, and a logical *OR* between multiple groups. Objects which are supposed to be synchronized to Azure AD must have the metaverse attribute **cloudFiltered** not set to a value to be synchronized. If this attribute's value is set to **TRUE**, then the object is not synchronized. It is important to note that, in general, this attribute should not be set to **FALSE**. To make sure that multiple rules can affect its value, the attribute is supposed to have the value of either **TRUE** or **NULL** (not set). There are, however, scenarios where the choice of **FALSE** is appropriate, such as, so called *positive* filtering, where you do specify which objects to include (rather than exclude) based on the value of their designated attribute.
 
            - Contoso will use a combination of the organizational unit-based filtering and the *positive* filtering based on the value of the userPrincipalName attribute. In particular, user objects to be synchronized will need to have the domain suffix portion of their userPrincipalName attribute match the custom, verified DNS domain name of the Azure AD tenant. This value can be set individually on per user object level as part of staged implementation of the proposed hybrid identity solution.  
 
@@ -660,7 +659,7 @@ Have the table attendees reconvene with the larger session group to hear a subje
 
      Some of the risk detections detected by Azure Active Directory Identity Protection occur in real time and some require offline processing. Administrators can choose to block users who exhibit risky behaviors and remediate manually, require a password change, or require a multi-factor authentication as part of their Conditional Access policies.
 
-      - Customers also need to choose the authentication methods that they want to make available for users. It is important to allow more than a single authentication method so that users have a backup method available in case their primary method is unavailable. The methods include: 
+      - Customers also need to choose the authentication methods that they want to make available for users. It is important to allow more than a single authentication method so that users have a backup method available in case their primary method is unavailable. The methods include:
 
            - Notification through mobile app
 
@@ -728,14 +727,13 @@ Have the table attendees reconvene with the larger session group to hear a subje
 
            - **Azure AD tenant** performs the authentication of remote users attempting to access on-premises applications.
 
-           - **Application Proxy service** hosted by Azure AD passes the sign-in token from the user to on-premises instances of Application Proxy Connector. 
+           - **Application Proxy service** hosted by Azure AD passes the sign-in token from the user to on-premises instances of Application Proxy Connector.
 
            - **Application Proxy Connector** is a lightweight, stateless agent running on an on-premises Windows Server 2012 R2 or newer with direct connectivity to the target application. The server needs to have TLS 1.2 enabled before you install the Application Proxy connector. The connector manages communication between the on-premises application and the Application Proxy service via an outbound, persistent connection, which eliminates dependency on a perimeter network or open inbound ports on perimeter firewalls. In general, connectors can run on a Windows server that is not domain-joined. However, scenarios that require single sign-on (SSO) to applications which rely on Integrated Windows Authentication (IWA), it is necessary to use a domain-joined machine. In such scenarios, the connector machines must be domain-joined in order to perform Kerberos Constrained Delegation on behalf of the users of the published applications. This is one of the requirements that applies to the proposed solution. 
 
            - **Active Directory** performs authentication required to access on-premises applications. In single sign-on scenarios, the connector communicates with Active Directory to authenticate incoming access requests.
 
            - **On-premises applications** deliver required functionality to users once their access requests are authenticated.
-
 
 *Assessing resiliency aspects of a hybrid identity solution*
 
@@ -750,7 +748,7 @@ Have the table attendees reconvene with the larger session group to hear a subje
               You can use password hash synchronization as a backup authentication method for pass-through authentication, to address scenarios in which the agents cannot validate users' credentials because Active Directory domain controllers are unavailable or unreachable. By combining password hash synchronization and pass-through authentication, users will be able to authenticate directly against Azure AD in cases where the latter fails.
 
               Another mitigation approach involves extending your Active Directory environment to Azure. To accomplish this, you need to establish a hybrid network connection (such as Site-to-Site VPN or ExpressRoute) between your on-premises data center and an Azure virtual network and 
-deploy additional domain controllers of the on-premises Active Directory domain into that virtual network, as well as install additional pass-through authentication agents on Azure virtual machines within the same virtual network. This minimizes the possibility of network connectivity issues affecting communication between Active Directory and Azure AD. 
+deploy additional domain controllers of the on-premises Active Directory domain into that virtual network, as well as install additional pass-through authentication agents on Azure virtual machines within the same virtual network. This minimizes the possibility of network connectivity issues affecting communication between Active Directory and Azure AD.
 
         - Azure AD Connect synchronization engine
 
@@ -794,7 +792,7 @@ deploy additional domain controllers of the on-premises Active Directory domain 
 
    - Azure AD Connect passthrough authentication agent
 
-       - Authentication requests are dynamically distributed across all available Authentication Agents, so no explicit failover is required. 
+       - Authentication requests are dynamically distributed across all available Authentication Agents, so no explicit failover is required.
 
    - Azure AD Password Protection for Windows Server Active Directory
 
@@ -860,7 +858,7 @@ deploy additional domain controllers of the on-premises Active Directory domain 
 
         - Enforce multi-factor authentication to activate any roles
 
-        - Ensure that a rationale is provided as part of elevation approval process 
+        - Ensure that a rationale is provided as part of elevation approval process
 
         - Configure notifications triggered by activation of privileged roles
 
@@ -868,7 +866,7 @@ deploy additional domain controllers of the on-premises Active Directory domain 
 
         - Track elevation events
 
-          **Note**: Privileged Identity Management requires Azure AD Premium P2 licensing. 
+          **Note**: Privileged Identity Management requires Azure AD Premium P2 licensing.
 
 *Optimizing access control and management of applications and devices*
 
@@ -920,10 +918,9 @@ deploy additional domain controllers of the on-premises Active Directory domain 
 
         For more information regarding this subject, refer to *Technical and feature overview of Azure Active Directory B2C* at <https://docs.microsoft.com/en-us/azure/active-directory-b2c/technical-overview>
 
-
 ## Checklist of preferred objection handling
 
-1. Our Active Directory domain is using a non-routable domain name. We cannot risk renaming it in order to implement single sign-on with Azure Active Directory. 
+1. Our Active Directory domain is using a non-routable domain name. We cannot risk renaming it in order to implement single sign-on with Azure Active Directory.
 
     **Potential Answer:** Contoso does not have to rename their Active Directory domain in order to integrate with an Azure Active Directory tenant. Such integration is possible regardless of the DNS name of the Active Directory domain. What's important in order to ensure single sign-on experience for Active Directory users accessing cloud-based resources is to ensure that there is a match between the userPrincipalName in Active Directory and Azure AD. This is Microsoft's recommended approach. It is also possible to configure **Alternate Login ID**, which makes it possible to choose another attribute to designate the sign-in user names. The impact of this choice differs depending on the authentication method. For more information regarding **Alternate Login ID**, refer to Microsoft Docs at <https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id>.
 

@@ -12,7 +12,6 @@ Before the hands-on lab setup guide
 [May 2022]
 </div>
 
-
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
 Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
@@ -56,13 +55,13 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 Timeframe: 150 minutes
 
-### Task 1: Review the relevant Microsoft documentation 
+### Task 1: Review the relevant Microsoft documentation
 
 1. Review online documentation regarding Azure Active Directory at <https://docs.microsoft.com/en-us/azure/active-directory/> focusing on its integration with Active Directory and its B2B capabilities.
 
 ### Task 2: Validate the role in the Azure subscription
 
-1. Log in to the Azure portal at <http://portal.azure.com>, select  **All services**. Then search for and select **Subscriptions**.
+1. Log in to the Azure portal at <http://portal.azure.com>, and select  **All services**. Then search for and select **Subscriptions**.
 
      ![In this screenshot, the Azure portal is depicted with 'sub' typed into the search bar and 'subscriptions' highlighted in the results.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectSubscriptions.png "Search for and select Subscriptions in the Azure portal")
 
@@ -152,7 +151,7 @@ Timeframe: 150 minutes
     Invoke-Command -ComputerName $vmNames {Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value 00000000}
     ```
 
-      > **Note:** To run multiple PowerShell scripts in the same file, you can highlight a specific portion of the script and select **Run Selection** next to the green play button. 
+      > **Note:** To run multiple PowerShell scripts in the same file, you can highlight a specific portion of the script and select **Run Selection** next to the green play button.
 
     ![In this screenshot, the PowerShell is depicted with the script listed above pasted in.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/PSScript.png "PowerShell with the script pasted into it")
 
@@ -254,17 +253,17 @@ Timeframe: 150 minutes
 
     !["Select additional tasks screen in the Visual Studio Code installer with all checkboxes selected."](images/Hands-onlabstep-bystep-HybridIdentityImages/media/vscodeadditionaltasks.png "Visual Studio Code installer with all options selected")
 
-11. Within the Remote Desktop session to **DC1**, start File Explorer, navigate to the folder where you downloaded both files, right-click on the file **CreateDemoUsers.ps1**, select **Properties**, in the **CreateDemoUsers.ps1 Properties** dialog box, check the **Unblock** checkbox and select **OK**.
+11. Within the Remote Desktop session to **DC1**, start File Explorer, navigate to the folder where you downloaded both files, right-click on the file **CreateDemoUsers.ps1**, select **Properties**, in the **CreateDemoUsers.ps1 Properties** dialog box, check the **Unblock** checkbox, and select **OK**.
 
 12. Within the File Explorer window, right-click on the file **CreateDemoUsers.ps1** again and select **Open with Code**.
 
 13. Close the **Get Started** tab in Visual Studio Code and then click to install the PowerShell extension.
 
-    !["Visual Studio Code with the Get Started tab open and the popup to install PowerShell. The x to close the Get Started Tab and the Install button for the PowerShell extension are both highlighted."](images/Hands-onlabstep-bystep-HybridIdentityImages/media/vscode-getstarted.png "Visual Studio Code Get Started")
+    !["Visual Studio Code with the Get Started tab open and the pop-up to install PowerShell. The x to close the Get Started Tab and the Install button for the PowerShell extension are both highlighted."](images/Hands-onlabstep-bystep-HybridIdentityImages/media/vscode-getstarted.png "Visual Studio Code Get Started")
 
-14. In the resulting popup window, select **Trust Workspace & Install**
+14. In the resulting pop-up window, select **Trust Workspace & Install**
 
-    !["The popup to trust the workspace and install the PowerShell extension in Visual Studio Code. The Trust Workspace and Install button is selected."](images/Hands-onlabstep-bystep-HybridIdentityImages/media/vscode-powershell.png "Visual Studio Code Trust Workspace & Install")
+    !["The pop-up to trust the workspace and install the PowerShell extension in Visual Studio Code. The Trust Workspace and Install button is selected."](images/Hands-onlabstep-bystep-HybridIdentityImages/media/vscode-powershell.png "Visual Studio Code Trust Workspace & Install")
 
 15. In the **Visual Studio Code** window, change line **148** from:
 
@@ -278,7 +277,7 @@ Timeframe: 150 minutes
     $UserCount = 2500 #Up to 2500 can be created
     ```
 
-16. In **Visual Studio Code**, save the change. Then, in **Windows PowerShell**, run the **CreateDemoUsers.ps1** script to create a lab environment organizational unit hierarchy and populate it with test user accounts.
+16. In **Visual Studio Code**, save the change. Then, in **Windows PowerShell**, run the **CreateDemoUsers.ps1** script to create a lab environment organizational unit hierarchy, and populate it with test user accounts.
 
 17. Within the **Windows PowerShell** window, run the following script to modify the settings of the AD user accounts you will use in this lab:
 
@@ -302,7 +301,7 @@ Timeframe: 150 minutes
     Get-ADGroup -Identity 'Enterprise Admins' | Add-ADGroupMember -Members 'CN=Ayers\, Ann,OU=NJ,OU=US,OU=Users,OU=Demo Accounts,DC=corp,DC=contoso,DC=com'
     ```
 
-18. Within the **Windows PowerShell** window, add the following script to the script pane, and run it to create additional organizational units named **Servers** and **Clients** and move the **APP1** computer account to the first of them:
+18. Within the **Windows PowerShell** window, add the following script to the script pane, and run it to create additional organizational units named **Servers** and **Clients**, and move the **APP1** computer account to the first of them:
 
     ```pwsh
     New-ADOrganizationalUnit -Name 'Servers' -Path 'OU=Demo Accounts,DC=corp,DC=contoso,DC=com'

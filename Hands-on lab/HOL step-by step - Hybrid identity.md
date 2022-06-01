@@ -78,7 +78,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 ## Abstract and learning objectives
 
-In this hands-on lab, you will set up and configure a number of different hybrid identity scenarios. The scenarios involve an Active Directory single-domain forest named corp.contoso.com, which consists (for simplicity reasons) of a single domain controller named DC1 and a single domain member server named APP1. The intention is to explore Azure AD-related capabilities that allow you to integrate Active Directory with Azure Active Directory, optimize hybrid authentication and authorization, and provide secure access to on-premises resources from the Internet for both organizational users and users who are members of partner organizations. 
+In this hands-on lab, you will set up and configure a number of different hybrid identity scenarios. The scenarios involve an Active Directory single-domain forest named corp.contoso.com, which consists (for simplicity reasons) of a single domain controller named DC1 and a single domain member server named APP1. The intention is to explore Azure AD-related capabilities that allow you to integrate Active Directory with Azure Active Directory, optimize hybrid authentication and authorization, and provide secure access to on-premises resources from the Internet for both organizational users and users who are members of partner organizations.
 
 ## Overview
 
@@ -256,7 +256,7 @@ In this task, you will purchase a custom DNS domain name by leveraging the funct
 
     ![Screenshot depicts the New blade with 'Web App' selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectWebApp1.png "Select create web app resource")
 
-5. On the **Basics** tab of the **Web App** blade, specify the following settings and select **Next: Deployment**:
+5. On the **Basics** tab of the **Web App** blade, specify the following settings, and select **Next: Deployment**:
 
     - Subscription: The name of the Azure subscription into which you deployed resources in the Before Hands-On Lab exercises.
 
@@ -280,7 +280,7 @@ In this task, you will purchase a custom DNS domain name by leveraging the funct
 
 6. Select **Next: Networking** and then **Next: Monitoring**
   
-7. On the **Monitoring** tab of the **Web App** blade, specify the following setting and select **Review + create** then **Create**:
+7. On the **Monitoring** tab of the **Web App** blade, specify the following setting, and select **Review + create** then **Create**:
 
     - Enable Application Insights: **No**
 
@@ -320,7 +320,7 @@ In this task, you will assign a newly purchased custom DNS domain name to the Co
 
 7. On the lab computer, start another browser tab and navigate to the Azure portal.
 
-8. In the Azure portal, select the **Directory + Subscription** icon in the toolbar of the Azure portal (to the right of the **Cloud Shell** icon) to switch to the Azure AD tenant associated with the Azure subscription into which you deployed resources in the Before Hands-On Lab exercises (the **Default Directory**). 
+8. In the Azure portal, select the **Directory + Subscription** icon in the toolbar of the Azure portal (to the right of the **Cloud Shell** icon) to switch to the Azure AD tenant associated with the Azure subscription into which you deployed resources in the Before Hands-On Lab exercises (the **Default Directory**).
 
 9. In the Azure portal, select **All services** in the portal's left navigation. In the **Search All** textbox, type **DNS zones**, and then select the **DNS zones** entry in the listing of search results.
 
@@ -330,7 +330,7 @@ In this task, you will assign a newly purchased custom DNS domain name to the Co
 
 11. On the DNS zone blade, select **+ Record set**.
 
-12. On the **Add record set** blade, specify the following settings and select **OK**:
+12. On the **Add record set** blade, specify the following settings, and select **OK**:
 
     - Name: **\@**
 
@@ -342,7 +342,7 @@ In this task, you will assign a newly purchased custom DNS domain name to the Co
 
     - Value: The value of the **DESTINATION OR POINTS TO ADDRESS** entry you identified on the **Custom domain name** blade.
 
-13. Switch back to the browser window displaying the custom domain name blade, and select **Verify**. Ensure that the verification was successful. 
+13. Switch back to the browser window displaying the custom domain name blade, and select **Verify**. Ensure that the verification was successful.
 
 14. Select **Make primary** and confirm the change when prompted.
 
@@ -446,7 +446,7 @@ In this task, you will install Azure AD Connect.
 
     ![In this screenshot, the Azure AD sign-in configuration page of the Microsoft Azure AD Connect wizard is depicted with the custom domain name listed as verified. The userPrincipalName is listed as the attribute to use as the AzureAD username. The Next button is then selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_AzureADsign-inconfiguration.png "Configure sign-in and select Next")
 
-19. On the **Domain and OU filtering** page, ensure that only the **DemoAccounts** OU and all its children OUs are selected and select **Next**. 
+19. On the **Domain and OU filtering** page, ensure that only the **DemoAccounts** OU and all its children OUs are selected and select **Next**.
 
     ![In this screenshot, on the Domain and OU filtering page of the Microsoft Azure AD Connect wizard, the Demo Accounts OU and all its child OUs are selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_DomainandOUFiltering.png "Select Demo Accounts and Child OUs then select Next")
 
@@ -471,7 +471,6 @@ In this task, you will install Azure AD Connect.
     ![In this screenshot, on the Enable single sign-on page of the Microsoft Azure AD Connect wizard, the Start the synchronization process when configuration completes is not selected, and the Install button is selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_ReadytoConfigure.png "Ready to Configure")
 
      > **Note**: You will configure attribute-level filtering before enabling the synchronization process.
-
      > **Note**: Installation should take about 2 minutes.
 
 25. On the **Configuration complete** page, select **Exit**.
@@ -480,7 +479,7 @@ In this task, you will install Azure AD Connect.
 
 ### Task 7: Enable Active Directory Recycle Bin
 
-In this task, you will enable Recycle Bin in the Contoso Active Directory domain. 
+In this task, you will enable Recycle Bin in the Contoso Active Directory domain.
 
 1. Within the Remote Desktop session to **DC1**, on the Tools menu in the Server Manager console, start **Active Directory Administrative Center**.
 
@@ -556,7 +555,7 @@ In this task, you will configure Azure AD Connect attribute level filtering that
 
 7. When presented with a **Warning** dialog box displaying that message stating that **A full import and full synchronization will be run on 'corp.contoso.com' during your next synchronization cycle**, select **OK**.
 
-   > **Note**: This should bring you back to the View and manage your synchronization rules interface, with the new rule listed at the top of the rule list. 
+   > **Note**: This should bring you back to the View and manage your synchronization rules interface, with the new rule listed at the top of the rule list.
 
     ![In this screenshot, the synchronization rules editor with the newly created Custom in from AD - UPN Filter rule is highlighted.](images/2020-04-27-23-44-31.png "View new rule")
 
@@ -716,7 +715,7 @@ In this task, you will configure Azure AD Connect device synchronization options
 
 7. Switch back to the Remote Desktop session to **APP1** and start a **Command Prompt**.
 
-8. From the Command Prompt window, check the Azure AD registration status of APP1 by running the following: 
+8. From the Command Prompt window, check the Azure AD registration status of APP1 by running the following:
 
    ```txt
    dsregcmd /status
@@ -799,9 +798,9 @@ In this exercise, you will optimize authentication, authorization, and access co
 
 In this task, you will create and configure Active Directory groups that will be used to control authentication, authorization, and access control and synchronize them to the Contoso Azure AD tenant.
 
-1. Within the Remote Desktop session to **DC1**, on the **Server Manager** window, under **Tools**, start the **Active Directory Users and Computers** console. 
+1. Within the Remote Desktop session to **DC1**, on the **Server Manager** window, under **Tools**, start the **Active Directory Users and Computers** console.
 
-2. In the **Active Directory Users and Computers** console, expand **corp.contoso.com** on the left and navigate to **Demo Accounts > Groups**. 
+2. In the **Active Directory Users and Computers** console, expand **corp.contoso.com** on the left and navigate to **Demo Accounts > Groups**.
 
     ![In this screenshot, the Active Directory Users and Computers console is depicted with the left navigation expanded to 'corp.contoso.com' > 'Demo Accounts' > 'Groups' with 'Groups' selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/NodeNavigation.png "Navigate to DemoAccounts > Groups in Active Directory Users and Computers")
 
@@ -929,7 +928,7 @@ This task will enable password writeback and Self-Service Password Reset (SSPR) 
 
 In this task, you will implement Azure AD password protection for Windows Server Active Directory.
 
-1. Within the Remote Desktop session to **DC1**, on the **Server Manager** window, under **Tools**, start the **Group Policy Management** console. 
+1. Within the Remote Desktop session to **DC1**, on the **Server Manager** window, under **Tools**, start the **Group Policy Management** console.
 
 2. In the **Group Policy Management** console, navigate to **Forest: corp.contoso.com > Domains > corp.contoso.com** on the left, right-click **Default Domain Policy** and select **Edit**.
 
@@ -937,7 +936,7 @@ In this task, you will implement Azure AD password protection for Windows Server
 
 3. In the **Group Policy Management Editor**, navigate to **Computer Configuration > Policies > Windows Settings > Security Settings > Account Policies > Account Lockout Policy**.
 
-4. Set the value of the **Account lockout threshold** to **10**, select **OK**, and accept the settings in the **Suggested Value Changes**. 
+4. Set the value of the **Account lockout threshold** to **10**, select **OK**, and accept the settings in the **Suggested Value Changes**.
 
     ![In this screenshot, the Group Policy Management Editor is depicted with the 'Account lockout threshold properties' dialog open with the required settings selected and the 'Suggested Value Changes' dialog open with the OK button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADPasswordProtectionPolicy_ADLockout.png "Group policy management")
 
@@ -1002,7 +1001,7 @@ In this task, you will implement Azure AD password protection for Windows Server
     Register-AzureADPasswordProtectionForest -AccountUpn 'john.doe@<domain_name>.onmicrosoft.com'
     ```
 
-18. Switch to the Remote Desktop session to the **DC1** virtual machine, where you are signed in as the user **CORP\demouser** with the **demo@pass123** password. 
+18. Switch to the Remote Desktop session to the **DC1** virtual machine, where you are signed in as the user **CORP\demouser** with the **demo@pass123** password.
 
 19. Within the Remote Desktop session to **DC1**, start the Edge browser and navigate to the **Azure AD Password Protection for Windows Server Active Directory** page at the URL below. Select **Download** under **Azure AD Password Protection for Windows Server Active Directory**. Download and install **AzureADPasswordProtectionProxySetup.exe** with the default options.
 
@@ -1016,7 +1015,7 @@ In this task, you will implement Azure AD password protection for Windows Server
 
 In this task, you will enable Azure AD Identity Protection.
 
-1. After **DC1** reboots, connect to **DC1** via Remote Desktop. When prompted to sign in, use the **demouser** name with the **demo\@pass123** password. 
+1. After **DC1** reboots, connect to **DC1** via Remote Desktop. When prompted to sign in, use the **demouser** name with the **demo\@pass123** password.
 
 2. Within the Remote Desktop session to **DC1**, start the Edge browser and navigate to the Azure portal at the URL below:
 
@@ -1190,7 +1189,7 @@ In this task, you will implement Azure AD Conditional Access Policies.
 
     ![In this screenshot, the New blade of the Azure portal is depicted with the '0 controls selected' button selected and the Grant blade open with the required options chosen along with the Select button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_AccesscontrolsGrant.png "Access controls Grant settings")
 
-30. Back on the **New** blade, in the **Access controls** section, select **0 controls selected** under **Session**. 
+30. Back on the **New** blade, in the **Access controls** section, select **0 controls selected** under **Session**.
 
 31. Review the **Session** blade settings but do not modify them. Close it when you are finished.
 
@@ -1200,7 +1199,7 @@ In this task, you will implement Azure AD Conditional Access Policies.
 
 33. Back on the **Conditional Access - Policies** blade, select **What If**.
 
-34. On the **What If** blade, specify the following settings and select **What If**:
+34. On the **What If** blade, specify the following settings, and select **What If**:
 
     - User: **Teresa F. Bell**
 
@@ -1288,7 +1287,7 @@ Duration: 90 minutes
 
 **Overview**
 
-In this exercise, you will configure access to an on-premises Integrated Windows Authentication app (implemented as the default IIS website) from the internet by installing and configuring Azure AD Application Proxy. You will test access to this application by using a Contoso Azure AD tenant user account and using a Fabrikam Azure AD tenant user account configured as a guest account in the Contoso Azure AD tenant. 
+In this exercise, you will configure access to an on-premises Integrated Windows Authentication app (implemented as the default IIS website) from the internet by installing and configuring Azure AD Application Proxy. You will test access to this application by using a Contoso Azure AD tenant user account and using a Fabrikam Azure AD tenant user account configured as a guest account in the Contoso Azure AD tenant.
 
 ### Task 1: Install and configure Azure AD Application Proxy
 
@@ -1320,7 +1319,7 @@ In this task, you will configure an Azure AD Application Proxy application.
 
 1. On the **Contoso - Application proxy** blade, select **+ Configure an app**.
 
-2. On the **Add your own on-premises application** blade, specify the following settings and select **+ Add**.
+2. On the **Add your own on-premises application** blade, specify the following settings, and select **+ Add**.
 
     - Name: **APP1 Default Web Site**
 
@@ -1354,7 +1353,7 @@ In this task, you will configure an Azure AD Application Proxy application.
 
 5. On the **APP1 Default Web Site - Users and groups** blade, select **+ Add user/group**.
 
-6. On the **Add Assignment** blade, specify the following settings and select **Assign**:
+6. On the **Add Assignment** blade, specify the following settings, and select **Assign**:
 
     - Users and groups: **Engineering**
 
@@ -1382,7 +1381,7 @@ In this task, you will configure an Azure AD Application Proxy application.
 
     > **Note**: The HTTP service class is one of the built-in services that act as an alias to the HOST SPN. For more information, refer to **How to use SPNs when you configure Web applications that are hosted on Internet Information Services** at <https://support.microsoft.com/en-us/help/929650/how-to-use-spns-when-you-configure-web-applications-that-are-hosted-on>.
 
-11. Within the Remote Desktop session to **DC1**, in the Server Manager console, select **Tools** and then select **Active Directory Users and Computers**. 
+11. Within the Remote Desktop session to **DC1**, in the Server Manager console, select **Tools** and then select **Active Directory Users and Computers**.
 
 12. In the **Active Directory Users and Computers** console, select **View** and, in the **View** menu, enable **Advanced Features**.
 
@@ -1394,11 +1393,11 @@ In this task, you will configure an Azure AD Application Proxy application.
 
 14. In the **DC1 Properties** window, switch to the **Delegation** tab and select the option **Trust this computer for delegation to specified services only**.
 
-15. Select the option **Use any authentication protocol**, select **Add**, in the **Add Services** window, select **Users or Computers**. In the **Select Users or Computers** dialog box, in the **Enter the object names to select** text box, type **APP1**. Select **Check Names** to verify the name resolves, and select **OK**. 
+15. Select the option **Use any authentication protocol**, select **Add**, in the **Add Services** window, select **Users or Computers**. In the **Select Users or Computers** dialog box, in the **Enter the object names to select** text box, type **APP1**. Select **Check Names** to verify the name resolves, and select **OK**.
 
     ![In this screenshot, the 'DC1 Properties' window is depicted with the Delegation tab selected with the 'Trust this computer for delegation to specified services only' and 'Use any authentication protocol' options and the 'Add' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DelegationConfiguration.png "Delegation configuration")
 
-16. In the **Add Services** window, select the **http** entry and select **OK**. 
+16. In the **Add Services** window, select the **http** entry and select **OK**.
 
     ![In this screenshot, 'Add Services' window is depicted with the 'http' entry selected along with the OK button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADApplicationProxy_Delegation_http.png "Delegation http")
 
@@ -1418,7 +1417,7 @@ In this task, you will configure an Azure AD Application Proxy application.
 
 ### Task 4: Create an Azure Active Directory tenant and activate an EMS E5 trial
 
-In this task, you will create another Azure Active Directory tenant representing the Fabrikam organization with the following settings: 
+In this task, you will create another Azure Active Directory tenant representing the Fabrikam organization with the following settings:
 
 - Organization name: **Fabrikam**
 
@@ -1614,7 +1613,7 @@ In this task, you will create and configure Azure AD guest accounts in the Conto
 
 12. When prompted, change the password for the **jane.doe** Fabrikam Azure AD user account.
 
-    > **Note**: If you receive the message **We've seen that password too many times before. Choose something harder to guess**; you'll need to modify the password until it is unique enough to be accepted.
+    > **Note**: If you receive the message, "**We've seen that password too many times before. Choose something harder to guess**", you will need to modify the password until it is unique enough to be accepted.
 
 13. In the Azure portal, sign out from the Contoso Azure AD tenant and close the in private/incognito browser window.
 
@@ -1742,11 +1741,11 @@ In this task, you will configure an Azure AD Application Proxy application for B
     Install-Module AzureAD
     ```
 
-33. Execute the script and ensure it did not return any error messages. 
+33. Execute the script and ensure it did not return any error messages.
 
     > **Note**: You can schedule script execution regularly by using Windows Scheduled Tasks. Refer to the **Readme - Script to pull Azure AD B2B users on-prem_v1.0.3.pdf** file for details.
 
-34. Switch back to the Azure Active Directory Users and Computers console and verify that a user account of **jane.doe** is listed in the **Demo B2B Accounts\\Enabled** organizational unit. You may have to refresh the console. 
+34. Switch back to the Azure Active Directory Users and Computers console and verify that a user account of **jane.doe** is listed in the **Demo B2B Accounts\\Enabled** organizational unit. You may have to refresh the console.
 
     > **Note**: In a production environment, you could provide access to Integrated Windows Authentication apps by leveraging Microsoft Identity Manager. You can also give access to on-premises apps that support SAML-based authentication directly from the Azure portal. Refer to Grant B2B users in Azure AD access to your on-premises applications at <https://docs.microsoft.com/en-us/azure/active-directory/b2b/hybrid-cloud-to-on-premises> for more information.
 
@@ -1760,7 +1759,7 @@ In this task, you will configure an Azure AD Application Proxy application for B
     https://myapps.microsoft.com
     ```
 
-2. When prompted, sign in by using the **jane.doe** Fabrikam Azure AD user account. 
+2. When prompted, sign in by using the **jane.doe** Fabrikam Azure AD user account.
 
 3. Once signed in, select the **Jane Fabrikam** icon in the upper right corner of the Application Access Panel page and, in the dropdown menu, select **Switch organization**.
 
@@ -1859,7 +1858,7 @@ In this task, you will promote the newly created VM to a domain controller and c
 10. Right-click the network connection icon on the taskbar to open the **Network and sharing center**.
 
 11. Select **Ethernet** next to **Connections**.
-    
+
 12. When the **Ethernet Status** tile opens, select **Properties**.
 
 13. On the **Ethernet Properties** tile, select **Internet Protocol Version 4 (TCP/IPv4)**, and select **Properties**.
@@ -1874,7 +1873,7 @@ In this task, you will promote the newly created VM to a domain controller and c
 
     ![After the virtual machine restarts, select to promote the server by selecting the flag in the Server Manager, as shown in this screenshot.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/promotedc.png "Promote the server to a DC")
 
-17. Select **Add a domain controller to an existing domain**, select **Select**. 
+17. Select **Add a domain controller to an existing domain**, select **Select**.
 
     ![This screenshot shows the deployment configuration to add an existing domain by selecting select.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/existingdomain.png "Add DC to an existing domain")
 
@@ -1964,13 +1963,13 @@ In this task, you will install and configure Azure AD Connect in standby mode. T
 
 11. Make sure the tab Connectors is still selected. Then, for each Connector with type **Active Directory Domain Services**, select **Run**, select **Delta Synchronization**, and **OK**.
 
-12. Select the Connector with type **Azure Active Directory (Microsoft)**. Select **Run**, select **Delta Synchronization**, and **OK**.   
+12. Select the Connector with type **Azure Active Directory (Microsoft)**. Select **Run**, select **Delta Synchronization**, and **OK**.
 
 ### Task 4: Configure Azure AD Application Proxy for BDC-1 VM
 
 In this task, you will configure Azure AD Application Proxy for the BDC-1 VM.
 
-1. Within the Remote Desktop session to **DC1**, in the Server Manager console, select **Tools** and then select **Active Directory Users and Computers**. 
+1. Within the Remote Desktop session to **DC1**, in the Server Manager console, select **Tools** and then select **Active Directory Users and Computers**.
 
 2. In the **Active Directory Users and Computers** console, select **View** and, in the **View** menu, enable **Advanced Features**.
 
@@ -1982,17 +1981,17 @@ In this task, you will configure Azure AD Application Proxy for the BDC-1 VM.
 
 4. In the **BDC-1 Properties** window, switch to the **Delegation** tab and select the option **Trust this computer for delegation to specified services only**.
 
-5. Select the option **Use any authentication protocol**, select **Add**, in the **Add Services** window, select **Users or Computers**, in the **Select Users or Computers** dialog box, in the **Enter the object names to select** text box, type **APP1** and select **OK**. 
+5. Select the option **Use any authentication protocol**, select **Add**, in the **Add Services** window, select **Users or Computers**, in the **Select Users or Computers** dialog box, in the **Enter the object names to select** text box, type **APP1** and select **OK**.
 
     ![In this screenshot, the 'DC1 Properties' window is depicted with the Delegation tab selected with the 'Trust this computer for delegation to specified services only' and 'Use any authentication protocol' options and the 'Add' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DelegationConfiguration2.png "Delegation configuration")
 
-6. Back in the **Add Services** window, select the **http** entry and select **OK**. 
+6. Back in the **Add Services** window, select the **http** entry and select **OK**.
 
     ![In this screenshot, 'Add Services' window is depicted with the 'http' entry selected along with the OK button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADApplicationProxy_Delegation_http2.png "Delegation http")
 
 7. In the **DC1 Properties** window, select **OK**.
 
-**Summary** 
+**Summary**
 
 In this exercise, you installed and configured a backup domain controller, set it up for Azure AD Connect standby synchronization, and added redundancy with the Azure AD Connect pass-through agents and Application proxy. You have now configured a resilient and available hybrid identity architecture.
 
@@ -2022,7 +2021,7 @@ In this exercise, you installed and configured a backup domain controller, set i
 
 **Lab summary**
 
-In this hands-on lab, you set up and configured a number of different hybrid identity scenarios. The scenarios involved an Active Directory single-domain forest named corp.contoso.com in this lab environment consisted (for simplicity reasons) of a single domain controller named DC1 and a single domain member server named APP1. You explored Azure AD-related capabilities that allowed you to integrate Active Directory with Azure Active Directory, optimized hybrid authentication and authorization, and provided secure access to on-premises resources from the Internet for both organizational users and users who are members of partner organizations. 
+In this hands-on lab, you set up and configured a number of different hybrid identity scenarios. The scenarios involved an Active Directory single-domain forest named corp.contoso.com in this lab environment consisted (for simplicity reasons) of a single domain controller named DC1 and a single domain member server named APP1. You explored Azure AD-related capabilities that allowed you to integrate Active Directory with Azure Active Directory, optimized hybrid authentication and authorization, and provided secure access to on-premises resources from the Internet for both organizational users and users who are members of partner organizations.
 
 ## After the hands-on lab
 
