@@ -42,7 +42,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- /TOC -->
 
-#  Hybrid identity whiteboard design session student guide
+# Hybrid identity whiteboard design session student guide
 
 ## Abstract and learning objectives 
 
@@ -58,17 +58,17 @@ Timeframe: 15 minutes
 
 Directions:  With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
 
-1.  Meet your team members and trainer.
+1. Meet your team members and trainer.
 
-2.  Read all directions for steps 1-3 in the student guide.
+2. Read all directions for steps 1-3 in the student guide.
 
-3.  As a team, review the following customer case study.
+3. As a team, review the following customer case study.
 
 ### Customer situation
 
 Contoso is a medium size financial services company with its headquarters in New York and a branch office in San Francisco. It is currently operating entirely on-premises, with majority of its infrastructure running on the Windows platform. 
 
-Contoso is facing challenges related to increased mobility of its workforce. In particular, in order to drive down its office space costs, Contoso management is considering implementing a flexible work arrangement policy which would allow its employees to work on designated days from home, using either corporate- and employee-owned devices. However, the Contoso's Information Security team expressed concerns about insufficient controls that would prevent access from unauthorized or non-compliant systems. In addition, there are concerns regarding using traditional VPN technologies or DirectAccess, which tend to provide excessive access to on-premises infrastructure. 
+Contoso is facing challenges related to increased mobility of its workforce. In particular, in order to drive down its office space costs, Contoso management is considering implementing a flexible work arrangement policy which would allow its employees to work on designated days from home, using either corporate- and employee-owned devices. However, the Contoso's Information Security team expressed concerns about insufficient controls that would prevent access from unauthorized or non-compliant systems. In addition, there are concerns regarding using traditional VPN technologies or DirectAccess, which tend to provide excessive access to on-premises infrastructure.
  
 **Existing Contoso Active Directory environment**
 
@@ -92,65 +92,63 @@ To facilitate the expansion of their customer base, Contoso started developing a
 
 The management team of Contoso, including its CIO, Andrew Cross, emphasized the need for resiliency and Service Level Agreements associated with each of the identity-related components that are part of the target design. At the same time, they are also interested in minimizing additional infrastructure requirements to implement the design.
 
-### Customer needs 
+### Customer needs
 
-1.  Remote users must be able to sign into their devices using their Active Directory credentials.
+1. Remote users must be able to sign into their devices using their Active Directory credentials.
 
-2.  Existing Active Directory user sign-in hours and password policies must be preserved (although allowed password values could be further restricted). 
+2. Existing Active Directory user sign-in hours and password policies must be preserved (although allowed password values could be further restricted). 
 
-3.  User sign-in experience should be simplified by minimizing the number of sign-in prompts and limiting the use passwords in lieu of more secure authentication methods. 
+3. User sign-in experience should be simplified by minimizing the number of sign-in prompts and limiting the use passwords in lieu of more secure authentication methods. 
 
-4.  User device configuration should be simplified by leveraging a mobile device management solution and roaming user-specific settings across multiple devices.
+4. User device configuration should be simplified by leveraging a mobile device management solution and roaming user-specific settings across multiple devices.
 
-5.  Control access of users to applications and resources by relying on a combination of multiple conditions, including users group membership, state of the users' devices, and dynamically evaluated risk based on heuristics and globally collected security related telemetry.
+5. Control access of users to applications and resources by relying on a combination of multiple conditions, including users group membership, state of the users' devices, and dynamically evaluated risk based on heuristics and globally collected security related telemetry.
 
-6.  Users must be allowed to reset their own passwords. 
+6. Users must be allowed to reset their own passwords. 
 
-7.  Designated users should be able to temporarily elevate their privileges to manage other user accounts. All elevation events must be edited.
+7. Designated users should be able to temporarily elevate their privileges to manage other user accounts. All elevation events must be edited.
 
-8.  Contoso remote users must be able to access on-premises Windows Integrated Authentication-based applications.
+8. Contoso remote users must be able to access on-premises Windows Integrated Authentication-based applications.
 
-9.  Fabrikam users must be able to access on-premises Windows Integrated Authentication-based applications.
+9. Fabrikam users must be able to access on-premises Windows Integrated Authentication-based applications.
 
-10.  Commercial applications developed by Contoso programmers must be made available to external customers with minimum overhead associated with identity management.
+10. Commercial applications developed by Contoso programmers must be made available to external customers with minimum overhead associated with identity management.
 
-11.  Resiliency must be maximized whenever possible. Users must not lose authentication capabilities or the ability to access on-premises applications.
+11. Resiliency must be maximized whenever possible. Users must not lose authentication capabilities or the ability to access on-premises applications.
 
-12.  Infrastructure requirements must be minimized.
+12. Infrastructure requirements must be minimized.
 
-### Customer objections 
+### Customer objections
 
-1.  Our Active Directory domain is using a non-routable domain name. We cannot risk renaming it in order to implement single sign-on with Azure Active Directory.
+1. Our Active Directory domain is using a non-routable domain name. We cannot risk renaming it in order to implement single sign-on with Azure Active Directory.
 
-2.  We have heard that it is not possible to run multiple instances of Azure AD Connect simultaneously. All identity services components in our environment must provide resiliency and support failover.
+2. We have heard that it is not possible to run multiple instances of Azure AD Connect simultaneously. All identity services components in our environment must provide resiliency and support failover.
 
-3.  If we decide to integrate our Active Directory environment with Azure Active Directory, this must be performed in stages. This is likely to be complex, considering that users in each stage would be members of different Active Directory groups and their accounts might reside in different Active Directory organizational units.
+3. If we decide to integrate our Active Directory environment with Azure Active Directory, this must be performed in stages. This is likely to be complex, considering that users in each stage would be members of different Active Directory groups and their accounts might reside in different Active Directory organizational units.
 
-4.  Synchronizing our Active Directory accounts with Azure AD accounts makes the former vulnerable to malicious or accidental lockouts that affect the latter. This would effectively expose our on-premises environment to external attacks. 
+4. Synchronizing our Active Directory accounts with Azure AD accounts makes the former vulnerable to malicious or accidental lockouts that affect the latter. This would effectively expose our on-premises environment to external attacks. 
 
-5.  A number of critical web applications running in our on-premises environment rely on Kerberos-based Windows Integrated Authentication. Microsoft states that Azure Active Directory does not support Kerberos. Doesn't this mean that remote users authenticating to Azure Active Directory and our business partners will not be able to properly authenticate and access these applications?
-
+5. A number of critical web applications running in our on-premises environment rely on Kerberos-based Windows Integrated Authentication. Microsoft states that Azure Active Directory does not support Kerberos. Doesn't this mean that remote users authenticating to Azure Active Directory and our business partners will not be able to properly authenticate and access these applications?
 
 ### Key design considerations
 
-1.  The choice of the authentication method supported in hybrid identity scenarios
+1. The choice of the authentication method supported in hybrid identity scenarios
 
-2.  The choice of scope synchronization between Active Directory and Azure AD
+2. The choice of scope synchronization between Active Directory and Azure AD
 
-3.  The choice of Azure AD edition required to satisfy Contoso's requirements
+3. The choice of Azure AD edition required to satisfy Contoso's requirements
 
-4.  The Service Level Agreements associated with the choice of the Azure AD edition 
+4. The Service Level Agreements associated with the choice of the Azure AD edition 
 
-5.  Requirements necessary to minimize dependency on passwords in lieu of more secure authentication methods
+5. Requirements necessary to minimize dependency on passwords in lieu of more secure authentication methods
 
-6.  The approach to allowing different authentication requirements, depending on users' group membership, state of the user devices, and dynamically evaluated risk based on heuristics and globally collected security related telemetry
+6. The approach to allowing different authentication requirements, depending on users' group membership, state of the user devices, and dynamically evaluated risk based on heuristics and globally collected security related telemetry
 
-7.  The approach to providing Contoso and Fabrikam users access to on-premises web applications that rely on Kerberos-based Windows Integrated Authentication
+7. The approach to providing Contoso and Fabrikam users access to on-premises web applications that rely on Kerberos-based Windows Integrated Authentication
 
-8.  The approach to providing external customers access to custom-developed applications with minimum overhead associated with identity management
+8. The approach to providing external customers access to custom-developed applications with minimum overhead associated with identity management
 
-9.  The method of implementing redundancy in your solution
-
+9. The method of implementing redundancy in your solution
 
 ### Infographic for common scenarios
 
@@ -172,9 +170,9 @@ Timeframe: 60 minutes
 
 Directions: With your team, answer the following questions and be prepared to present your solution to others:
 
-1.  Who will you present this solution to? Who is your target customer audience? Who are the decision makers?
+1. Who will you present this solution to? Who is your target customer audience? Who are the decision makers?
 
-2.  What customer business needs do you need to address with your solution?
+2. What customer business needs do you need to address with your solution?
 
 **Design**
 
@@ -182,45 +180,45 @@ Directions: With your team, respond to the following questions:
 
 *Architecting a hybrid identity solution*
 
-1.  Using the features of Azure Active Directory and the requirements from the customer, how would you design a Hybrid Identity solution?
+1. Using the features of Azure Active Directory and the requirements from the customer, how would you design a Hybrid Identity solution?
 
-2.  How does your design account for customer objectives and objections?
+2. How does your design account for customer objectives and objections?
 
 *Architecting a hybrid authentication solution*
 
-1.  How does your solution address all the customer requirements in regard to authentication?
+1. How does your solution address all the customer requirements in regard to authentication?
 
 *Implementing a hybrid identity solution*
 
-1.  What are the steps to implement a hybrid identity solution that will allow you to meet all the customer requirements?
+1. What are the steps to implement a hybrid identity solution that will allow you to meet all the customer requirements?
 
 *Assessing resiliency aspects of a hybrid identity solution*
 
-1.  What are provisions that eliminate single points of failure in your design?
+1. What are provisions that eliminate single points of failure in your design?
 
-2.  What is the failover process for components that operate in the active/passive mode?
+2. What is the failover process for components that operate in the active/passive mode?
 
 *Optimizing authentication configuration*
 
-1.  What features will allow to optimize authentication in your solution to satisfy the following customer requirements?
+1. What features will allow to optimize authentication in your solution to satisfy the following customer requirements?
 
 *Optimizing authorization configuration*
 
-1.  What features will allow to optimize authorization in your solution to satisfy the following customer requirements?
+1. What features will allow to optimize authorization in your solution to satisfy the following customer requirements?
 
 *Optimizing access control and management of applications and devices*
 
-1.  What features will allow to optimize access control and management of applications and devices to satisfy the following customer requirements?
+1. What features will allow to optimize access control and management of applications and devices to satisfy the following customer requirements?
 
 **Prepare**
 
 Directions: As a team:
 
-1.  Identify any customer needs that are not addressed with the proposed solution.
+1. Identify any customer needs that are not addressed with the proposed solution.
 
-2.  Identify the benefits of your solution.
+2. Identify the benefits of your solution.
 
-3.  Determine how you will respond to the customer's objections.
+3. Determine how you will respond to the customer's objections.
 
 Prepare a 15-minute chalk-talk style presentation to the customer.
 
@@ -236,27 +234,27 @@ Timeframe: 30 minutes
 
 Directions:
 
-1.  Pair with another team.
+1. Pair with another team.
 
-2.  One group is the Microsoft team and the other is the customer.
+2. One group is the Microsoft team and the other is the customer.
 
-3.  The Microsoft team presents their proposed solution to the customer.
+3. The Microsoft team presents their proposed solution to the customer.
 
-4.  The customer makes one of the objections from the list of objections.
+4. The customer makes one of the objections from the list of objections.
 
-5.  The Microsoft team responds to the objection.
+5. The Microsoft team responds to the objection.
 
-6.  The customer team gives feedback to the Microsoft team.
+6. The customer team gives feedback to the Microsoft team.
 
-7.  Switch roles and repeat Steps 2-6.
+7. Switch roles and repeat Steps 2-6.
 
-##  Wrap-up 
+## Wrap-up
 
 Timeframe: 15 minutes
 
 Directions: Reconvene with the larger group to hear the facilitator/SME share the preferred solution for the case study.
 
-##  Additional references
+## Additional references
 
 |    |            |
 |----------|:-------------:|

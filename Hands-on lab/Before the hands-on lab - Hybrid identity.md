@@ -214,7 +214,9 @@ Timeframe: 150 minutes
 
 2. Within the Remote Desktop session to **DC1**, start Internet Explorer and navigate to the link below.
 
-    ```https://www.microsoft.com/en-us/edge/business/download```
+    ```txt
+    https://www.microsoft.com/en-us/edge/business/download
+    ```
 
 3. Download and install Edge for **Windows 64-bit**
 
@@ -224,7 +226,7 @@ Timeframe: 150 minutes
 
 5. Within the Remote Desktop session to **DC1**, start **Microsoft Edge** from the desktop and navigate to the link below.
 
-    ```
+    ```txt
     https://github.com/microsoft/MCW-Hybrid-identity/tree/main/Hands-on%20lab/studentfiles
     ```
 
@@ -240,13 +242,15 @@ Timeframe: 150 minutes
 
 8. Within the same **Microsoft Edge** window, navigate to the URL below.
 
-    ```https://code.visualstudio.com/Download```
+    ```txt
+    https://code.visualstudio.com/Download
+    ```
 
 9. Download and install the 64-bit User Installer of Visual Studio Code.
 
     !["Screenshot highlighting the 64-bit user installer link for Visual Studio Code."](images/Hands-onlabstep-bystep-HybridIdentityImages/media/downloadvscode.png "Visual Studio Code download button")
 
-10.  When you get to the **Select Additional Tasks** screen, select all checkboxes before clicking **Next >**.
+10. When you get to the **Select Additional Tasks** screen, select all checkboxes before clicking **Next >**.
 
     !["Select additional tasks screen in the Visual Studio Code installer with all checkboxes selected."](images/Hands-onlabstep-bystep-HybridIdentityImages/media/vscodeadditionaltasks.png "Visual Studio Code installer with all options selected")
 
@@ -268,12 +272,13 @@ Timeframe: 150 minutes
     $UserCount = 1000 #Up to 2500 can be created
     ```
 
-   to
+    to
+
     ```pwsh
     $UserCount = 2500 #Up to 2500 can be created
     ```
 
-16. In **Visual Studio Code**, save the change. Then, in **Windows PowerShell**, run the **CreateDemoUsers.ps1** script to create a lab environment organizational unit hierarchy and populate it with test user accounts. 
+16. In **Visual Studio Code**, save the change. Then, in **Windows PowerShell**, run the **CreateDemoUsers.ps1** script to create a lab environment organizational unit hierarchy and populate it with test user accounts.
 
 17. Within the **Windows PowerShell** window, run the following script to modify the settings of the AD user accounts you will use in this lab:
 

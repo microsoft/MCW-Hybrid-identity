@@ -470,11 +470,11 @@ In this task, you will install Azure AD Connect.
 
     ![In this screenshot, on the Enable single sign-on page of the Microsoft Azure AD Connect wizard, the Start the synchronization process when configuration completes is not selected, and the Install button is selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_ReadytoConfigure.png "Ready to Configure")
 
-   > **Note**: You will configure attribute-level filtering before enabling the synchronization process.
+     > **Note**: You will configure attribute-level filtering before enabling the synchronization process.
 
-   > **Note**: Installation should take about 2 minutes.
+     > **Note**: Installation should take about 2 minutes.
 
-26. On the **Configuration complete** page, select **Exit**.
+25. On the **Configuration complete** page, select **Exit**.
 
     ![In this screenshot, on the Configuration complete page of the Microsoft Azure AD Connect wizard, the status of the installation is displayed as Complete, and the Exit button is selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_ConfigurationComplete.png "Configuration Complete")
 
@@ -602,7 +602,7 @@ In this task, you will configure Azure AD Connect attribute level filtering that
 
 13. When presented with a **Warning** dialog box displaying a message stating that **A full import and full synchronization will be run on 'corp.contoso.com' during your next synchronization cycle**, select **OK**.
 
-    >**Note**: This should bring you back to the **View and manage your synchronization rules** interface, with the new rules listed at the top of the rule list. 
+    >**Note**: This should bring you back to the **View and manage your synchronization rules** interface, with the new rules listed at the top of the rule list.
 
     ![In this screenshot, the Synchronization Rules Editor is depicted displaying Inbound rules, including the two newly created inbound rules.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SynchronizationRulesEditor_AddNewRule_withRules.png "Displayed rules")
 
@@ -694,13 +694,13 @@ In this task, you will configure Azure AD Connect device synchronization options
 
 ### Task 11: Perform Hybrid Azure AD join
 
-1. On the lab computer, in the Azure portal, verify that you are signed in to the Azure AD tenant associated with the Azure subscription into which you deployed resources in the Before Hands-On Lab exercises (the **Default directory**). If not, select the **Directory + Subscription** icon in the toolbar of the Azure portal (to the right of the **Cloud Shell** icon) to switch to that Azure AD tenant. 
+1. On the lab computer, in the Azure portal, verify that you are signed in to the Azure AD tenant associated with the Azure subscription into which you deployed resources in the Before Hands-On Lab exercises (the **Default directory**). If not, select the **Directory + Subscription** icon in the toolbar of the Azure portal (to the right of the **Cloud Shell** icon) to switch to that Azure AD tenant.
 
 2. In the Azure portal, navigate to the blade of the **APP1** virtual machine.
 
 3. On the **APP1** virtual machine blade, connect to **APP1** via Remote Desktop. When prompted to sign in, use the **AGAyers\@<custom_domain_name>** user name with the **demo@pass123** password (where **<custom_domain_name>** placeholder represents the custom DNS domain name you assigned to the Contoso Azure AD tenant earlier in this exercise.
 
-4. Within the Remote Desktop session to **APP1**, on the **Server Manager** window, start **Task Scheduler** under **Tools**. 
+4. Within the Remote Desktop session to **APP1**, on the **Server Manager** window, start **Task Scheduler** under **Tools**.
 
     ![In this screenshot, the Server Manager window on the Remote Desktop connection to APP1 is depicted with the Tools menu open and the Task Scheduler option selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/TaskScheduler.png "Star Task scheduler via Server Manager")
 
@@ -911,7 +911,7 @@ This task will enable password writeback and Self-Service Password Reset (SSPR) 
 
     ![In this screenshot, the 'Password reset - Authentication methods' blade of the Azure portal is depicted with the required authentication method settings listed above are selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SettingAuthenticationMethods.png "Setting authentication methods and requirements")
 
-   > **Note**: The **Office phone** method is not available in trial subscriptions.
+     > **Note**: The **Office phone** method is not available in trial subscriptions.
 
 16. Set **Number of security questions required to register** and **Number of questions required to reset** to **3**.
 
@@ -1073,6 +1073,7 @@ In this task, you will enable automatic enrollment of hybrid Azure AD devices in
     ```txt
     https://endpoint.microsoft.com
     ```
+
 2. On the **Microsoft Endpoint Manager admin center** page, select **Devices** on the left navigation.
 
 3. On the **Devices** blade, select **Enrolled devices** under **Device enrollment** on the left.
@@ -1161,7 +1162,7 @@ In this task, you will implement Azure AD Conditional Access Policies.
 
     ![In this screenshot, the Include tab is depicted with the 'Select apps' option selected, and the Select blade is open with the 'Microsoft Azure Management' a[[]] searched for and selected along with the Select button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_CloudppsandActionsInclude.png "Select the Microsoft Azure Management app")
 
-   > **Note**: Review the warning stating **Don't lock yourself out! This policy impacts the Azure portal. Before you continue, ensure that you or someone else will be able to get back into the portal**. Disregard this warning if configuring a persistent browser session policy that works correctly only if "All cloud apps" are selected.
+    > **Note**: Review the warning stating **Don't lock yourself out! This policy impacts the Azure portal. Before you continue, ensure that you or someone else will be able to get back into the portal**. Disregard this warning if configuring a persistent browser session policy that works correctly only if "All cloud apps" are selected.
 
 23. On the **New** blade, in the **Conditions** section, select **0 conditions selected**.
 
@@ -1269,7 +1270,7 @@ In this task, you will implement Azure AD Privileged Identity Management.
 
 13. On the **Privileged Identity Management - Quick start** page, select **My roles** under **Tasks** on the left.
 
-14. On the **My roles - Azure AD roles** page, on the **Eligible assignments** tab, select **Activate** next to the **Authentication Administrator** role entry. 
+14. On the **My roles - Azure AD roles** page, on the **Eligible assignments** tab, select **Activate** next to the **Authentication Administrator** role entry.
 
 15. On the **Activate - Authentication Administrator** blade, enter random text in the **Reason** box, then select **Activate**. Wait for the role to activate and the page to refresh.
 
@@ -1379,7 +1380,7 @@ In this task, you will configure an Azure AD Application Proxy application.
 
     ![In this screenshot, the 'APP1 Default Web Site - Configure Integrated Windows Authentication (IWA)' blade is depicted with the settings listed above specified and the 'Save' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ConfigureIWA.png "Configure IWA")
 
-   > **Note**: The HTTP service class is one of the built-in services that act as an alias to the HOST SPN. For more information, refer to **How to use SPNs when you configure Web applications that are hosted on Internet Information Services** at <https://support.microsoft.com/en-us/help/929650/how-to-use-spns-when-you-configure-web-applications-that-are-hosted-on>.
+    > **Note**: The HTTP service class is one of the built-in services that act as an alias to the HOST SPN. For more information, refer to **How to use SPNs when you configure Web applications that are hosted on Internet Information Services** at <https://support.microsoft.com/en-us/help/929650/how-to-use-spns-when-you-configure-web-applications-that-are-hosted-on>.
 
 11. Within the Remote Desktop session to **DC1**, in the Server Manager console, select **Tools** and then select **Active Directory Users and Computers**. 
 
@@ -1755,7 +1756,7 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
 1. On the lab computer, start a browser in Private mode and go to the URL below:
 
-    ```
+    ```txt
     https://myapps.microsoft.com
     ```
 
@@ -1925,7 +1926,7 @@ In this task, you will install and configure Azure AD Connect in standby mode. T
 
     > Note: You may want to turn off Internet Explorer Enhanced Security Configuration and install Edge first. The URL to download and install Edge for Business is https://www.microsoft.com/en-us/edge/business/download.
 
-    ```
+    ```txt
     https://www.microsoft.com/en-us/download/confirmation.aspx?id=47594
     ```
 
