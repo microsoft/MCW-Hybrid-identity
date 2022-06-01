@@ -779,9 +779,9 @@ In this task, you will configure Azure AD Connect device synchronization options
 
 10. Switch back to the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Devices - All devices** blade of the Contoso Azure AD tenant and verify that there is an entry representing the APP1 server, with the **Join Type** set to **Hybrid Azure AD joined**.
 
-   > **Note**: You might need to wait until the Azure AD registration status is correctly reported and its Azure AD object appears in the Azure portal.
+    > **Note**: You might need to wait until the Azure AD registration status is correctly reported and its Azure AD object appears in the Azure portal.
 
-   ![In this screenshot, the 'Devices - All devices' blade of the Azure portal is depicted with an entry representing the APP1 server with the 'Join Type' set to 'Hybrid Azure AD joined'](images/Hands-onlabstep-bystep-HybridIdentityImages/media/APP1_HybridAzureADjoined.png "APP1 server entry is shown")
+    ![In this screenshot, the 'Devices - All devices' blade of the Azure portal is depicted with an entry representing the APP1 server with the 'Join Type' set to 'Hybrid Azure AD joined'](images/Hands-onlabstep-bystep-HybridIdentityImages/media/APP1_HybridAzureADjoined.png "APP1 server entry is shown")
 
 **Summary**
 
@@ -1250,7 +1250,7 @@ In this task, you will implement Azure AD Privileged Identity Management.
 
 8. Switch to the Remote Desktop session to **APP1**, start the Edge browser, and browse to the Azure portal at [**http://portal.azure.com**](http://portal.azure.com). From here, sign in as Ann G. Ayers. The username can be found on the **Users - All users** page in the Azure portal window on the lab computer. The password will be **demo@pass123**.
 
-    > Note: If prompted that you have 14 days to add additional information, you can still choose to skip. Even if you decide to skip here, on the next screen, you'll be required to enter additional MFA information.
+    > **Note:** If prompted that you have 14 days to add additional information, you can still choose to skip. Even if you decide to skip here, on the next screen, you'll be required to enter additional MFA information.
 
 9. When prompted to provide additional information, select **Next**on the **Keep your account secure** page, and select **I want to set up a different method**. At the **Choose a different method** dialog, select **Phone** on the dropdown, then select **Confirm**.
 
@@ -1720,7 +1720,7 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
 31. Within the Remote Desktop session to **DC1**, in Visual Studio Code, open the newly extracted PowerShell script **AppProxy-GuestAccountCreation-v1.0.3.ps1** and modify its content by updating it to match the following:
 
-    > Note: If you can't open the file for some reason, you can use the **Open folder** option in Visual Studio Code to open the folder containing the script.
+    > **Note:** If you can't open the file for some reason, you can use the **Open folder** option in Visual Studio Code to open the folder containing the script.
 
     ```pwsh
     $B2BGroupSid = "TODO" #Fabrikam B2B users Azure AD group's ObjectID that you identified earlier in this exercise.
@@ -1924,7 +1924,7 @@ In this task, you will install and configure Azure AD Connect in standby mode. T
 
 1. Since **Azure AD Connect** has already been downloaded and installed from the portal, on **BDC-1**, you need to navigate to the **Microsoft Download Center** to download **Azure AD Connect** for **BDC-1**.
 
-    > Note: You may want to turn off Internet Explorer Enhanced Security Configuration and install Edge first. The URL to download and install Edge for Business is https://www.microsoft.com/en-us/edge/business/download.
+    > **Note:** You may want to turn off Internet Explorer Enhanced Security Configuration and install Edge first. The URL to download and install Edge for Business is https://www.microsoft.com/en-us/edge/business/download.
 
     ```txt
     https://www.microsoft.com/en-us/download/confirmation.aspx?id=47594

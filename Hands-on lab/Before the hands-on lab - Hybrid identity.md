@@ -86,7 +86,7 @@ Timeframe: 150 minutes
 
 2. On the **TLG (Test Lab Guide) - 3 VM Base Configuration (v1.0)** page, select **Deploy to Azure**.
 
-   > **Note**: The 3 VM Base Configuration provisions a Windows Server 2016 Active Directory domain controller named DC1 using the domain name you specify and a domain member server named APP1 running Windows Server 2016. It also offers an option to provision a client VM running Windows 10; however, we will not be using it in our lab (primarily due to licensing requirements applicable when running Windows 10 VMs in Azure). The domain member server (APP1) has automatically installed .NET 4.5 and IIS.
+    > **Note**: The 3 VM Base Configuration provisions a Windows Server 2016 Active Directory domain controller named DC1 using the domain name you specify and a domain member server named APP1 running Windows Server 2016. It also offers an option to provision a client VM running Windows 10; however, we will not be using it in our lab (primarily due to licensing requirements applicable when running Windows 10 VMs in Azure). The domain member server (APP1) has automatically installed .NET 4.5 and IIS.
 
 3. On the **Custom deployment** blade, specify the following settings, select **Review + Create**, then **Create**.
 
@@ -112,7 +112,7 @@ Timeframe: 150 minutes
 
     - VM Size: **Standard_D2ads_v5**
 
-    **Note**: Use a similar VM size if your subscription does not support the listed size. Documentation is linked here: <https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes>.
+      > **Note**: Use a similar VM size if your subscription does not support the listed size. Documentation is linked here: <https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes>.
 
     - DNS Label Prefix: **Any valid, globally unique DNS name - a unique string consisting of letters, digits, and hyphens; starting with a letter and up to 47 characters long.**
 
@@ -140,7 +140,7 @@ Timeframe: 150 minutes
 
     - Password: **demo\@pass123**
 
-    > Note: If you get a prompt asking if you want your device to be discoverable on the network, click No.
+    > **Note:** If you get a prompt asking if you want your device to be discoverable on the network, click No.
 
 2. Within the Remote Desktop session to **DC1**, start **Windows PowerShell** and run the following script to disable Internet Explorer enhanced security configuration and User Access Control on both **DC1** and **APP1** Azure VMs:
 
@@ -152,7 +152,7 @@ Timeframe: 150 minutes
     Invoke-Command -ComputerName $vmNames {Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value 00000000}
     ```
 
-    **Note:** To run multiple PowerShell scripts in the same file, you can highlight a specific portion of the script and select **Run Selection** next to the green play button. 
+      > **Note:** To run multiple PowerShell scripts in the same file, you can highlight a specific portion of the script and select **Run Selection** next to the green play button. 
 
     ![In this screenshot, the PowerShell is depicted with the script listed above pasted in.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/PSScript.png "PowerShell with the script pasted into it")
 

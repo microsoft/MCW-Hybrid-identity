@@ -54,8 +54,8 @@ In this hands-on lab you will setup and configure a number of different hybrid i
 - [What is Conditional Access?](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/overview)
 - [What is guest user access in Azure Active Directory B2B?](https://docs.microsoft.com/en-us/azure/active-directory/b2b/what-is-b2b)
 - [What is Azure Active Directory B2C?](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-overview)
-- [What is Azure AD Connect cloud sync?](https://docs.microsoft.com/en-us/azure/active-directory/cloud-sync/what-is-cloud-sync>)
-- [Plan a passwordless authentication deployment in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-authentication-passwordless-deployment>)
+- [What is Azure AD Connect cloud sync?](https://docs.microsoft.com/en-us/azure/active-directory/cloud-sync/what-is-cloud-sync)
+- [Plan a passwordless authentication deployment in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-authentication-passwordless-deployment)
 
 ## Help & Support
 
