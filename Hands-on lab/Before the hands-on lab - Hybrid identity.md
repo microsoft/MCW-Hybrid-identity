@@ -129,7 +129,7 @@ Timeframe: 150 minutes
 
 6. Wait for the deployment to complete. The deployment might take about 60 minutes.
 
-    ![Here it shows the deployment is complete, and you can go directly to the resource group using the go to resource group button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/BHOL-feb2022-deployment-complete.png "The custom deployment blade with all the information listed above entered")
+    ![Image showing the deployment is complete, and you can go directly to the resource group using the go to resource group button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/BHOL-feb2022-deployment-complete.png "The custom deployment blade with all the information listed above entered")
 
 ### Task 5: Configure the lab environment Azure VMs
 
