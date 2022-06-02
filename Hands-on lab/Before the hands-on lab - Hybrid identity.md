@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-[May 2022]
+May 2022
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -77,7 +77,7 @@ Timeframe: 150 minutes
 
 2. Review the **Offer** and compare it with the list found at: <https://azure.microsoft.com/en-us/support/legal/offer-details/>. Make sure that the offer doesn't have a spending limit on it. Subscriptions with spending limits will be unable to complete all the steps of the lab.
 
-    !["Screenshot showing the subscription overview with the Offer highlighted."](images/Hands-onlabstep-bystep-HybridIdentityImages/media/bhol-sub-offer.png "Subscription Offer Highlighted")
+    ![Screenshot showing the subscription overview with the Offer highlighted.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/bhol-sub-offer.png "Subscription Offer Highlighted")
 
 ### Task 4: Deploy the lab environment Azure VMs
 
@@ -125,11 +125,11 @@ Timeframe: 150 minutes
 
 5. After validation has passed, select **Create**.
 
-    ![In this screenshot, the configuration for the deployment you did on the previous tile is summarized and validated.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/BHOL-feb2022-create-add.png "The custom deployment summarize and create tile")
+    ![In this image, the configuration for the deployment you did on the previous tile is summarized and validated.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/BHOL-feb2022-create-add.png "The custom deployment summarize and create tile")
 
 6. Wait for the deployment to complete. The deployment might take about 60 minutes.
 
-    ![In this screenshot, the deployment is complete, and you can go directly to the resource group using the go to resource group button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/BHOL-feb2022-deployment-complete.png "The custom deployment blade with all the information listed above entered")
+    ![Here it shows the deployment is complete, and you can go directly to the resource group using the go to resource group button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/BHOL-feb2022-deployment-complete.png "The custom deployment blade with all the information listed above entered")
 
 ### Task 5: Configure the lab environment Azure VMs
 
@@ -139,7 +139,7 @@ Timeframe: 150 minutes
 
     - Password: **demo\@pass123**
 
-    > **Note:** If you get a prompt asking if you want your device to be discoverable on the network, click No.
+    > **Note**: If you get a prompt asking if you want your device to be discoverable on the network, select No.
 
 2. Within the Remote Desktop session to **DC1**, start **Windows PowerShell** and run the following script to disable Internet Explorer enhanced security configuration and User Access Control on both **DC1** and **APP1** Azure VMs:
 
@@ -151,9 +151,9 @@ Timeframe: 150 minutes
     Invoke-Command -ComputerName $vmNames {Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value 00000000}
     ```
 
-      > **Note:** To run multiple PowerShell scripts in the same file, you can highlight a specific portion of the script and select **Run Selection** next to the green play button.
+      > **Note**: To run multiple PowerShell scripts in the same file, you can highlight a specific portion of the script and select **Run Selection** next to the green play button.
 
-    ![In this screenshot, the PowerShell is depicted with the script listed above pasted in.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/PSScript.png "PowerShell with the script pasted into it")
+    ![Image showing the PowerShell with the script listed above pasted in.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/PSScript.png "PowerShell with the script pasted into it")
 
 3. Within the **Windows PowerShell** window, add the following script to the script pane, and run it to install Remote Server Administration Tools on both **DC1* and **APP1** Azure VMs:
 
@@ -231,13 +231,13 @@ Timeframe: 150 minutes
 
 6. On the **Create Users/Group for Active Directory Demo/Test Environment** page, select the **CreateDemoUsers.ps1** link, right-click on **Raw**, and select **Save link as** to save it to the local file system.
 
-    !["Screenshot showing right-clicking on Raw after selecting the CreateDemoUsers.ps1 file. Then selecting Save link as to save the file to the local file system."](images/Hands-onlabstep-bystep-HybridIdentityImages/media/savecreateuserscript.png "Saving the CreateDemoUsers.ps1 file")
+    ![Screenshot showing right-clicking on Raw after selecting the CreateDemoUsers.ps1 file. Then selecting Save link as to save the file to the local file system.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/savecreateuserscript.png "Saving the CreateDemoUsers.ps1 file")
 
 7. On the **Create Users/Group for Active Directory Demo/Test Environment** page, select the **CreateDemoUsers.csv** link (directly above the PowerShell code section) and use the same method to save the corresponding csv file to the same location as the **CreateDemoUsers.ps1** file.
 
-    ![In this screenshot, the 'Create Users/Group for Active Directory Demo/Test Environment screen is depicted with the 'CreateDemoUsers' file link highlighted near the bottom of the page.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SaveCSVFile.png "Create users and groups in Azure Active Directory page where you select the link to the CreateDemoUsers.csv file")
+    ![The Create Users/Group for Active Directory Demo/Test Environment screen is depicted with the 'CreateDemoUsers' file link highlighted near the bottom of the page.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SaveCSVFile.png "Create users and groups in Azure Active Directory page where you select the link to the CreateDemoUsers.csv file")
 
-    > Note: When saving the .csv file, save it at a csv and not a txt file or change the file extension to .csv after downloading the file.
+    > **Note**: When saving the .csv file, save it at a csv and not a txt file or change the file extension to .csv after downloading the file.
 
 8. Within the same **Microsoft Edge** window, navigate to the URL below.
 
@@ -247,11 +247,11 @@ Timeframe: 150 minutes
 
 9. Download and install the 64-bit User Installer of Visual Studio Code.
 
-    !["Screenshot highlighting the 64-bit user installer link for Visual Studio Code."](images/Hands-onlabstep-bystep-HybridIdentityImages/media/downloadvscode.png "Visual Studio Code download button")
+    ![Screenshot highlighting the 64-bit user installer link for Visual Studio Code.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/downloadvscode.png "Visual Studio Code download button")
 
 10. When you get to the **Select Additional Tasks** screen, select all checkboxes before clicking **Next >**.
 
-    !["Select additional tasks screen in the Visual Studio Code installer with all checkboxes selected."](images/Hands-onlabstep-bystep-HybridIdentityImages/media/vscodeadditionaltasks.png "Visual Studio Code installer with all options selected")
+    ![Select additional tasks screen in the Visual Studio Code installer with all checkboxes selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/vscodeadditionaltasks.png "Visual Studio Code installer with all options selected")
 
 11. Within the Remote Desktop session to **DC1**, start File Explorer, navigate to the folder where you downloaded both files, right-click on the file **CreateDemoUsers.ps1**, select **Properties**, in the **CreateDemoUsers.ps1 Properties** dialog box, check the **Unblock** checkbox, and select **OK**.
 
@@ -259,11 +259,11 @@ Timeframe: 150 minutes
 
 13. Close the **Get Started** tab in Visual Studio Code and then click to install the PowerShell extension.
 
-    !["Visual Studio Code with the Get Started tab open and the pop-up to install PowerShell. The x to close the Get Started Tab and the Install button for the PowerShell extension are both highlighted."](images/Hands-onlabstep-bystep-HybridIdentityImages/media/vscode-getstarted.png "Visual Studio Code Get Started")
+    ![Visual Studio Code with the Get Started tab open and the pop-up to install PowerShell. The x to close the Get Started Tab and the Install button for the PowerShell extension are both highlighted.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/vscode-getstarted.png "Visual Studio Code Get Started")
 
-14. In the resulting pop-up window, select **Trust Workspace & Install**
+14. In the resulting pop-up window, select **Trust Workspace & Install**.
 
-    !["The pop-up to trust the workspace and install the PowerShell extension in Visual Studio Code. The Trust Workspace and Install button is selected."](images/Hands-onlabstep-bystep-HybridIdentityImages/media/vscode-powershell.png "Visual Studio Code Trust Workspace & Install")
+    ![The pop-up to trust the workspace and install the PowerShell extension in Visual Studio Code. The Trust Workspace and Install button is selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/vscode-powershell.png "Visual Studio Code Trust Workspace & Install")
 
 15. In the **Visual Studio Code** window, change line **148** from:
 
@@ -271,7 +271,7 @@ Timeframe: 150 minutes
     $UserCount = 1000 #Up to 2500 can be created
     ```
 
-    to
+    to:
 
     ```pwsh
     $UserCount = 2500 #Up to 2500 can be created
@@ -301,7 +301,7 @@ Timeframe: 150 minutes
     Get-ADGroup -Identity 'Enterprise Admins' | Add-ADGroupMember -Members 'CN=Ayers\, Ann,OU=NJ,OU=US,OU=Users,OU=Demo Accounts,DC=corp,DC=contoso,DC=com'
     ```
 
-18. Within the **Windows PowerShell** window, add the following script to the script pane, and run it to create additional organizational units named **Servers** and **Clients**, and move the **APP1** computer account to the first of them:
+18. Within the **Windows PowerShell** window, add the following script to the script pane, run it to create additional organizational units named **Servers** and **Clients**, and move the **APP1** computer account to the first of them:
 
     ```pwsh
     New-ADOrganizationalUnit -Name 'Servers' -Path 'OU=Demo Accounts,DC=corp,DC=contoso,DC=com'
