@@ -1091,7 +1091,7 @@ In this task, you will enable automatic enrollment of hybrid Azure AD devices in
 
 3. On the **Devices - All devices** page, select **Enterprise State Roaming** on the left.
 
-4. On the **Devices - Enterprise State Roaming** blade, for **Users may sync settings and app data across devices**, select **Selected**. Choose **No member selected** below. Select **+ Add**, then select the **Engineering** group from the list of Azure AD tenant users and groups that appears on the right. Choose **Select**, then **Ok**, then **Save**.
+4. On the **Devices - Enterprise State Roaming** blade, for **Users may sync settings and app data across devices**, select **Selected**. Choose **No member selected** below. Select **+ Add**, then select the **Engineering** group from the list of Azure AD tenant users and groups that appear on the right. Choose **Select**, then **Ok**, then **Save**.
 
     ![In this screenshot, the 'Members allowed to sync settings and app data' blade is depicted with the '+ Add' button selected and the 'Add members' blade open with the Engineering group searched for and selected along with the Select button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectEngineering.png "Select Engineering group")
 
@@ -1249,9 +1249,9 @@ In this task, you will implement Azure AD Privileged Identity Management.
 
 8. Switch to the Remote Desktop session to **APP1**, start the Edge browser, and browse to the Azure portal at [**http://portal.azure.com**](http://portal.azure.com). From here, sign in as Ann G. Ayers. The username can be found on the **Users - All users** page in the Azure portal window on the lab computer. The password will be **demo@pass123**.
 
-    > **Note:** If prompted that you have 14 days to add additional information, you can still choose to skip. Even if you decide to skip here, on the next screen, you'll be required to enter additional MFA information.
+    > **Note**: If prompted that you have 14 days to add additional information, you can still choose to skip. Even if you decide to skip here, on the next screen, you'll be required to enter additional MFA information.
 
-9. When prompted to provide additional information, select **Next**on the **Keep your account secure** page, and select **I want to set up a different method**. At the **Choose a different method** dialog, select **Phone** on the dropdown, then select **Confirm**.
+9. When prompted to provide additional information, select **Next** on the **Keep your account secure** page, and select **I want to set up a different method**. At the **Choose a different method** dialog, select **Phone** on the dropdown, then select **Confirm**.
 
     - On the **Phone** page, enter your phone number and select **Next**.
 
@@ -1437,7 +1437,7 @@ In this task, you will create another Azure Active Directory tenant representing
 
 6. On the **Basics** tab, leave **Azure Active Directory** selected and select **Next: Configuration**.
 c
-7. On the **Configuration** tab, enter the following settings. The select **Review + create** and then **Create**.
+7. On the **Configuration** tab, enter the following settings. Then select **Review + create** and then **Create**.
 
     - Organization name: **Fabrikam**
 
@@ -1605,7 +1605,7 @@ In this task, you will create and configure Azure AD guest accounts in the Conto
 
 8. On the **Groups - All groups** blade, select the newly created group and, on the **Fabrikam B2B users** group, copy its **Object id** value and paste it into Notepad. You will need it later in this exercise.
 
-9. Switch to the lab computer, start a web browser using in private/incognito mode and browse to https://portal.azure.com/<yourcontosotenant>.onmicrosoft.com. Where <yourcontosotenant> is the name you chose for your Contoso tenant.
+9. Switch to the lab computer, start a web browser using in private/incognito mode and browse to https://portal.azure.com/<yourcontosotenant>.onmicrosoft.com. Where <yourcontosotenant> is the name you chose for your Contoso tenant?
 
 10. When prompted, sign in by using the credentials of the **jane.doe** Fabrikam Azure AD user account.
 
@@ -1719,7 +1719,7 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
 31. Within the Remote Desktop session to **DC1**, in Visual Studio Code, open the newly extracted PowerShell script **AppProxy-GuestAccountCreation-v1.0.3.ps1** and modify its content by updating it to match the following:
 
-    > **Note:** If you can't open the file for some reason, you can use the **Open folder** option in Visual Studio Code to open the folder containing the script.
+    > **Note**: If you can't open the file for some reason, you can use the **Open folder** option in Visual Studio Code to open the folder containing the script.
 
     ```pwsh
     $B2BGroupSid = "TODO" #Fabrikam B2B users Azure AD group's ObjectID that you identified earlier in this exercise.
@@ -1923,7 +1923,7 @@ In this task, you will install and configure Azure AD Connect in standby mode. T
 
 1. Since **Azure AD Connect** has already been downloaded and installed from the portal, on **BDC-1**, you need to navigate to the **Microsoft Download Center** to download **Azure AD Connect** for **BDC-1**.
 
-    > **Note:** You may want to turn off Internet Explorer Enhanced Security Configuration and install Edge first. The URL to download and install Edge for Business is https://www.microsoft.com/en-us/edge/business/download.
+    > **Note**: You may want to turn off Internet Explorer Enhanced Security Configuration and install Edge first. The URL to download and install Edge for Business is https://www.microsoft.com/en-us/edge/business/download.
 
     ```txt
     https://www.microsoft.com/en-us/download/confirmation.aspx?id=47594
@@ -2029,6 +2029,6 @@ Duration: 20 Minutes
 
 ### Task 1: Delete resources
 
-1. Now that the HOL is complete, delete all of the Resource Groups created for this HOL. You will no longer need those resources, and it will be beneficial to clean up your Azure Subscription. In addition, remove the verified domain from the Contoso Azure AD tenant.
+1. Now that the HOL is complete, delete all the Resource Groups created for this HOL. You will no longer need those resources, and it will be beneficial to clean up your Azure Subscription. In addition, remove the verified domain from the Contoso Azure AD tenant.
 
 You should follow all steps provided *after* attending the Hands-on lab.
