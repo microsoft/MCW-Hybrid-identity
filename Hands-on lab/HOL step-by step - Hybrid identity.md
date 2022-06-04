@@ -116,7 +116,7 @@ In this task, you will create an Azure Active Directory tenant with the followin
 
 1. Start a new Web browser window from the lab computer and navigate to the Azure portal at <https://portal.azure.com> if you haven't already.
 
-2. When prompted, sign in to the Azure subscription into which you deployed resources in the Before Hands-On Lab exercises.
+2. When prompted, sign in to the Azure subscription into which you deployed resources in the Before the hands-on lab exercises.
 
 3. On the lab computer, in the Azure portal, select **+ Create a resource**.
 
@@ -128,7 +128,7 @@ In this task, you will create an Azure Active Directory tenant with the followin
 
 6. On the **Basics** tab, leave Azure Active Directory selected and select **Next: Configuration >**
 
-    ![A screenshot that shows Azure Active Directory selected with the Next: Configuration > button called out.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aad-basics.png "Select Azure Active Directory and click Next")
+    ![The Azure Active Directory is selected with the Next: Configuration > button called out.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aad-basics.png "Select Azure Active Directory and click Next")
 
 7. On the **Configuration** tab, specify the following settings and select **Review + create**. Then select **Create**.
 
@@ -140,7 +140,7 @@ In this task, you will create an Azure Active Directory tenant with the followin
 
 8. Once it's created, follow the link to navigate to your new tenant.
 
-    ![A screenshot that depicts the link to click to navigate to the new Azure Active Directory tenant.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ChangeDirectory.png "Select the link to navigate to your new tenant")
+    ![A screenshot that depicts the link to select to navigate to the new Azure Active Directory tenant.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ChangeDirectory.png "Select the link to navigate to your new tenant")
 
 9. On the **Contoso - Overview** blade, select **Licenses** under **Manage** on the left navigation.
 
@@ -148,7 +148,7 @@ In this task, you will create an Azure Active Directory tenant with the followin
 
 11. On the **Activate** blade, in the **ENTERPRISE MOBILITY + SECURITY E5** section, select **Free trial** and then select **Activate**.
 
-    ![A screenshot that depicts the Licenses - All products blade with the Active blade open. On the Active blade, under 'Enterprise Mobility + Security E5 free trial', the Activate button is selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ActivateTrial.png "Activate Enterprise Mobility + Security E5 free trial")
+    ![Image depicting the Licenses - All products blade with the Active blade open. On the Active blade, under 'Enterprise Mobility + Security E5 free trial', the Activate button is selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ActivateTrial.png "Activate Enterprise Mobility + Security E5 free trial")
 
    > **Note**: Activation typically takes about 5 minutes. Refresh the page to see the license added.
 
@@ -186,7 +186,7 @@ In this task, you will configure Azure AD user accounts in the newly created Azu
 
 4. On the **Profile** blade of your user account, select **Edit**.
 
-    ![Screenshot that depicts the Profile blade with the Edit button select](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectEdit.png "Select Edit on the user account Profile blade")
+    ![Screenshot that depicts the Profile blade with the Edit button highlighted.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectEdit.png "Select Edit on the user account Profile blade")
 
 5. In the **Settings** section, in the **Usage location** dropdown list, select the **United States** entry and select **Save**.
 
@@ -228,7 +228,7 @@ In this task, you will configure Azure AD user accounts in the newly created Azu
 
     - Department: **Leave blank**
 
-    ![Screenshot that depicts the New user blade with all the specified settings selected and the Create button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/NewUser.png "Add a new user with the listed settings")
+    ![The New user blade with all the specified settings selected and the Create button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/NewUser.png "Add a new user with the listed settings")
 
     > **Note**: Copy the **User name** and **Password** values into Notepad. You will need them later in this lab.
 
@@ -240,7 +240,7 @@ In this task, you will configure Azure AD user accounts in the newly created Azu
 
 14. On the **Update license assignments** blade, enable the **Enterprise Mobility + Security E5** checkbox, ensure all the corresponding license options are enabled, and select **Save**.
 
-    ![Screenshot depicts the Update license assignments blade with Enterprise Mobility + Security E5 and its subsequent license options selected. The Save button is also selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/UpdateLicenseAssignments2.png "Update license assignments")
+    ![Image showing the Update license assignments blade with Enterprise Mobility + Security E5 and its subsequent license options selected. The Save button is also selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/UpdateLicenseAssignments2.png "Update license assignments")
 
 ### Task 3: Purchase a custom domain name
 
@@ -276,9 +276,9 @@ In this task, you will purchase a custom DNS domain name by leveraging the funct
 
     - SKU and size: **Shared D1** (If necessary, select **Change size**, select Dev/Test, select **D1** and select **Apply**)
 
-    ![Screenshot that depicts the Basics tab of the Web App blade with the above-listed settings selected and the Next: Monitoring button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/16febupdate2.png "Web app basics information")
+    ![Image showing the Basics tab of the Web App blade with the above-listed settings selected and the Next: Monitoring button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/16febupdate2.png "Web app basics information")
 
-6. Select **Next: Networking** and then **Next: Monitoring**
+6. Select **Next: Networking** and then **Next: Monitoring**.
   
 7. On the **Monitoring** tab of the **Web App** blade, specify the following setting, and select **Review + create** then **Create**:
 
@@ -294,7 +294,7 @@ In this task, you will purchase a custom DNS domain name by leveraging the funct
 
     ![Screenshot showing all of the settings above to select a custom domain to purchase.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/asd-selectdomain.png "Select a custom domain to purchase")
 
-11. Enter the required contact information and select **Next: Advanced**
+11. Enter the required contact information and select **Next: Advanced**.
 
 12. Ensure that **Enable privacy protection** is Enabled. Select **Review + create** then **Create**.
 
