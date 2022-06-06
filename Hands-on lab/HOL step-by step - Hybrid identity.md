@@ -430,13 +430,13 @@ In this task, you will install Azure AD Connect.
 
 14. On the **User sign-in** page, select the **Pass-through authentication** option, the **Enable single sign-on** checkboxes, and select **Next**.
 
-    ![In this screenshot, the user sign-in page of the Microsoft Azure AD Connect wizard is depicted with the Pass-through authentication option and the Enable single sign-on checkboxes selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_UserSign-in.png "Select sign-in options and select Next")
+    ![The user sign-in page of the Microsoft Azure AD Connect wizard is depicted with the Pass-through authentication option and the Enable single sign-on checkboxes selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_UserSign-in.png "Select sign-in options and select Next")
 
 15. On the **Connect to Azure AD** page, sign in by using the credentials of the **john.doe** account and select **Next**.
 
 16. On the **Connect your directories** page, ensure that the **corp.contoso.com** entry appears in the **FOREST** drop-down list and select **Add Directory**. In the **AD forest account**, ensure that the **Create new AD account** option is selected, in the **ENTERPRISE ADMIN USERNAME** textbox, type **CORP.CONTOSO.COM\\demouser**, in the **PASSWORD** textbox, type **demo\@pass123**, and select **OK**.
 
-    ![In this screenshot, the Connect your directories page of the Microsoft Azure AD Connect wizard is depicted with corp.contoso.com having been added.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_ConnectyourDirectories1.png "Connect your Contoso directory")
+    ![The Connect your directories page of the Microsoft Azure AD Connect wizard is depicted with corp.contoso.com having been added.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_ConnectyourDirectories1.png "Connect your Contoso directory")
 
 17. Back on the **Connect your directories** page, select **Next**.
 
@@ -444,15 +444,15 @@ In this task, you will install Azure AD Connect.
 
     >**Note**: This is expected since some users are still configured with the **contoso.local** UPN suffix, which is not routable and cannot be configured as a verified custom domain name of an Azure AD tenant.
 
-    ![In this screenshot, the Azure AD sign-in configuration page of the Microsoft Azure AD Connect wizard is depicted with the custom domain name listed as verified. The userPrincipalName is listed as the attribute to use as the AzureAD username. The Next button is then selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_AzureADsign-inconfiguration.png "Configure sign-in and select Next")
+    ![The Azure AD sign-in configuration page of the Microsoft Azure AD Connect wizard is depicted with the custom domain name listed as verified. The userPrincipalName is listed as the attribute to use as the AzureAD username. The Next button is then selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_AzureADsign-inconfiguration.png "Configure sign-in and select Next")
 
 19. On the **Domain and OU filtering** page, ensure that only the **DemoAccounts** OU and all its children OUs are selected and select **Next**.
 
-    ![In this screenshot, on the Domain and OU filtering page of the Microsoft Azure AD Connect wizard, the Demo Accounts OU and all its child OUs are selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_DomainandOUFiltering.png "Select Demo Accounts and Child OUs then select Next")
+    ![On the Domain and OU filtering page of the Microsoft Azure AD Connect wizard, the Demo Accounts OU and all its child OUs are selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_DomainandOUFiltering.png "Select Demo Accounts and Child OUs then select Next")
 
 20. On the **Uniquely identifying your users** page, accept the default settings and select **Next**.
 
-    ![In this screenshot, the default settings are displayed on the Uniquely identifying your users page of the Microsoft Azure AD Connect wizard. The Next button is then selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_UniquelyIdentifyingyourusers.png "Uniquely Identifying your Users")
+    ![The default settings are displayed on the Uniquely identifying your users page of the Microsoft Azure AD Connect wizard. The Next button is then selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_UniquelyIdentifyingyourusers.png "Uniquely Identifying your Users")
 
 21. On the **Filter users and devices** page, accept the default settings and select **Next**.
 
@@ -464,14 +464,13 @@ In this task, you will install Azure AD Connect.
 
 23. On the **Enable single sign-on** page, select **Enter credentials**, in the **Forest credentials** dialog box, sign in with the **CORP\\demouser** username and **demo\@pass123** password, and select **Next**.
 
-    ![In this screenshot, on the Enable single sign-on page of the Microsoft Azure AD Connect wizard, the prompt for forest credentials is displayed with the credentials listed above entered.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_EnableSingleSign-on.png "Enable Single Sign-on")
+    ![In this image, on the Enable single sign-on page of the Microsoft Azure AD Connect wizard, the prompt for forest credentials is displayed with the credentials listed above entered.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_EnableSingleSign-on.png "Enable Single Sign-on")
 
 24. On the **Ready to configure** page, ensure that the **Start the synchronization process when configuration completes** checkbox is **NOT** selected and select **Install**.
 
-    ![In this screenshot, on the Enable single sign-on page of the Microsoft Azure AD Connect wizard, the Start the synchronization process when configuration completes is not selected, and the Install button is selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_ReadytoConfigure.png "Ready to Configure")
+    ![On the Enable single sign-on page of the Microsoft Azure AD Connect wizard, the Start the synchronization process when configuration completes is deselected, and the Install button is selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConnect_ReadytoConfigure.png "Ready to Configure")
 
-     > **Note**: You will configure attribute-level filtering before enabling the synchronization process.
-     > **Note**: Installation should take about 2 minutes.
+     > **Note**: You will configure attribute-level filtering before enabling the synchronization process. Installation should take about 2 minutes.
 
 25. On the **Configuration complete** page, select **Exit**.
 
@@ -483,11 +482,11 @@ In this task, you will enable Recycle Bin in the Contoso Active Directory domain
 
 1. Within the Remote Desktop session to **DC1**, on the Tools menu in the Server Manager console, start **Active Directory Administrative Center**.
 
-    ![In this screenshot, the Server Manager console is depicted with the Tools menu open and the Start Active Directory Administrative Center console selected in the Tools menu dropdown.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/StartADAC.png "Start Active Directory Administrative Center")
+    ![The Server Manager console is depicted with the Tools menu open and the Start Active Directory Administrative Center console selected in the Tools menu dropdown.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/StartADAC.png "Start Active Directory Administrative Center")
 
-2. In the **Active Directory Administrative Center** console, right-click **corp (local)** on the left and select **Enable Recycle Bin**. When prompted to confirm, select **OK**.
+2. In the **Active Directory Administrative Center** console, right-click **corp (local)** on the left menu and select **Enable Recycle Bin**. When prompted to confirm, select **OK**.
 
-    ![In this screenshot, the Active Directory Administrative Center console is depicted with 'corp (local)' right-clicked and the Enable Recycle Bin option selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AD_EnableRecycleBin.png "Select Enable Recycle Bin for the local domain")
+    ![The Active Directory Administrative Center console is depicted with 'corp (local)' right-clicked and the Enable Recycle Bin option selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AD_EnableRecycleBin.png "Select Enable Recycle Bin for the local domain")
 
 3. When prompted to refresh AD Administrative Center, select **OK**.
 
@@ -505,7 +504,7 @@ In this task, you will configure Azure AD Connect attribute level filtering that
 
 2. In the Synchronization Rules Editor window, on the **View and manage your synchronization rules** page, ensure that **Inbound** appears in the **Direction** dropdown list and select **Add new rule**. This will launch the **Create inbound synchronization rule** wizard.
 
-    ![In this screenshot, the Synchronization Rules Editor window is depicted with the Inbound rules displayed, Inbound selected on the Direction dropdown menu, and the 'Add new rule' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SynchronizationRulesEditor_AddNewRule.png "Add New Inbound Rule")
+    ![The Synchronization Rules Editor window is depicted with the Inbound rules displayed, Inbound selected on the Direction dropdown menu, and the 'Add new rule' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SynchronizationRulesEditor_AddNewRule.png "Add New Inbound Rule")
 
 3. On the **Create inbound synchronization rule - Description** page, specify the following settings and select **Next**:
 
@@ -529,7 +528,7 @@ In this task, you will configure Azure AD Connect attribute level filtering that
 
     - Disabled: **Leave empty**
 
-    ![In this screenshot, the description page of the Create inbound synchronization rule wizard is depicted with the required configuration settings and the Next button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateInboundSynchronizationRule_Description.png "Enter Sync Rule Description information")
+    ![The description page of the Create inbound synchronization rule wizard is depicted with the required configuration settings and the Next button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateInboundSynchronizationRule_Description.png "Enter Sync Rule Description information")
 
 4. On the **Create inbound scoping filter** page, select **Add Group**, select **Add clause**, specify the following, and select **Next**:
 
@@ -557,7 +556,7 @@ In this task, you will configure Azure AD Connect attribute level filtering that
 
    > **Note**: This should bring you back to the View and manage your synchronization rules interface, with the new rule listed at the top of the rule list.
 
-    ![In this screenshot, the synchronization rules editor with the newly created Custom in from AD - UPN Filter rule is highlighted.](images/2020-04-27-23-44-31.png "View new rule")
+    ![The synchronization rules editor with the newly created Custom in from AD - UPN Filter rule is highlighted.](images/2020-04-27-23-44-31.png "View new rule")
 
 8. Back in the **Synchronization Rules Editor** window, on the **View and manage your synchronization rules** page, ensure that **Inbound** appears in the **Direction** dropdown list and select **Add new rule** again. This will launch the **Create inbound synchronization rule** wizard.
 
@@ -603,7 +602,7 @@ In this task, you will configure Azure AD Connect attribute level filtering that
 
     >**Note**: This should bring you back to the **View and manage your synchronization rules** interface, with the new rules listed at the top of the rule list.
 
-    ![In this screenshot, the Synchronization Rules Editor is depicted displaying Inbound rules, including the two newly created inbound rules.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SynchronizationRulesEditor_AddNewRule_withRules.png "Displayed rules")
+    ![The Synchronization Rules Editor is depicted displaying Inbound rules, including the two newly created inbound rules.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SynchronizationRulesEditor_AddNewRule_withRules.png "Displayed rules")
 
 ### Task 9: Initiate and verify directory synchronization
 
