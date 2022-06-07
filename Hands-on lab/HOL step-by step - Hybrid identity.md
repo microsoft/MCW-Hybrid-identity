@@ -1308,7 +1308,7 @@ In this task, you will install and configure Azure AD Application Proxy.
 
 8. On the **Contoso - Application proxy** blade, select **Enable application proxy** and, when prompted for confirmation, select **Yes**.
 
-    ![In this screenshot, the 'Contoso - Application proxy' blade of the Azure portal is depicted with the 'DC1.corp.contoso.com' entry listed under the Default connector group.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/VerifyConnector.png "Verify that the connector is present")
+    ![The 'Contoso - Application proxy' blade of the Azure portal is depicted with the 'DC1.corp.contoso.com' entry listed under the Default connector group.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/VerifyConnector.png "Verify that the connector is present")
 
 ### Task 2: Configure an Azure AD Application Proxy application
 
@@ -1340,7 +1340,7 @@ In this task, you will configure an Azure AD Application Proxy application.
 
     - Translate URLs in Application Body: **No**
 
-    ![In this screenshot, the 'Add your own on-premises application' blade of the Azure portal is depicted with the required settings listed above and the '+ Add' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/OnPremAppSettings.png "Enter On-prem app settings")
+    ![The 'Add your own on-premises application' blade of the Azure portal is depicted with the required settings listed above and the '+ Add' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/OnPremAppSettings.png "Enter On-prem app settings")
 
 3. In the search bar at the top of the Azure portal, search for and select **Enterprise applications**. Then, in the list of applications, select **APP1 Default Web Site**.
 
@@ -1374,7 +1374,7 @@ In this task, you will configure an Azure AD Application Proxy application.
 
     - Delegated Login Identity: **User principal name**
 
-    ![In this screenshot, the 'APP1 Default Web Site - Configure Integrated Windows Authentication (IWA)' blade is depicted with the settings listed above specified and the 'Save' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ConfigureIWA.png "Configure IWA")
+    ![The 'APP1 Default Web Site - Configure Integrated Windows Authentication (IWA)' blade is depicted with the settings listed above specified and the 'Save' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ConfigureIWA.png "Configure IWA")
 
     > **Note**: The HTTP service class is one of the built-in services that act as an alias to the HOST SPN. For more information, refer to **How to use SPNs when you configure Web applications that are hosted on Internet Information Services** at <https://support.microsoft.com/en-us/help/929650/how-to-use-spns-when-you-configure-web-applications-that-are-hosted-on>.
 
@@ -1433,7 +1433,7 @@ In this task, you will create another Azure Active Directory tenant representing
 5. On the **Azure Active Directory** blade, select **Create** and **Azure Active Directory**.
 
 6. On the **Basics** tab, leave **Azure Active Directory** selected and select **Next: Configuration**.
-c
+
 7. On the **Configuration** tab, enter the following settings. Then select **Review + create** and then **Create**.
 
     - Organization name: **Fabrikam**
@@ -1442,7 +1442,7 @@ c
 
     - Country or region: **United States**
 
-    ![In this screenshot, the 'Create tenant' blade of the Azure portal is depicted with the required settings listed above and the Create button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateDirectoryConfiguration.png "Create tenant configuration form")
+    ![The 'Create tenant' blade of the Azure portal is depicted with the required settings listed above and the Create button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateDirectoryConfiguration.png "Create tenant configuration form")
 
 8. After the tenant has been created, select **Fabrikam** to navigate to the newly created tenant.
 
@@ -1454,7 +1454,7 @@ c
 
 11. On the **Activate** page, in the **ENTERPRISE MOBILITY + SECURITY E5** section, select **Free trial** and then select **Activate**.
 
-    ![In this screenshot, the Activate blade of the Azure portal is selected with the 'ENTERPRISE MOBILITY + SECURITY E5' section open with 'Free trial' selected along with the Activate button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ActivateFreeTrial.png "Active free trial")
+    ![The Activate blade of the Azure portal is selected with the 'ENTERPRISE MOBILITY + SECURITY E5' section open with 'Free trial' selected along with the Activate button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ActivateFreeTrial.png "Active free trial")
 
 ### Task 5: Create and configure Azure AD users
 
@@ -1490,7 +1490,7 @@ In this task, you will configure Azure AD user accounts in the newly created Azu
 
 4. On the **Profile** page of your user account, in the **Settings** section, select **Edit**.
 
-    ![In this screenshot, the user Profile blade in the Azure portal is depicted with the Edit button selected in the Settings section.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/EditProfileSettings.png "Editing Settings")
+    ![the user Profile blade in the Azure portal is depicted with the Edit button selected in the Settings section.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/EditProfileSettings.png "Editing Settings")
 
 5. In the **Settings** section, in the **Usage location** dropdown list, select the **United States** entry and select **Save**.
 
@@ -1532,7 +1532,7 @@ In this task, you will configure Azure AD user accounts in the newly created Azu
 
     - Department: **Leave blank**
 
-    ![In this screenshot, the 'New user' blade of the Azure portal is depicted with the 'Create user' option selected along with the required settings listed above and the Create button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateNewUser.png "New user blade with selected configuration")
+    ![Image showing the 'New user' blade of the Azure portal is depicted with the 'Create user' option selected along with the required settings listed above and the Create button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateNewUser.png "New user blade with selected configuration")
 
 11. On the **Users - All users** page, select the entry representing the newly created user account.
 
@@ -1576,7 +1576,7 @@ In this task, you will create and configure Azure AD guest accounts in the Conto
 
     - Department : **Not set**
 
-    ![In this screenshot, the 'New user' blade of the Azure portal is depicted with the 'Invite user' option selected along with the required settings listed above and the Invite button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/InviteNewUser.png "Invite new user settings")
+    ![The 'New user' blade of the Azure portal is depicted with the 'Invite user' option selected along with the required settings listed above and the Invite button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/InviteNewUser.png "Invite new user settings")
 
 5. In the Azure portal, navigate back to the **Contoso - Overview** blade of the Contoso Azure AD tenant and select **Groups** under **Manage** on the left.
 
@@ -1598,7 +1598,7 @@ In this task, you will create and configure Azure AD guest accounts in the Conto
 
     - Members: **fabrikam-jane.doe**
 
-    ![In this screenshot, the 'New group' blade is depicted with the required settings listed above selected along with the Create button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateGroup.png "Create new group")
+    ![The 'New group' blade is depicted with the required settings listed above selected along with the Create button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateGroup.png "Create new group")
 
 8. On the **Groups - All groups** blade, select the newly created group and, on the **Fabrikam B2B users** group, copy its **Object id** value and paste it into Notepad. You will need it later in this exercise.
 
@@ -1648,7 +1648,7 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
     - Redirect URI (Optional): **Web** and **https://loopback**
 
-    ![In this screenshot, the 'Register an application' blade of the Azure portal is depicted with the required settings listed above selected along with the Register button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/RegisterApplication.png "Register an application")
+    ![The 'Register an application' blade of the Azure portal is depicted with the required settings listed above selected along with the Register button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/RegisterApplication.png "Register an application")
 
 11. You will be automatically redirected to the **Sync B2B users** page.
 
@@ -1662,7 +1662,7 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
 15. On the **Request API permissions** blade, in the **Select permissions** section, expand the **Directory** subsection, check the **Directory.Read.All** box, and select **Add permissions**.
 
-    ![In this screenshot, the 'Request API permissions' blade of the Azure portal is depicted with the Directory.Read.All permission under the Directory subsection checked and the 'Add permissions' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SyncB2BUsers_RequestAPIpermissions.png "API permission request settings")
+    ![The 'Request API permissions' blade of the Azure portal is depicted with the Directory.Read.All permission under the Directory subsection checked and the 'Add permissions' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SyncB2BUsers_RequestAPIpermissions.png "API permission request settings")
 
 16. Back on the **Sync B2B users - API permissions** page, in the **Configured permissions** section, select **Grant admin consent for Contoso**. Select **Yes** when prompted.
 
@@ -1670,7 +1670,7 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
 18. Review the status of the permissions listed in the **Configured permissions** section on the **Sync B2B users - API permissions** blade and ensure that they are listed as **Granted for Contoso**.
 
-    ![In this screenshot, the 'Sync B2B users - API permissions' blade of the Azure portal is depicted with the configured permissions listed with a status of 'Granted for Contoso.'](images/Hands-onlabstep-bystep-HybridIdentityImages/media/GrantedForContoso.png "Permissions granted for Contoso")
+    ![The 'Sync B2B users - API permissions' blade of the Azure portal is depicted with the configured permissions listed with a status of 'Granted for Contoso.'](images/Hands-onlabstep-bystep-HybridIdentityImages/media/GrantedForContoso.png "Permissions granted for Contoso")
 
 19. On the **Sync B2B users - API permission** page, select **Certificates & secrets** under **Manage** on the left.
 
@@ -1804,7 +1804,7 @@ In this task, you will create a VM that will become the backup domain controller
 
     ![This screenshot shows the basic configuration details for the virtual machine.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/createvmdetails.png "Virtual machine basic configuration")
 
-3. Set the OS Disk type to **Standard SSD**
+3. Set the OS Disk type to **Standard SSD**.
 
 4. Select **Create and attach a new disk**.
 
@@ -1844,7 +1844,7 @@ In this task, you will promote the newly created VM to a domain controller and c
 
 7. When the **Add features** tile opens, uncheck the box for **Include management tools (if applicable)** and select **Add Features** to continue.
 
-    ![In this screenshot, you unselect the include management tools checkbox and add features.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/addsaddfeatures.png "Add roles and features wizard")
+    ![In this step, you unselect the include management tools checkbox and select add features.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/addsaddfeatures.png "Add roles and features wizard")
 
 8. Select **Next** through **Features** and **AD DS**.  At the **Confirmation** tile, select **Install**.
 
@@ -1946,7 +1946,7 @@ In this task, you will install and configure Azure AD Connect in standby mode. T
 
 7. Follow the same steps as Exercise 1, Task 6, Steps 15-24. On the final **Configure** step, uncheck the **Start the synchronization process when configuration completes** checkbox, and select the **Enable staging mode** checkbox. Select **Install** to complete the installation of the configuration.
 
-    ![Once Azure AD Connect has been installed and all credentials have been provided, unselect the checkbox for starting synchronization and check the box for 'enable staging mode' as shown in this screenshot.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/readytoconfigure.png "Configure in staging mode")
+    ![Once Azure AD Connect has been installed and all credentials have been provided, unselect the checkbox for starting synchronization and check the box for 'enable staging mode'.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/readytoconfigure.png "Configure in staging mode")
 
 8. Navigate to the **Windows Start menu** and open **Synchronization Service Manager**.
 
@@ -1970,21 +1970,21 @@ In this task, you will configure Azure AD Application Proxy for the BDC-1 VM.
 
 2. In the **Active Directory Users and Computers** console, select **View** and, in the **View** menu, enable **Advanced Features**.
 
-    ![In this screenshot, the 'Active Directory Users and Computers' console is depicted with the View menu open and the Advanced Features button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/EnableAdvancedFeatures.png "Enable Advanced Features in the console")
+    ![The 'Active Directory Users and Computers' console is depicted with the View menu open and the Advanced Features button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/EnableAdvancedFeatures.png "Enable Advanced Features in the console")
 
 3. In the **Active Directory Users and Computers** console, locate the new BDC-1 computer account under **Domain Controllers** within **corp.contoso.com** and display its **Properties** window.
 
-    ![In this screenshot, the 'Active Directory Users and Computers' console is depicted with the Domain Controllers node selected on the left and the BDC-1 computer account right-clicked with the Properties menu option selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DisplayComputerProperties2.png "Display computer properties")
+    ![The 'Active Directory Users and Computers' console is depicted with the Domain Controllers node selected on the left and the BDC-1 computer account right-clicked with the Properties menu option selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DisplayComputerProperties2.png "Display computer properties")
 
 4. In the **BDC-1 Properties** window, switch to the **Delegation** tab and select the option **Trust this computer for delegation to specified services only**.
 
 5. Select the option **Use any authentication protocol**, select **Add**, in the **Add Services** window, select **Users or Computers**, in the **Select Users or Computers** dialog box, in the **Enter the object names to select** text box, type **APP1** and select **OK**.
 
-    ![In this screenshot, the 'DC1 Properties' window is depicted with the Delegation tab selected with the 'Trust this computer for delegation to specified services only' and 'Use any authentication protocol' options and the 'Add' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DelegationConfiguration2.png "Delegation configuration")
+    ![The 'DC1 Properties' window is depicted with the Delegation tab selected with the 'Trust this computer for delegation to specified services only' and 'Use any authentication protocol' options and the 'Add' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DelegationConfiguration2.png "Delegation configuration")
 
 6. Back in the **Add Services** window, select the **http** entry and select **OK**.
 
-    ![In this screenshot, 'Add Services' window is depicted with the 'http' entry selected along with the OK button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADApplicationProxy_Delegation_http2.png "Delegation http")
+    ![In this image, 'Add Services' window is depicted with the 'http' entry selected along with the OK button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADApplicationProxy_Delegation_http2.png "Delegation http")
 
 7. In the **DC1 Properties** window, select **OK**.
 
@@ -2002,7 +2002,7 @@ In this exercise, you installed and configured a backup domain controller, set i
 
 2. In the **Security | Getting Started** tile, select **Authentication methods** under the **Manage** section of the left tile menu.
 
-    ![In this screenshot, we select authentication methods under the manage menu.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/authmethods.png "Authentication methods")
+    ![Select authentication methods under the manage menu.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/authmethods.png "Authentication methods")
 
 3. Under **Method**, select **Microsoft Authenticator**.
 
@@ -2012,7 +2012,7 @@ In this exercise, you installed and configured a backup domain controller, set i
 
 6. Select **Save** under **Details** to save the configuration.
 
-    ![In this screenshot, we are configuring the authentication method of Microsoft Authenticator for one of the users in Azure AD.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/configmsftauthenticator.png "Configure Microsoft Authenticator")
+    ![We are configuring the authentication method of Microsoft Authenticator for one of the users in Azure AD.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/configmsftauthenticator.png "Configure Microsoft Authenticator")
 
 7. The next time **Ann G. Ayers** attempts to log in, they will be prompted to configure the **Microsoft Authenticator** app to complete authentication.
 
