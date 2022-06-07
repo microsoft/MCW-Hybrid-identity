@@ -700,11 +700,11 @@ In this task, you will configure Azure AD Connect device synchronization options
 
 4. Within the Remote Desktop session to **APP1**, on the **Server Manager** window, start **Task Scheduler** under **Tools**.
 
-    ![In this screenshot, the Server Manager window on the Remote Desktop connection to APP1 is depicted with the Tools menu open and the Task Scheduler option selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/TaskScheduler.png "Star Task scheduler via Server Manager")
+    ![The Server Manager window on the Remote Desktop connection to APP1 is depicted with the Tools menu open and the Task Scheduler option selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/TaskScheduler.png "Star Task scheduler via Server Manager")
 
 5. In the **Task Scheduler** console, navigate to **Task Scheduler Library** > **Microsoft** > **Windows** > **Workplace Join**. From there, enable then run the **Automatic-Device-Join** task.
 
-    ![In this screenshot, the Task Scheduler console window is depicted with the Workplace Join node selected on the left, the 'Start device join' task, and the Enable button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/StartDeviceJoin.png "Start device join task in Task Scheduler")
+    ![In this image, the Task Scheduler console window is depicted with the Workplace Join node selected on the left, the 'Start device join' task, and the Enable button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/StartDeviceJoin.png "Start device join task in Task Scheduler")
 
 6. Switch to the Remote Desktop session to **DC1** and, open a Windows PowerShell console, start Azure AD Connect delta synchronization by running the following:
 
@@ -813,7 +813,7 @@ In this task, you will create and configure Active Directory groups that will be
 
     - Group type: **Security**
 
-    ![In this screenshot, the 'New Object - Group' dialog is depicted with the required settings selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateGroupDirectory.png "Create new group in directory")
+    ![The 'New Object - Group' dialog is depicted with the required settings selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateGroupDirectory.png "Create new group in directory")
 
 4. Open the **Properties** window of the **Engineering - Mandatory MFA** group; in the **Description** text box, type **Engineering users with user state-based MFA enforcement (without Conditional Access)** then select **Apply** then **OK**.
 
@@ -917,7 +917,7 @@ This task will enable password writeback and Self-Service Password Reset (SSPR) 
 
 17. Choose **No security questions configured**. On the **Select security questions** blade that appears, select **+ Predefined**. On the **Add predefined security questions** blade that appears on the right, select any five questions, select **OK** twice, and, back on the **Password reset - Authentication methods** blade, select **Save**.
 
-    ![In this screenshot, the 'Select security questions' blade of the Azure portal is depicted with the '+ Predefined' button selected with the required predefined security questions selected on the 'Add predefined security questions' blade on the right.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectSecurityQuestions.png "Select security questions")
+    ![The 'Select security questions' blade of the Azure portal is depicted with the '+ Predefined' button selected with the required predefined security questions selected on the 'Add predefined security questions' blade on the right.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectSecurityQuestions.png "Select security questions")
 
 18. On the **Password reset - Authentication methods** blade, select **Registration** on the left and ensure that **Require users to register when signing in** is set to **Yes** and that **Number of days before users are asked to re-confirm their authentication information** is set to **180**.
 
@@ -937,7 +937,7 @@ In this task, you will implement Azure AD password protection for Windows Server
 
 4. Set the value of the **Account lockout threshold** to **10**, select **OK**, and accept the settings in the **Suggested Value Changes**.
 
-    ![In this screenshot, the Group Policy Management Editor is depicted with the 'Account lockout threshold properties' dialog open with the required settings selected and the 'Suggested Value Changes' dialog open with the OK button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADPasswordProtectionPolicy_ADLockout.png "Group policy management")
+    ![the Group Policy Management Editor is depicted with the 'Account lockout threshold properties' dialog open with the required settings selected and the 'Suggested Value Changes' dialog open with the OK button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADPasswordProtectionPolicy_ADLockout.png "Group policy management")
 
 5. Within the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
 
@@ -961,23 +961,23 @@ In this task, you will implement Azure AD password protection for Windows Server
 
     - Mode: **Audit**
 
-    ![In this screenshot, the 'Authentication methods - Password protection' blade in the Azure portal is depicted with the required settings and the Save button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SetPasswordProtection.png "Set password protection")
+    ![The 'Authentication methods - Password protection' blade in the Azure portal is depicted with the required settings and the Save button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SetPasswordProtection.png "Set password protection")
 
 10. Switch to the Remote Desktop session to **APP1** virtual machine, where you are signed in as the user **AGAyers** with the **demo@pass123** password.
 
-11. Launch **Internet Explorer** Select the cogwheel, and then **Internet Options**
+11. Launch **Internet Explorer**. Select the cogwheel, and then **Internet Options**.
 
-    ![Screenshot showing selecting the cogwheel and then internet options in Internet Explorer.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/app1-installedge-internetoptions.png "Selecting Internet Option")
+    ![Image showing selecting the cogwheel and then internet options in Internet Explorer.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/app1-installedge-internetoptions.png "Selecting Internet Option")
 
 12. Select the **Security** tab, leave **Internet** selected, then select **Custom level...**
 
-    ![Depict selecting the security tab and setting the custom level for the internet security settings](images/Hands-onlabstep-bystep-HybridIdentityImages/media/app1-installedge-customsecurity.png "Selecting custom level for internet security options")
+    ![Depict selecting the security tab and setting the custom level for the internet security settings.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/app1-installedge-customsecurity.png "Selecting custom level for internet security options")
 
-13. Scroll almost halfway down and enable File download. Select OK, confirm changing the settings, and select OK.
+13. Scroll almost halfway down and **Enable** File download. Select **OK**, confirm changing the settings, and select **OK**.
 
-    ![Show the File download setting being enabled in the security settings in the internet zone](images/Hands-onlabstep-bystep-HybridIdentityImages/media/app1-installedge-allowdownloads.png "Allow file downloads")
+    ![Showing the File download setting being enabled in the security settings in the internet zone.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/app1-installedge-allowdownloads.png "Allow file downloads")
 
-14. Now that file downloads are allowed on **APP1**, use Internet Explorer to download and install Edge for **Windows 64-bit** from the following URL.
+14. Now that file downloads are allowed on **APP1**, use Internet Explorer to download and install Edge for **Windows 64-bit** from the following URL:
 
     ```https://www.microsoft.com/en-us/edge/business/download```
 
@@ -1030,7 +1030,7 @@ In this task, you will enable Azure AD Identity Protection.
 
 6. On the **Azure AD Identity Protection - MFA registration policy** blade, in the **Assignments** section, select **All users**.
 
-    ![In this screenshot, the 'Azure AD Identity Protection - MFA registration policy' blade of the Azure portal is depicted with the 'All users' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectUsers.png "Select All users")
+    ![The 'Azure AD Identity Protection - MFA registration policy' blade of the Azure portal is depicted with the 'All users' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectUsers.png "Select All users")
 
 7. On the **Include** tab that opens on the right, choose **Select individual users and groups**. Then, on the **Select users** blade, in the **Select** text box, type **Engineering**, in the list of results, select **Engineering** and choose **Select**.
 
@@ -1060,7 +1060,7 @@ In this task, you will enable Azure AD Identity Protection.
 
     - Enforce Policy: **On**
 
-    ![In this screenshot, the 'Azure AD Identity Protection - User risk policy' blade of the Azure portal is depicted with the required settings and the Save button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/IdentityProtection_UserRiskPolicy.png "Set the user risk policy")
+    ![The 'Azure AD Identity Protection - User risk policy' blade of the Azure portal is depicted with the listed settings and the Save button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/IdentityProtection_UserRiskPolicy.png "Set the user risk policy")
 
 ### Task 6: Enable Automatic Intune Enrollment
 
@@ -1116,7 +1116,7 @@ In this task, you will implement Azure AD Conditional Access Policies.
 
     ![Showing entering the name, selecting the checkbox for trusted location, and then the + to add a new IP range.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ca-newlocation.png "Adding a new trusted IP location")
 
-8. Add the public IP address of the APP1 Azure VM (the IP address can be found on the VM page in the portal) in the CIDR notation (i.e., x.x.x.x/32). Then select **Create**
+8. Add the public IP address of the APP1 Azure VM (the IP address can be found on the VM page in the portal) in the CIDR notation (i.e., x.x.x.x/32). Then select **Create**.
 
     ![In this screenshot, adding the public IP address of the App1 server is shown.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ca-addipaddress.png "Adding a new IP address")
 
@@ -1124,21 +1124,21 @@ In this task, you will implement Azure AD Conditional Access Policies.
 
 10. On the **Conditional Access - Policies** page, select **+ New policy** and **Create new policy from templates**. The first policy will enforce MFA for the **Engineering - Mandatory MFA** group.
 
-11. Leave **Identities** selected and select **Next**
+11. Leave **Identities** selected and select **Next**.
 
     ![Leaving Identities selected, the Next button to select is highlighted.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ca-template-identities.png "Identities is selected in customize your build")
 
-12. Select **Require multi-factor authentication for all users**, Name your policy **Require multi-factor authentication for Engineering  Mandatory MFA**, set the **Policy state** to **On**, select **Next**, and then **Create Policy**
+12. Select **Require multi-factor authentication for all users**, Name your policy **Require multi-factor authentication for Engineering  Mandatory MFA**, set the **Policy state** to **On**, select **Next**, and then **Create Policy**.
 
     ![This screenshot highlights selecting require multi-factor authentication for all users, the policy name, and setting the policy state to On.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ca-template-selectmfa.png "Require multi-factor authentication for all users")
 
 13. Once the policy is created, select it to make an update.
 
-14. Select **All users included and specific users excluded** under **Users or workload identities**. Change from **All users** to **Select users and groups**, **Users and groups**, and select the group **Engineering - Mandatory MFA**
+14. Select **All users included and specific users excluded** under **Users or workload identities**. Change from **All users** to **Select users and groups**, **Users and groups**, and select the group **Engineering - Mandatory MFA**.
 
-    ![Screenshot showing the change from All users to select users and group with engineering - mandatory MFA selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ca-template-changeassignment.png "Engineering - Mandatory MFA group selected")
+    ![Image showing the change from All users to select users and group with engineering - mandatory MFA selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ca-template-changeassignment.png "Engineering - Mandatory MFA group selected")
 
-15. Select the **Exclude** tab and notice that when we create a conditional access policy from a template, the user creating the policy (in this case, john.doe) is automatically added to the exclude list to ensure the user isn't locked out of their Azure AD tenant. Select **Save**
+15. Select the **Exclude** tab and notice that when we create a conditional access policy from a template, the user creating the policy (in this case, john.doe) is automatically added to the exclude list to ensure the user isn't locked out of their Azure AD tenant. Select **Save**.
 
 16. Select **+ New policy** then **Create new policy**. A second policy will be created for the rest of the engineering users.
 
@@ -1162,43 +1162,41 @@ In this task, you will implement Azure AD Conditional Access Policies.
 
     > **Note**: Review the warning stating **Don't lock yourself out! This policy impacts the Azure portal. Before you continue, ensure that you or someone else will be able to get back into the portal**. Disregard this warning if configuring a persistent browser session policy that works correctly only if "All cloud apps" are selected.
 
-23. On the **New** blade, in the **Conditions** section, select **0 conditions selected**.
-
-24. Select **Not configured** under **Sign-in risk**. In the **Sign-in risk** blade, set **Configure** to **Yes**, check the **No risk** box, and choose **Done**.
+23. On the **New** blade, in the **Conditions** section, select **0 conditions selected**. Select **Not configured** under **Sign-in risk**. In the **Sign-in risk** blade, set **Configure** to **Yes**, check the **No risk** box, and choose **Done**.
 
     ![In this screenshot, 'Not configured' under 'Sign-in risk' is selected, and the 'Sign-in risk' blade is open with the Configure and 'No risk' options selected along with the Select button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_SigninRisk.png "Configure sign-in risk settings")
 
-25. Select **Not configured** under **Device platforms**. On the **Device platforms** blade, set **Configure** to **Yes**, on the **Include** tab, choose **Select device platforms**. Check the **Windows** box, and select **Done**.
+24. Select **Not configured** under **Device platforms**. On the **Device platforms** blade, set **Configure** to **Yes**, on the **Include** tab, choose **Select device platforms**. Check the **Windows** box, and select **Done**.
 
     ![In this screenshot, 'Not configured' under 'Device platforms' is selected, and the 'Device platforms' blade is open with the Configure, 'Select device platform', and 'Windows' options selected under the Include tab along with the Done button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_DevicePlatforms.png "Device platform settings")
 
-26. Select **Not configured** under **Locations**. On the blade that appears, set **Configure** to **Yes**. On the **Include** tab, choose **Selected locations**. On the **Select** blade, check the **Contoso Headquarters** box, choose **Select**.
+25. Select **Not configured** under **Locations**. On the blade that appears, set **Configure** to **Yes**. On the **Include** tab, choose **Selected locations**. On the **Select** blade, check the **Contoso Headquarters** box, choose **Select**.
 
-    ![In this screenshot, the Select blade of the Azure portal is depicted with the Contoso Headquarters box checked and the Select button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_Locations.png "Select conditional access locations")
+    ![The Select blade of the Azure portal is depicted with the Contoso Headquarters box checked and the Select button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_Locations.png "Select conditional access locations")
 
-27. Select **Not configured** under **Client apps**, on the **Client apps** blade, set **Configure** to **Yes**. Check the **Browser**, **Mobile apps and desktop clients**, **Exchange ActiveSync clients**, and **Other clients** boxes, and select **Done**.
+26. Select **Not configured** under **Client apps**, on the **Client apps** blade, set **Configure** to **Yes**. Check the **Browser**, **Mobile apps and desktop clients**, **Exchange ActiveSync clients**, and **Other clients** boxes, and select **Done**.
 
     ![In this screenshot, 'Not configured' under 'Client apps' is selected, and the 'Client apps' blade is open on the right with Configure set to Yes and the options listed above selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_Clientapps.png "Conditional access client apps selections")
 
-28. Back on the **New** blade, in the **Access controls** section, select **0 controls selected** under **Grant**.
+27. Back on the **New** blade, in the **Access controls** section, select **0 controls selected** under **Grant**.
 
-29. On the **Grant** blade, ensure that the **Grant access** option is selected. Next, check the **Require Hybrid Azure AD joined device** box, accept the default choice of **Require all the selected controls** under **For multiple controls**, and choose **Select**.
+28. On the **Grant** blade, ensure that the **Grant access** option is selected. Next, check the **Require Hybrid Azure AD joined device** box, accept the default choice of **Require all the selected controls** under **For multiple controls**, and choose **Select**.
 
     > **Note**: Review the warning **Don't lock yourself out! Make sure that your device is Hybrid Azure AD Joined**.
 
     ![In this screenshot, the New blade of the Azure portal is depicted with the '0 controls selected' button selected and the Grant blade open with the required options chosen along with the Select button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_AccesscontrolsGrant.png "Access controls Grant settings")
 
-30. Back on the **New** blade, in the **Access controls** section, select **0 controls selected** under **Session**.
+29. Back on the **New** blade, in the **Access controls** section, select **0 controls selected** under **Session**.
 
-31. Review the **Session** blade settings but do not modify them. Close it when you are finished.
+30. Review the **Session** blade settings but do not modify them. Close it when you are finished.
 
-32. On the **New** blade, set **Enable policy** to **On** and select **Create**.
+31. On the **New** blade, set **Enable policy** to **On** and select **Create**.
 
-    ![In this screenshot, the New blade of the Azure portal is depicted with 'Enable policy' set to On and the Create button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_Final.png "Conditional access enable policy and create")
+    ![The New blade of the Azure portal is depicted with 'Enable policy' set to On and the Create button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_Final.png "Conditional access enable policy and create")
 
-33. Back on the **Conditional Access - Policies** blade, select **What If**.
+32. Back on the **Conditional Access - Policies** blade, select **What If**.
 
-34. On the **What If** blade, specify the following settings, and select **What If**:
+33. On the **What If** blade, specify the following settings, and select **What If**:
 
     - User: **Teresa F. Bell**
 
@@ -1214,11 +1212,11 @@ In this task, you will implement Azure AD Conditional Access Policies.
 
     - Sign-in risk: **No risk**
 
-35. Review the evaluation results and note the policy and the grant controls that will apply.
+34. Review the evaluation results and note the policy and the grant controls that will apply.
 
     ![In this screenshot, within the Azure portal, the What If settings and the evaluation results of the newly created conditional access policy are depicted.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AzureADConditionalAccess_WhatIf_parameters.png "What if settings and results")
 
-36. Re-run the evaluation, but first, change the **Sign-in risk** to **Low**. Review the evaluation results.
+35. Re-run the evaluation, but first, change the **Sign-in risk** to **Low**. Review the evaluation results.
 
 ### Task 9: Implement Azure AD Privileged Identity Management
 
