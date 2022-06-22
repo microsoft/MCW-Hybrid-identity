@@ -205,7 +205,7 @@
                 {
                     If (!(Get-ADOrganizationalUnit -Filter "Name -eq `"$($User.Country)`"" -SearchBase $UserOU.DistinguishedName -Server $Server -ErrorAction SilentlyContinue))
                         {
-                            $CountryOU = New-ADOrganizationalUnit -Name $User.Country -Path $UserOU.DistinguishedName -Country $User.Country -Verbose -Server $Server -PassThru
+                            $CountryOU = New-ADOrganizationalUnit -Name $User.Country -Path $UserOU.DistinguishedName -Country $User.Country -Verbose -Server $Server -PassThru
                             Write-Host ""
                         }
                     Else
@@ -215,7 +215,7 @@
    
                     If (!(Get-ADOrganizationalUnit -Filter "Name -eq `"$($User.State)`"" -SearchBase $CountryOU.DistinguishedName -Server $Server -ErrorAction SilentlyContinue))
                         {
-                            $StateOU = New-ADOrganizationalUnit -Name $User.State -Path $CountryOU.DistinguishedName -State $User.State -Country $User.Country -Verbose -Server $Server -PassThru
+                            $StateOU = New-ADOrganizationalUnit -Name $User.State -Path $CountryOU.DistinguishedName -State $User.State -Country $User.Country -Verbose -Server $Server -PassThru
                             Write-Host ""
                         }
                     Else

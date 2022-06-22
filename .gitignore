@@ -348,3 +348,8 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+Whiteboard design session/images/Whiteboarddesignsessiontrainerguide-HybridIdentityimages/.DS_Store
+Whiteboard design session/images/Whiteboarddesignsessiontrainerguide-HybridIdentityimages/media/.DS_Store
+Hands-on lab/images/Hands-onlabstep-bystep-HybridIdentityImages/.DS_Store
+Hands-on lab/images/Hands-onlabstep-bystep-HybridIdentityImages/media/.DS_Store
+.DS_Store
