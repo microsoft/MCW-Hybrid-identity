@@ -116,7 +116,7 @@ In this task, you will create an Azure Active Directory tenant with the followin
 
 1. Start a new Web browser window from the lab computer and navigate to the Azure portal at <https://portal.azure.com> if you haven't already.
 
-2. When prompted, sign in to the Azure subscription into which you deployed resources in the Before the hands-on lab exercises.
+2. When prompted, sign in to the Azure subscription into which you deployed resources in the [Before the hands-on lab exercises](studentfiles/../Before%20the%20hands-on%20lab%20-%20Hybrid%20identity.md).
 
 3. On the lab computer, in the Azure portal, select **+ Create a resource**.
 
@@ -154,29 +154,7 @@ In this task, you will create an Azure Active Directory tenant with the followin
 
 ### Task 2: Create and configure Azure AD users
 
-In this task, you will configure Azure AD user accounts in the newly created Azure AD tenant with the following settings. These settings include assigning EM+S E5 licenses to the user account you are using for this lab, creating a new Azure AD user account with the following settings, and assigning the Global Administrator role.
-
-- Name: **john.doe**
-
-- First name: **John**
-
-- Last name: **Doe**
-
-- Password: **Auto-generate password**
-
-- Show Password: **Enabled**
-
-- Groups: **0 group selected**
-
-- Roles: **Global Administrator**
-
-- Block sign in: **No**
-
-- Usage location: **United States**
-
-- Job title: **Leave blank**
-
-- Department: **Leave blank**
+In this task, you will configure Azure AD user accounts in the newly created Azure AD tenant with the following settings. These settings include assigning EM+S E5 licenses to the user account you are using for this lab, creating a new Azure AD user account, and assigning the Global Administrator role.
 
 1. From the lab computer, in the Azure portal, navigate back to the **Contoso - Overview** blade.
 
@@ -246,17 +224,17 @@ In this task, you will configure Azure AD user accounts in the newly created Azu
 
 In this task, you will purchase a custom DNS domain name by leveraging the functionality described at <https://docs.microsoft.com/en-us/azure/app-service/manage-custom-dns-buy-domain>.
 
-1. On the lab computer, in the browser displaying the Azure portal, navigate to your subscription blade and select **Change directory**. Then, in the **Change the directory** blade on the right, select **Default Directory** in the dropdown and select **Change**.
+1. Return to the **Azure Active Directory** overview blade. Select **Switch tenant** and select the **Default Directory** associated with the Azure subscription into which you deployed resources in the Before Hands-On Lab exercises, then select **Switch**.
 
-2. Return to the **Azure Active Directory** overview blade. Select **Switch tenant** and select the **Default Directory** associated with the Azure subscription into which you deployed resources in the Before Hands-On Lab exercises, then select **Switch**.
+    !["This shows how to select the filter and switch button to change Azure AD tenants."](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aad-switchtenant.png "Select switch to change Azure AD tenants")
 
-3. In the Azure portal's left navigation, select **+ Create a resource**.
+2. In the Azure portal's left navigation, select **+ Create a resource**.
 
-4. Search for **web app** and select **Create** within **Web App**.
+3. Search for **web app** and select **Create** within **Web App**.
 
     ![Screenshot depicts the New blade with 'Web App' selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/SelectWebApp1.png "Select create web app resource")
 
-5. On the **Basics** tab of the **Web App** blade, specify the following settings, and select **Next: Deployment**:
+4. On the **Basics** tab of the **Web App** blade, specify the following settings, and select **Next: Deployment**:
 
     - Subscription: The name of the Azure subscription into which you deployed resources in the Before Hands-On Lab exercises.
 
@@ -278,25 +256,25 @@ In this task, you will purchase a custom DNS domain name by leveraging the funct
 
     ![Image showing the Basics tab of the Web App blade with the above-listed settings selected and the Next: Monitoring button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/16febupdate2.png "Web app basics information")
 
-6. Select **Next: Networking** and then **Next: Monitoring**.
+5. Select **Next: Networking** and then **Next: Monitoring**.
   
-7. On the **Monitoring** tab of the **Web App** blade, specify the following setting, and select **Review + create** then **Create**:
+6. On the **Monitoring** tab of the **Web App** blade, specify the following setting, and select **Review + create** then **Create**:
 
     - Enable Application Insights: **No**
 
-8. In the Azure portal, search for and select **App Service Domains** on the top search bar.
+7. In the Azure portal, search for and select **App Service Domains** on the top search bar.
 
     ![Screenshot depicts the Azure portal with App Service Domains searched for and selected at the top of the search bar.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ASD.png "Select App Service Domains service")
 
-9. On the **App Service Domains** blade, select **Create App Service Domain**.
+8. On the **App Service Domains** blade, select **Create App Service Domain**.
 
-10. On the **Basics** tab, select your subscription, the **contosohilab-RG** Resource Group, search for a unique domain and select the one you want to use. Then select **Next: Contact Information**.
+9. On the **Basics** tab, select your subscription, the **contosohilab-RG** Resource Group, search for a unique domain and select the one you want to use. Then select **Next: Contact Information*
 
     ![Screenshot showing all of the settings above to select a custom domain to purchase.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/asd-selectdomain.png "Select a custom domain to purchase")
 
-11. Enter the required contact information and select **Next: Advanced**.
+10. Enter the required contact information and select **Next: Advanced**.
 
-12. Ensure that **Enable privacy protection** is Enabled. Select **Review + create** then **Create**.
+11. Ensure that **Enable privacy protection** is Enabled. Select **Review + create** then **Create**.
 
     ![Screenshot showing domain privacy enabled.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/asd-domainprivacy.png "Domain privacy enabled")
 
@@ -314,9 +292,13 @@ In this task, you will assign a newly purchased custom DNS domain name to the Co
 
 4. On the **Contoso - Custom domain names** blade, select **+ Add custom domain**.
 
+    ![Illustrating selecting custom domains names and add custom domain.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aad-addcustomdomain.png "Selecting Add custom domain to add a custom domain to the tenant")
+
 5. On the **Add custom domain** blade that appears on the right, in the **Custom domain name** text box, type the domain name you purchased in the previous task and select **Add domain**. You will be redirected to a new blade displaying your custom domain name settings.
 
 6. Identify the value of the **TXT** record on the custom domain name blade.
+
+    ![Image showing the DNS settings for the custom domain name that was added.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aad-customdomaindns.png)
 
 7. On the lab computer, start another browser tab and navigate to the Azure portal.
 
@@ -342,6 +324,8 @@ In this task, you will assign a newly purchased custom DNS domain name to the Co
 
     - Value: The value of the **DESTINATION OR POINTS TO ADDRESS** entry you identified on the **Custom domain name** blade.
 
+     ![Image showing adding a domain record set txt message for the custom domain.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aad-customdomaintxt.png "Adding the txt record for verifying domain")
+
 13. Switch back to the browser window displaying the custom domain name blade, and select **Verify**. Ensure that the verification was successful.
 
 14. Select **Make primary** and confirm the change when prompted.
@@ -353,6 +337,8 @@ In this task, you will assign a newly purchased custom DNS domain name to the Co
 In this task, you will configure the DNS suffix of the Contoso Active Directory forest to match the newly verified Azure AD custom domain name.
 
 1. On the lab computer, in the Azure portal, verify that you are signed in to the Azure AD tenant associated with the Azure subscription into which you deployed resources in the Before Hands-On Lab exercises (the **Default Directory**). If not, select the **Directory + Subscription** icon in the toolbar of the Azure portal (to the right of the **Cloud Shell** icon) to switch to that Azure AD tenant.
+
+     ![Image illustrating how to switch to the other azure ad tenant.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aad-switchtenant.png "Switching Azure Active Directory Tenants")
 
 2. In the Azure portal, navigate to the blade of the **DC1** virtual machine.
 
@@ -560,6 +546,8 @@ In this task, you will configure Azure AD Connect attribute level filtering that
 
 8. Back in the **Synchronization Rules Editor** window, on the **View and manage your synchronization rules** page, ensure that **Inbound** appears in the **Direction** dropdown list and select **Add new rule** again. This will launch the **Create inbound synchronization rule** wizard.
 
+    ![This shows the dialog to add a new inbound synchronization rule to the Synchronization Rules Editor.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aadconnect-addsyncrule.png "Adding inbound sync rule to the synchronization editor")
+
 9. On the **Description** page, specify the following settings and select **Next**:
 
     - Name: **Custom In from AD - Catch-all Filter**
@@ -632,6 +620,8 @@ In this task, you will configure Azure AD Connect attribute level filtering that
 
 11. Within the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Users - All users** blade of the Contoso Azure AD tenant.
 
+    ![Image showing the All Users screen of the contoso Azure AD tenant.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aad-allusers.png "Azure AD All Users screen")
+
 12. On the **Users - All users** blade, note that the list of user objects includes all user accounts with the UPN suffix matching the custom domain name of the Azure AD tenant. You may need to refresh the page or wait a few minutes to see the change.
 
     ![In this screenshot, the 'Users - All users' blade of the Azure portal is depicted with all the user objects with the custom domain UPN suffixes listed.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/UserObjects.png "User objects shown with custom domain UPN suffixes")
@@ -652,6 +642,8 @@ In this task, you will configure Azure AD Connect attribute level filtering that
   
     - Pass-through authentication: **Enabled with one agent**
 
+    ![Screenshot showing the Azure AD Connect sync status.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aadconnect-syncstatus.png "Verifying the Azure AD connect sync status")
+
    > **Note**: In a production environment, you would install additional agents for redundancy. For more information, refer to <https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta-quick-start>.
 
 ### Task 10: Configure Hybrid Azure AD join
@@ -663,6 +655,8 @@ In this task, you will configure Azure AD Connect device synchronization options
 2. On the **Welcome to Azure AD Connect** page, select **Configure**.
 
 3. On the **Additional tasks** page, select **Configure device options** and select **Next**.
+
+    ![Screenshot that shows Microsoft Azure Active Directory Connect Tasks with Configure device options selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aadsync-deviceoptions.png "Configure Device options in Microsoft Azure Active Directory Connect")
 
 4. On the **Overview** page, review the information regarding **Hybrid Azure AD join** and **Device writeback**, and select **Next**.
 
@@ -694,6 +688,8 @@ In this task, you will configure Azure AD Connect device synchronization options
 
 1. On the lab computer, in the Azure portal, verify that you are signed in to the Azure AD tenant associated with the Azure subscription into which you deployed resources in the Before Hands-On Lab exercises (the **Default directory**). If not, select the **Directory + Subscription** icon in the toolbar of the Azure portal (to the right of the **Cloud Shell** icon) to switch to that Azure AD tenant.
 
+    ![Image illustrating how to switch to the other azure ad tenant.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aad-switchtenant.png "Switching Azure Active Directory Tenants")
+
 2. In the Azure portal, navigate to the blade of the **APP1** virtual machine.
 
 3. On the **APP1** virtual machine blade, connect to **APP1** via Remote Desktop. When prompted to sign in, use the **AGAyers\@<custom_domain_name>** user name with the **demo@pass123** password (where **<custom_domain_name>** placeholder represents the custom DNS domain name you assigned to the Contoso Azure AD tenant earlier in this exercise.
@@ -720,7 +716,7 @@ In this task, you will configure Azure AD Connect device synchronization options
    dsregcmd /status
    ```
 
-9. Verify that the output of the command resembles the following:
+9.  Verify that the output of the command resembles the following:
 
    ```txt
    +----------------------------------------------------------------------+
@@ -775,7 +771,7 @@ In this task, you will configure Azure AD Connect device synchronization options
 
    ```
 
-10. Switch back to the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Devices - All devices** blade of the Contoso Azure AD tenant and verify that there is an entry representing the APP1 server, with the **Join Type** set to **Hybrid Azure AD joined**.
+11. Switch back to the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Devices - All devices** blade of the Contoso Azure AD tenant and verify that there is an entry representing the APP1 server, with the **Join Type** set to **Hybrid Azure AD joined**.
 
     > **Note**: You might need to wait until the Azure AD registration status is correctly reported and its Azure AD object appears in the Azure portal.
 
@@ -815,7 +811,9 @@ In this task, you will create and configure Active Directory groups that will be
 
     ![The 'New Object - Group' dialog is depicted with the required settings selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateGroupDirectory.png "Create new group in directory")
 
-4. Open the **Properties** window of the **Engineering - Mandatory MFA** group; in the **Description** text box, type **Engineering users with user state-based MFA enforcement (without Conditional Access)** then select **Apply** then **OK**.
+4. Open the **Properties** window of the **Engineering - Mandatory MFA** group; in the **Description** text box, type **Engineering users with user state-based MFA enforcement (without Conditional Access)** then select **OK**.
+
+    ![The Engineering - Mandatory MFA group properties with the description box an OK highlighted.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/adgroup-description.png "AD Group Properties dialog box with the description filled out")
 
 5. Within the Remote Desktop session to **DC1**, open Visual Studio Code and run the following to add designated users to the newly created group (replace the placeholder `<custom_domain_name>` with the actual name of the custom verified domain name you assigned to the Contoso Azure AD tenant).
 
@@ -838,6 +836,8 @@ In this task, you will create and configure Active Directory groups that will be
 
 8. On the **Groups - All groups** blade, verify there is an entry representing the **Engineering - Mandatory MFA** group containing the Azure AD user accounts matching Active Directory user accounts, which are members of the Active Directory **Engineering - Mandatory MFA** group.
 
+    ![Screenshot of Azure AD All Groups showing the Engineering - Mandatory MFA Group.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aadgroups-engineeringmfa.png "Azure AD Groups with Engineering - Mandatory MFA group")
+
 ### Task 2: Assign EMS E5 licenses to Azure AD users
 
 In this task, you assign a value to each user account's **UsageLocation** attribute and assign an Azure AD Premium license to each user. This is necessary to implement Azure AD-based Multi-Factor Authentication for these users.
@@ -848,22 +848,20 @@ In this task, you assign a value to each user account's **UsageLocation** attrib
     Install-Module -Name Microsoft.Graph
     ```
 
-2. Find the permissions you'll need to
-
-3. Open a Windows PowerShell console, and run the following to sign into the Contoso Azure AD tenant. When prompted, sign in with the **john.doe** Azure AD user account, which you created in the previous exercise. Accept any permission requests that pop up when logging in.
+2. Open a Windows PowerShell console, and run the following to sign into the Contoso Azure AD tenant. When prompted, sign in with the **john.doe** Azure AD user account, which you created in the previous exercise. Accept any permission requests that pop up when logging in.
 
     ```pwsh
     Connect-MgGraph -Scope "Directory.ReadWrite.All"
     ```
 
-4. In the Windows PowerShell console, run the following to set the **Location** attribute to the **United States** for all Azure AD user accounts with the UPN suffix matching the custom verified domain name of the Contoso Azure AD tenant.
+3. In the Windows PowerShell console, run the following to set the **Location** attribute to the **United States** for all Azure AD user accounts with the UPN suffix matching the custom verified domain name of the Contoso Azure AD tenant.
 
     ```pwsh
     $domainName = (Get-MgDomain | Where-Object IsDefault -eq 'True').Id
     Get-MgUser | Where-Object {$_.UserPrincipalName -like "*@$domainName"} | ForEach-Object {Update-MgUser -UserId $_.UserPrincipalName -UsageLocation 'US'}
     ```
 
-5. In the Windows PowerShell console, run the following to assign the EM+S E5 trial licenses to all Azure AD user accounts with the UPN suffix matching the custom verified domain name of the Contoso Azure AD tenant.
+4. In the Windows PowerShell console, run the following to assign the EM+S E5 trial licenses to all Azure AD user accounts with the UPN suffix matching the custom verified domain name of the Contoso Azure AD tenant.
 
     ```pwsh
     $skuID = (Get-MgSubscribedSku | Where-Object {$_.SkuPartNumber -eq 'EMSPREMIUM'}).SkuId
@@ -885,6 +883,8 @@ This task will enable password writeback and Self-Service Password Reset (SSPR) 
 
 4. On the **Connect to Azure AD** page, sign in by using the credentials of the **john.doe** account and select **Next**.
 
+    ![An image showing the Microsoft Azure Active Directory Connect option features with password writeback selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aadconnect-optionfeatures.png "Microsoft Azure Active Directory Connect option feature with password writeback selected")
+
 5. On the **Connect your directories** page, select **Next**.
 
 6. On the **Domain and OU filtering** page, select **Next**.
@@ -894,6 +894,8 @@ This task will enable password writeback and Self-Service Password Reset (SSPR) 
 8. On the **Enable single sign-on** page, select **Next**.
 
 9. On the **Ready to configure** page, ensure that the **Start the synchronization process when configuration completes** checkbox is selected, and select **Configure**.
+
+    !["A screenshot of Microsoft Azure Active Directory Connect, ready to configure with the start the synchronization process selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/aadconnect-startsyncronization.png "Microsoft Azure Active Directory Connect ready to configure and start synchronization selected")
 
 10. On the **Configuration complete** page, select **Exit**.
 
@@ -923,6 +925,8 @@ This task will enable password writeback and Self-Service Password Reset (SSPR) 
 
 19. On the **Password reset** blade, select **On-premises integration** on the left and verify that the **Write back passwords to your on-premises directory** setting is set to **Yes**. Note that you can **Allow users to unlock accounts without resetting their passwords**.
 
+    ![The on-premises integration screen for password reset in Azure AD showing the write back passwords to your on-premises directory selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/pwdreset-onpremises.png "Password reset for on-premises active directory option selected")
+
 ### Task 4: Implement Azure AD Password Protection for Windows Server Active Directory
 
 In this task, you will implement Azure AD password protection for Windows Server Active Directory.
@@ -941,11 +945,11 @@ In this task, you will implement Azure AD password protection for Windows Server
 
 5. Within the Remote Desktop session to **DC1**, in the Edge browser window displaying the Azure portal, navigate to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
 
-6. On the **Contoso - Overview** page, select **Security** under **Manage** on the left.
+6. On the **Contoso - Overview** page, select **Security** under **Manage** on the left navigation pane.
 
-7. On the **Security - Getting started** page, select **Authentication methods** under **Manage** on the left.
+7. On the **Security - Getting started** page, select **Authentication methods** under **Manage** on the left navigation pane.
 
-8. On the **Authentication methods - Policies** page, select **Password protection** under **Manage** on the left.
+8. On the **Authentication methods - Policies** page, select **Password protection** under **Manage** on the left navigation page.
 
 9. On the **Authentication methods - Password protection** page, specify the following settings and select **Save**:
 
@@ -994,7 +998,7 @@ In this task, you will implement Azure AD password protection for Windows Server
     Register-AzureADPasswordProtectionProxy -AccountUpn 'john.doe@<domain_name>.onmicrosoft.com'
     ```
 
-17. In the same Windows PowerShell console session, run the following to register the Active Directory forest (replace the `<domain_name>` placeholder with the name of the default domain name associated with the Contoso Azure AD tenant) if you get a login prompt, use **john.doe** account again:
+17. In the same Windows PowerShell console session, run the following to register the Active Directory forest (replace the `<domain_name>` placeholder with the name of the default domain name associated with the Contoso Azure AD tenant) if you get a login prompt, use **john.doe** account again. Neither of these commands will display any output if they execute successfully.
 
     ```pwsh
     Register-AzureADPasswordProtectionForest -AccountUpn 'john.doe@<domain_name>.onmicrosoft.com'
@@ -1026,7 +1030,9 @@ In this task, you will enable Azure AD Identity Protection.
 
 4. In the Azure portal, search for and select **Azure AD Identity Protection** in the search bar at the top of the page.
 
-5. On the **Azure AD Identity Protection** blade, select **MFA registration policy** on the left under **Protect**.
+    ![The Azure search at the top of the page displaying searching for and selecting azure ad identity protection.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/azureadidentityprotection.png "Searching for and selecting Azure AD Identity Protection")
+
+5. On the **Azure AD Identity Protection** blade, select **MFA registration policy** in the left navigation under **Protect**.
 
 6. On the **Azure AD Identity Protection - MFA registration policy** blade, in the **Assignments** section, select **All users**.
 
@@ -1104,11 +1110,11 @@ In this task, you will implement Azure AD Conditional Access Policies.
 
     ![In this screenshot, the 'Contoso - Overview' blade is depicted with the Properties and 'Manage security defaults' buttons selected. The 'Enable security defaults' blade is open on the right with the required configuration listed above selected along with the Save button.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DisableSD.png "Disabling the security defaults")
 
-3. On the **Contoso - Overview** page, select **Security** under **Manage** on the left.
+3. On the **Contoso - Overview** page, select **Security** under **Manage** in the left navigation pane.
 
-4. On the **Security - Getting started** page, select **Named locations** under **Manage** on the left.
+4. On the **Security - Getting started** page, select **Named locations** under **Manage** in the left navigation pane.
 
-5. On the **Security - Named locations** page, select **+ IP ranges location**.
+5. On the **Security - Named locations** page, select **+ IP ranges location** in the left navigation pane.
 
 6. On the **New location (IP ranges)** blade, specify the name **Contoso Headquarters**.
 
@@ -1120,7 +1126,7 @@ In this task, you will implement Azure AD Conditional Access Policies.
 
     ![In this screenshot, adding the public IP address of the App1 server is shown.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ca-addipaddress.png "Adding a new IP address")
 
-9. Select **Conditional Access** under **Protect** on the left.
+9. Select **Conditional Access** under **Protect** in the left navigation pane.
 
 10. On the **Conditional Access - Policies** page, select **+ New policy** and **Create new policy from templates**. The first policy will enforce MFA for the **Engineering - Mandatory MFA** group.
 
@@ -1134,7 +1140,7 @@ In this task, you will implement Azure AD Conditional Access Policies.
 
 13. Once the policy is created, select it to make an update.
 
-14. Select **All users included and specific users excluded** under **Users or workload identities**. Change from **All users** to **Select users and groups**, **Users and groups**, and select the group **Engineering - Mandatory MFA**.
+14. Select **All users included and specific users excluded** under **Users or workload identities**. Change from **All users** to **Select users and groups**, select the **Users and groups** checkbox, and select the group **Engineering - Mandatory MFA**.
 
     ![Image showing the change from All users to select users and group with engineering - mandatory MFA selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/ca-template-changeassignment.png "Engineering - Mandatory MFA group selected")
 
@@ -1226,11 +1232,19 @@ In this task, you will implement Azure AD Privileged Identity Management.
 
 2. In the search text box, type **Privileged Identity Management** and, in the list of results, select **Azure AD Privileged Identity Management**.
 
+    ![In this image Privileged Identity Management is in the search box and the service to select highlighted.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/pim-selectservice.png "Searching for and selecting privileged identity management")
+
 3. On the **Privileged Identity Management** page, select **Azure AD roles** under **Manage** on the left.
+
+    ![The Azure portal with Azure AD roles highlighted in the left navigation under the Manage header.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/pim-azureadroles.png "The Azure AD roles link highlighted under the manage header")
 
 4. On the **Contoso - Quick start** page, select **Assign eligibility**.
 
+    ![Screenshot highlighting the Assign eligibility button on the quick start page.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/pim-assigneligibility.png)
+
 5. On the **Contoso - Roles** page, select **+ Add assignments**.
+
+    ![This image highlights the + Add assignments link on the Contoso - Roles page.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/pim-addasignments.png "The add assignments link on the Contoso - Roles page")
 
 6. On the **Add assignments** blade, specify the following settings to designate **Ann G. Ayers** as an eligible member of the **Authentication Administrator** role, then select **Next** then **Assign**.
 
@@ -1243,6 +1257,8 @@ In this task, you will implement Azure AD Privileged Identity Management.
    ![In this screenshot, the 'Add assignments' blade of the Azure portal is depicted with the required settings listed above configured and the Next button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/AddAAAssignment.png "Adding the Authentication Administrator role assignment")
 
 7. On the **Contoso - Roles** blade, select **Assignments** under **Manage** on the left and note that **Ann G. Ayers** is eligible for the **Authentication Administrator** role.
+
+    ![This image shows Ann G. Ayers eligable for the Authentication Administrator role.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/pim-annassignment.png "Ann G. Ayers eligibility for the Authentication Administrator role.")
 
 8. Switch to the Remote Desktop session to **APP1**, start the Edge browser, and browse to the Azure portal at [**http://portal.azure.com**](http://portal.azure.com). From here, sign in as Ann G. Ayers. The username can be found on the **Users - All users** page in the Azure portal window on the lab computer. The password will be **demo@pass123**.
 
@@ -1266,9 +1282,15 @@ In this task, you will implement Azure AD Privileged Identity Management.
 
 13. On the **Privileged Identity Management - Quick start** page, select **My roles** under **Tasks** on the left.
 
+    ![This screenshot highlights the My Roles link in  the left hand navigation under the Tasks header.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/pim-ann-myroles.png "My Roles in Priviledged Identity Management for Ann G. Ayers")
+
 14. On the **My roles - Azure AD roles** page, on the **Eligible assignments** tab, select **Activate** next to the **Authentication Administrator** role entry.
 
+    ![In this image, the Active link is highlighted for the Authentication Administrator role for Ann G. Ayers.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/pim-ann-activate.png "Activate link highlighted for the role in PIM")
+
 15. On the **Activate - Authentication Administrator** blade, enter random text in the **Reason** box, then select **Activate**. Wait for the role to activate and the page to refresh.
+
+    ![This screenshot shows random text in the Reason text box and has the Active button highlighted.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/pim-ann-activate2.png "Random text in the Reason text box and the activate button highlighted")
 
 16. Switch to the **Active assignments** tab, and note that the role assignment has been activated.
 
@@ -1298,7 +1320,9 @@ In this task, you will install and configure Azure AD Application Proxy.
 
 4. On the **Application Proxy Connector Download** blade on the right, review the system requirements and select **Accept terms & Download**.
 
-5. When prompted whether to save or run **AADApplicationProxyConnectorInstaller.exe**, select **Run**.
+5. When prompted whether to save or run **AADApplicationProxyConnectorInstaller.exe**, select **Open file**.
+
+   ![Application proxy screen is displayed with the steps highlighted to download and start the installation of the Application Proxy Connector.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/appproxy-download.png "Downloading and starting the installation of the Azure AD Application Proxy Connector")
 
    > **Note**: In a production environment, you would install the connector on a domain member server. We are using a domain controller strictly for simplicity.
 
@@ -1326,7 +1350,7 @@ In this task, you will configure an Azure AD Application Proxy application.
 
     - Pre Authentication: **Azure Active Directory**
 
-    - Connector Group: **Default**
+    - Connector Group: The **Default** group option. This may also have a country or region along with **Default**
 
     - Backend Application Timeout: **Default**
 
@@ -1388,11 +1412,13 @@ In this task, you will configure an Azure AD Application Proxy application.
 
     ![In this screenshot, the 'Active Directory Users and Computers' console is depicted with the Domain Controllers node selected on the left and the DC1 computer account right-clicked with the Properties menu option selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DisplayComputerProperties.png "Display computer properties")
 
-14. In the **DC1 Properties** window, switch to the **Delegation** tab and select the option **Trust this computer for delegation to specified services only**.
+14. In the **DC1 Properties** window, switch to the **Delegation** tab, select the option **Trust this computer for delegation to specified services only**, select the option **Use any authentication protocol**, then select **Add**.
 
-15. Select the option **Use any authentication protocol**, select **Add**, in the **Add Services** window, select **Users or Computers**. In the **Select Users or Computers** dialog box, in the **Enter the object names to select** text box, type **APP1**. Select **Check Names** to verify the name resolves, and select **OK**.
+  ![In this screenshot, the 'DC1 Properties' window is depicted with the Delegation tab selected with the 'Trust this computer for delegation to specified services only' and 'Use any authentication protocol' options and the 'Add' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/delegationconfiguration1.png "Delegation configuration")
 
-    ![In this screenshot, the 'DC1 Properties' window is depicted with the Delegation tab selected with the 'Trust this computer for delegation to specified services only' and 'Use any authentication protocol' options and the 'Add' button selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DelegationConfiguration.png "Delegation configuration")
+15. In the **Add Services** window, select **Users or Computers**. In the **Select Users or Computers** dialog box, in the **Enter the object names to select** text box, type **APP1**. Select **Check Names** to verify the name resolves, and select **OK**.
+
+    ![This image shows the select users or computers dialog with the steps highlighted to add app1 and validate the name.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/DelegationConfiguration2.png "Select Users or Computers dialog with app1 entered")
 
 16. In the **Add Services** window, select the **http** entry and select **OK**.
 
@@ -1458,29 +1484,7 @@ In this task, you will create another Azure Active Directory tenant representing
 
 ### Task 5: Create and configure Azure AD users
 
-In this task, you will configure Azure AD user accounts in the newly created Azure AD tenant with the following settings. This will include assigning EM+S E5 licenses to the user account you are using for this lab, creating a new Azure AD user account with the following settings, and assigning it the Global Administrator role and an EM+S E5 license.
-
-- Name: **jane.doe**
-
-- First name: **Jane**
-
-- Last name: **Doe**
-
-- Password: **Auto-generate password**
-
-- Show Password: **Enabled**
-
-- Groups: **0 group selected**
-
-- Roles: **Global Administrator**
-
-- Block sign in: **No**
-
-- Usage location: **United States**
-
-- Job title: **Leave blank**
-
-- Department: **Leave blank**
+In this task, you will configure Azure AD user accounts in the newly created Azure AD tenant. This will include assigning EM+S E5 licenses to the user account you are using for this lab, creating a new Azure AD user account with the following settings, and assigning it the Global Administrator role and an EM+S E5 license.
 
 1. From the lab computer, in the Azure portal, navigate back to the **Fabrikam - Overview** page.
 
@@ -1542,6 +1546,8 @@ In this task, you will configure Azure AD user accounts in the newly created Azu
 
 14. On the **Update license assignments** page, check the **Enterprise Mobility + Security E5** box, ensure all the corresponding license options are enabled, and select **Save**.
 
+    ![This screenshot shows the updated license assignment with all enterprise mobility + security E5 options selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/fab-licenseassigned.png "All license options selected in license assignment")
+
 ### Task 6: Create and configure Azure AD guest user and group accounts
 
 In this task, you will create and configure Azure AD guest accounts in the Contoso Azure AD tenant representing users in the Fabrikam Azure AD tenant.
@@ -1550,7 +1556,9 @@ In this task, you will create and configure Azure AD guest accounts in the Conto
 
 2. On the **Contoso - Overview** page, select **Users** under **Manage** on the left.
 
-3. On the **Users - All users** page, select **+ New guest user**.
+3. On the **Users - All users** page, select **+ New user** and then **Invite external user**.
+
+   ![This screenshot highlights selected + New user and then selecting invite external user.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/contoso-externaluserinvite.png "Invite an external user to Azure AD")
 
 4. On the **New user** page, ensure that the **Invite user** option is selected, specify the following settings, and select **Invite**:
 
@@ -1602,7 +1610,9 @@ In this task, you will create and configure Azure AD guest accounts in the Conto
 
 8. On the **Groups - All groups** blade, select the newly created group and, on the **Fabrikam B2B users** group, copy its **Object id** value and paste it into Notepad. You will need it later in this exercise.
 
-9. Switch to the lab computer, start a web browser using in private/incognito mode and browse to https://portal.azure.com/<yourcontosotenant>.onmicrosoft.com. Where <yourcontosotenant> is the name you chose for your Contoso tenant?
+    ![In this image, the object ID of the Babrikam B2B users group is highlighted.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/fabrikamb2b-objectid.png "The Fabrikam B2B users Object ID in the properties of the group")
+
+9.  Switch to the lab computer, start a web browser using in private/incognito mode and browse to https://portal.azure.com/<yourcontosotenant>.onmicrosoft.com. Where <yourcontosotenant> is the name you chose for your Contoso tenant?
 
 10. When prompted, sign in by using the credentials of the **jane.doe** Fabrikam Azure AD user account.
 
@@ -1611,6 +1621,8 @@ In this task, you will create and configure Azure AD guest accounts in the Conto
 12. When prompted, change the password for the **jane.doe** Fabrikam Azure AD user account.
 
     > **Note**: If you receive the message, "**We've seen that password too many times before. Choose something harder to guess**", you will need to modify the password until it is unique enough to be accepted.
+
+    ![Displays the screen for updating a users password in Azure AD.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/fabrikam-changepassword.png "Updating an Azure AD user's password")
 
 13. In the Azure portal, sign out from the Contoso Azure AD tenant and close the in private/incognito browser window.
 
@@ -1622,11 +1634,17 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
 2. On the **Contoso - Overview** page of the Contoso Azure AD tenant, select **Enterprise applications** under **Manage** on the left.
 
+    ![This screenshot depicts the Enterprise Applications menu item in the Contoso Azure Active Directory left-side navigation.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/contoso-enterpriseapps.png "Azure AD Overview with Enterprise Applications link highlighted")
+
 3. On the **Enterprise applications - All applications** page, select **APP1 Default Web Site**.
 
-4. On the **APP1 Default Web Site - Overview** page, select **Users and groups** under **Manage** on the left.
+     ![In this image, APP1 Default Web Site is highlighted.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/contoso-enterpriseapps-defaultwebsite.png "The APP1 Default Web Site is highlighted")
+
+4. On the **APP1 Default Web Site - Overview** page, select **Users and groups** under **Manage** on the left-side navigation.
 
 5. On the **APP1 Default Web Site - Users and groups** page, select **+ Add user/group**.
+
+    ![A screenshot showing the Users and groups link selected and then selecting + Add user/group.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/contoso-enterpriseapps-assignuser.png "The APP1 Default Web Site with Users and groups select, then + Add user/group")
 
 6. On the **Add Assignment** page, specify the following settings and select **Assign**:
 
@@ -1634,11 +1652,13 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
     - Select Role: **User**
 
+     ![This image walks through the steps to add jane.doe as a user, highlighting selecting None Selected, selecting jane.doe, selecting Select, and selecting Assign.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/contoso-enterpriseapp-assignuser2.png "Adding jane.doe as being assigned tothe APP1 Default Web Site")
+
 7. Within the Remote Desktop session to **DC1**, in the Azure portal, navigate back to the **Contoso - Overview** blade of the Contoso Azure AD tenant.
 
 8. On the **Contoso - Overview** page, select **App registrations** under **Manage** on the left.
 
-9. On the **Contoso - App registrations** page, select **+ New registration**.
+9.  On the **Contoso - App registrations** page, select **+ New registration**.
 
 10. On the **Register an application** page, specify the following information and select **Register**:
 
@@ -1672,49 +1692,50 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
     ![The 'Sync B2B users - API permissions' blade of the Azure portal is depicted with the configured permissions listed with a status of 'Granted for Contoso.'](images/Hands-onlabstep-bystep-HybridIdentityImages/media/GrantedForContoso.png "Permissions granted for Contoso")
 
-19. On the **Sync B2B users - API permission** page, select **Certificates & secrets** under **Manage** on the left.
-
-20. On the **Sync B2B users - Certificates & secrets** page, select **+ New client secret**.
-
-21. On the **Add a client secret** page, specify the following information and select **Add**.
+19. On the **Sync B2B users - API permission** page, select **Certificates & secrets** under **Manage** on the left, select **+ New client secret**, and on the **Add a client secret** page, specify the following information and select **Add**.
 
     - Description: **Sync B2B users secret 1**
 
     - Expires: **12 months**
+    ![This screenshot displays the Sync B2B users app registration with the selections from this step highlighted.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/syncb2b-newsecret.png "Creating a new secret for the Sync B2B users app")
 
-22. Copy the resulting secret value. You will need it later in this task.
+20. Copy the resulting secret value. You will need it later in this task.
 
     > **Note**: This value will not be displayed again and cannot be retrieved once you navigate away from the current page. If you lose it, you will have to delete the secret and create another one.
 
-23. On the **Sync B2B users** blade, select **Overview** on the left.
+21. On the **Sync B2B users** blade, select **Overview** on the left.
 
-24. On the **Sync B2B users - Overview** blade, note the values of the **Application (client) ID** and **Directory (tenant) ID**. You will need them later in this task.
+22. On the **Sync B2B users - Overview** blade, note the values of the **Application (client) ID** and **Directory (tenant) ID**. You will need them later in this task.
 
-25. Within the Remote Desktop session to **DC1**, switch to the **Active Directory Users and Computers** console.
+    ![This image highlights the Application (client) ID and the Directory (tenant) ID on the Sync B2B users app overview page.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/syncb2b-ids.png "The Sync B2B users page with the IDs highlighted")
 
-26. In the **Active Directory Users and Computers** console, expand **corp.contoso.com** on the left. Create an organizational unit named **Demo B2B Accounts** directly in the root of the domain with two child organizational units named **Enabled** and **Disabled**.
+23. Within the Remote Desktop session to **DC1**, switch to the **Active Directory Users and Computers** console.
+
+24. In the **Active Directory Users and Computers** console, expand **corp.contoso.com** on the left. Create an organizational unit named **Demo B2B Accounts** directly in the root of the domain with two child organizational units named **Enabled** and **Disabled**.
 
     ![In this screenshot, the 'Active Directory Users and Computers' console is depicted with the 'corp.contoso.com' node right-clicked with New then Organizational Unit selected.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/CreateOU.png "Create an organizational unit")
 
     > **Note**: These OUs must NOT be synchronized back to the Azure AD tenant using Azure AD Connect. Make sure not to include the guest user objects in the synchronization scope.
 
-27. Within the Remote Desktop session to **DC1**, open a Windows PowerShell console and run the following to add a suffix matching the default DNS name of the Contoso Azure AD tenant (replace the `<domain_name>` placeholder with the name of the default domain name associated with the Contoso Azure AD tenant):
+25. Within the Remote Desktop session to **DC1**, open a Windows PowerShell console and run the following to add a suffix matching the default DNS name of the Contoso Azure AD tenant (replace the `<domain_name>` placeholder with the name of the default domain name associated with the Contoso Azure AD tenant):
 
     ```pwsh
     Get-ADForest | Set-ADForest -UPNSuffixes @{Add="<domain_name>.onmicrosoft.com"}
     ```
 
-28. Within the Remote Desktop session to **DC1**, start the Edge browser and browse to the following URL.
+26. Within the Remote Desktop session to **DC1**, start the Edge browser and browse to the following URL.
 
     ```pwsh
     https://www.microsoft.com/en-us/download/details.aspx?id=51495
     ```
 
-29. On the **Connectors for Microsoft Identity Manager 2016 SP1 and Forefront Identity Manager 2010 R2 SP1** page, download **Script and Readme to pull Azure AD B2B users on-prem_v1.0.3.zip** and extract its content. You'll have to scroll down to find it.
+27. On the **Connectors for Microsoft Identity Manager 2016 SP1 and Forefront Identity Manager 2010 R2 SP1** page, download **Script and Readme to pull Azure AD B2B users on-prem_v1.0.3.zip** and extract its content. You'll have to scroll down to find it.
 
-30. Once the files are extracted, right-click on the PowerShell script, open the file properties, and **Unblock** the script.
+    ![This screenshot highlights the correct selection to download the .zip file and selected Next.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/download-MIMzip.png "The download popup with the correct file selected for download")
 
-31. Within the Remote Desktop session to **DC1**, in Visual Studio Code, open the newly extracted PowerShell script **AppProxy-GuestAccountCreation-v1.0.3.ps1** and modify its content by updating it to match the following:
+28. Once the files are extracted, right-click on the PowerShell script, open the file properties, and **Unblock** the script.
+
+29. Within the Remote Desktop session to **DC1**, in Visual Studio Code, open the newly extracted PowerShell script **AppProxy-GuestAccountCreation-v1.0.3.ps1** and modify its content by updating it to match the following:
 
     > **Note**: If you can't open the file for some reason, you can use the **Open folder** option in Visual Studio Code to open the folder containing the script.
 
@@ -1732,17 +1753,17 @@ In this task, you will configure an Azure AD Application Proxy application for B
 
     > **Note**: For more information regarding the script and its implementation, refer to the **Readme - Script to pull Azure AD B2B users on-prem_v1.0.3.pdf** file, included in the **1.1.953.0\Script and Readme to pull Azure AD B2B users on-prem_v1.0.3.zip** file you downloaded earlier in this task.
 
-32. Install the AzureAD PowerShell Module using the script below. Confirm any prompts while installing it.
+30. Install the AzureAD PowerShell Module using the script below. Confirm any prompts while installing it.
 
     ```pwsh
     Install-Module AzureAD
     ```
 
-33. Execute the script and ensure it did not return any error messages.
+31. Execute the script and ensure it did not return any error messages.
 
     > **Note**: You can schedule script execution regularly by using Windows Scheduled Tasks. Refer to the **Readme - Script to pull Azure AD B2B users on-prem_v1.0.3.pdf** file for details.
 
-34. Switch back to the Azure Active Directory Users and Computers console and verify that a user account of **jane.doe** is listed in the **Demo B2B Accounts\\Enabled** organizational unit. You may have to refresh the console.
+32. Switch back to the Azure Active Directory Users and Computers console and verify that a user account of **jane.doe** is listed in the **Demo B2B Accounts\\Enabled** organizational unit. You may have to refresh the console.
 
     > **Note**: In a production environment, you could provide access to Integrated Windows Authentication apps by leveraging Microsoft Identity Manager. You can also give access to on-premises apps that support SAML-based authentication directly from the Azure portal. Refer to Grant B2B users in Azure AD access to your on-premises applications at <https://docs.microsoft.com/en-us/azure/active-directory/b2b/hybrid-cloud-to-on-premises> for more information.
 
@@ -1852,15 +1873,15 @@ In this task, you will promote the newly created VM to a domain controller and c
 
 9. Select **Close** when the installation completes.
 
-10. Right-click the network connection icon on the taskbar to open the **Network and sharing center**.
+10. Right-click the network connection icon on the taskbar to open the **Network and sharing center**, (1) in the image below.
 
-11. Select **Ethernet** next to **Connections**.
+11. Select **Ethernet** next to **Connections** (2) in the image below.
 
-12. When the **Ethernet Status** tile opens, select **Properties**.
+12. When the **Ethernet Status** tile opens, select **Properties** (3) in the image below.
 
-13. On the **Ethernet Properties** tile, select **Internet Protocol Version 4 (TCP/IPv4)**, and select **Properties**.
+13. On the **Ethernet Properties** tile, select **Internet Protocol Version 4 (TCP/IPv4)** (4) in the image below, and select **Properties** (5) in the image below.
 
-14. On the **Internet Protocol Version 4 (TCP/IPv4)** tile, select the radio button for **Use the following DNS server addresses** and enter the IP address of **DC-1**. Select **OK** to save the changes. Then select Close; you may get disconnected from the remote desktop session at this point.
+14. On the **Internet Protocol Version 4 (TCP/IPv4)** tile, select the radio button for **Use the following DNS server addresses** (6) the IP address of **DC-1** (7). Select **OK** to save the changes. Then select Close; you may get disconnected from the remote desktop session at this point.
 
     ![This screenshot shows the steps to follow to add a DNS server to the device network configuration.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/dc1dns.png "Add DNS to Network properties")
 
@@ -1882,7 +1903,7 @@ In this task, you will promote the newly created VM to a domain controller and c
 
     ![This screenshot shows that you can now select the existing domain for the new backup domain controller.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/contosodomain.png "Select existing domain")
 
-20. Select **Next**.
+20. Notice that the domain is now set to **corp.contoso.com**, and the user to perform the operation has been specified. Select **Next**.
 
     ![The existing domain is now populated in the deployment configuration along with the administrator credentials.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/domainconfignext1.png "Existing domain credentials")
 
@@ -1944,7 +1965,7 @@ In this task, you will install and configure Azure AD Connect in standby mode. T
 
     ![Install the required components and do not select any optional components before selecting install, as shown in this screenshot.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/installazureadconnect.png "Install Azure AD Connect")
 
-7. Follow the same steps as Exercise 1, Task 6, Steps 15-24. On the final **Configure** step, uncheck the **Start the synchronization process when configuration completes** checkbox, and select the **Enable staging mode** checkbox. Select **Install** to complete the installation of the configuration.
+7. Follow the same steps as [Exercise 1, Task 6, Steps 15-24](#task-6-install-azure-ad-connect). On the final **Configure** step, uncheck the **Start the synchronization process when configuration completes** checkbox, and select the **Enable staging mode** checkbox. Select **Install** to complete the installation of the configuration.
 
     ![Once Azure AD Connect has been installed and all credentials have been provided, unselect the checkbox for starting synchronization and check the box for 'enable staging mode'.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/readytoconfigure.png "Configure in staging mode")
 
@@ -2006,11 +2027,11 @@ In this exercise, you installed and configured a backup domain controller, set i
 
 3. Under **Method**, select **Microsoft Authenticator**.
 
-4. The details will populate below, select **Yes** for **Enable**, select **Select users** for **Target**.  
+4. The details will populate below, select **Yes** for **Enable** (1), select **Select users** for **Target** (2).  
 
-5. Select **Add users and groups** and select **Ann G. Ayers** under users. Then, select **Select** to add the user.  
+5. Select **Add users and groups** (3) in the image below and select **Ann G. Ayers** under users (4). Then, select **Select** to add the user (5).  
 
-6. Select **Save** under **Details** to save the configuration.
+6. Select **Save** (6) to save the configuration.
 
     ![We are configuring the authentication method of Microsoft Authenticator for one of the users in Azure AD.](images/Hands-onlabstep-bystep-HybridIdentityImages/media/configmsftauthenticator.png "Configure Microsoft Authenticator")
 
