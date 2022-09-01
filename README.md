@@ -21,13 +21,17 @@ In this workshop, you will learn how to implement different components of a hybr
 
 At the end of this workshop, you will be able to plan, design, and deploy a hybrid identity architecture. The architecture will include a secure, available, and resilient hybrid identity infrastructure for identity and access management. 
 
-### Whiteboard Design Session
+### Whiteboard design session
 
 In this whiteboard design session, you will learn how to implement different components of a hybrid identity solution that integrates an Active Directory forest with an Azure Active Directory tenant and leverages a number of Azure Active Directory features, including pass-through authentication with Seamless Single Sign-On, Multi-Factor Authentication, Self-Service Password Reset, Azure AD Password Protection for Windows Server Active Directory, Hybrid Azure AD join, Windows Hello for Business, Microsoft Intune automatic enrollment, Azure AD Conditional Access, Azure AD Application Proxy, Azure AD B2B, and Azure AD B2C.
 
-### Hands-on Lab
+Continue to the [Whiteboard design session](https://github.com/microsoft/MCW-Hybrid-identity/tree/main/Whiteboard%20design%20session) documents folder.
+
+### Hands-on lab
 
 In this hands-on lab you will setup and configure a number of different hybrid identity scenarios. The scenarios involve an Active Directory single-domain forest named contoso.local, which in this lab environment, consists (for simplicity reasons) of a single domain controller named DC1 and a single domain member server named APP1. The intention is to explore Azure AD-related capabilities that allow you to integrate Active Directory with Azure Active Directory, optimize hybrid authentication and authorization, and provide secure access to on-premises resources from Internet for both organizational users and users who are members of partner organizations.
+
+Continue to the [Hands-on lab](https://github.com/microsoft/MCW-Hybrid-identity/tree/main/Hands-on%20lab) documents folder.
 
 ### Azure services and related products
 
@@ -48,7 +52,7 @@ In this hands-on lab you will setup and configure a number of different hybrid i
 
 ## Related references
 
-- [Microsoft Cloud Workshops](https://microsoftcloudworkshop.com/index.html)
+- [Microsoft Cloud Workshops](https://microsoftcloudworkshop.com)
 - [Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/)
 - [What is hybrid identity with Azure Active Directory?](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/whatis-hybrid-identity)
 - [What is Conditional Access?](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/overview)
