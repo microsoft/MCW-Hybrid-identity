@@ -1,0 +1,5 @@
+# Archived description from the repo readme
+
+In this hands-on lab you will setup and configure a number of different hybrid identity scenarios. The scenarios involve an Active Directory single-domain forest named contoso.local, which in this lab environment, consists (for simplicity reasons) of a single domain controller named DC1 and a single domain member server named APP1. The intention is to explore Azure AD-related capabilities that allow you to integrate Active Directory with Azure Active Directory, optimize hybrid authentication and authorization, and provide secure access to on-premises resources from Internet for both organizational users and users who are members of partner organizations.
+
+Continue to the [Hands-on lab](https://github.com/microsoft/MCW-Hybrid-identity/tree/main/Hands-on%20lab) documents folder.
