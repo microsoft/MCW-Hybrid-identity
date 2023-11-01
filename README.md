@@ -1,6 +1,6 @@
 # Hybrid identity
 
-## Please Note: This workshop will retire effect October 31, 2023. The workshop is no longer being maintained.
+## Please Note: This workshop is archived and no longer being maintained. Content is read-only.
 
 Contoso is a medium size financial services company with its headquarters in New York and a branch office in San Francisco. It is currently operating entirely on-premises, with the majority of its infrastructure running on the Windows platform. Contoso has recently upgraded its Active Directory environment to Windows Server 2016, and it is in the process of migrating its desktops from Windows 7 to Windows 10.
 
